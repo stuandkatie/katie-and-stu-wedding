@@ -13,7 +13,10 @@
             margin: 0;
             line-height: 1.7;
         }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 400; 
+        }
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
             background-size: cover;
@@ -29,25 +32,50 @@
         .nav {
             position: sticky;
             top: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
             z-index: 50;
             border-bottom: 1px solid #e7e5e4;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .btn {
-            display: inline-block;
-            padding: 14px 36px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            font-weight: 500;
+        .nav-container {
+            max-w-6xl mx-auto px-6 py-6 flex justify-between items-center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+        .nav-links {
+            display: none;
+            md:flex gap-8 text-lg tracking-widest uppercase font-medium;
+        }
+        .nav-links a {
+            color: #44403c;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.2s;
         }
-        .btn-primary { background: white; color: #44403c; }
-        .btn-primary:hover { background: #f5f5f4; transform: translateY(-2px); }
+        .nav-links a:hover {
+            color: #166534;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Navigation - Bigger & at the very top -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            <div class="nav-links">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="wedding.html">Wedding</a>
+                <a href="travel.html">Travel</a>
+                <a href="registry.html">Registry</a>
+                <a href="guestbook.html">Guest Book</a>
+                <a href="rsvp.html">RSVP</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero -->
     <header class="hero-bg">
@@ -64,25 +92,10 @@
         </div>
     </header>
 
-    <!-- Navigation - Bigger & Prominent -->
-    <nav class="nav">
-        <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-light tracking-tight">Katie &amp; Stu</a>
-            <div class="hidden md:flex gap-8 text-base tracking-widest uppercase font-medium">
-                <a href="about.html" class="hover:text-emerald-700 transition">Our Story</a>
-                <a href="gallery.html" class="hover:text-emerald-700 transition">Gallery</a>
-                <a href="wedding.html" class="hover:text-emerald-700 transition">Wedding</a>
-                <a href="travel.html" class="hover:text-emerald-700 transition">Travel</a>
-                <a href="registry.html" class="hover:text-emerald-700 transition">Registry</a>
-                <a href="guestbook.html" class="hover:text-emerald-700 transition">Guest Book</a>
-                <a href="rsvp.html" class="hover:text-emerald-700 transition">RSVP</a>
-            </div>
-        </div>
-    </nav>
-
     <footer class="bg-stone-900 text-white py-16 text-center">
         <p class="mb-2">Katie Lawless &amp; Steuart “Stu” Turner • September 2027</p>
         <p>Katieandstuwedding.com</p>
     </footer>
+
 </body>
 </html>
