@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test RSVP | Katie & Stu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+            font-family: 'Inter', system-ui, sans-serif; 
+            background: #f8f5f0;
+            color: #44403c;
+            line-height: 1.7;
+        }
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.8rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.05rem;
+        }
+        button {
+            background: #166534;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover { background: #14532d; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Test RSVP</h1>
+        <p style="text-align: center; margin-bottom: 2rem;">This is a test version</p>
+
+        <input type="password" id="password" placeholder="Enter any password to test">
+        <button onclick="startRSVP()">Continue</button>
+
+        <div id="form" style="display: none;">
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="number" id="guests" value="1" placeholder="Number of Guests">
+            <select id="meal">
+                <option>Standard Meal</option>
+                <option>Vegetarian</option>
+                <option>Vegan</option>
+                <option>Gluten-Free</option>
+            </select>
+            <input type="text" id="notes" placeholder="Any special requests?">
+            <button onclick="submitTestRSVP()">Submit Test RSVP</button>
+        </div>
+
+        <div id="success" style="display: none; text-align: center; color: #166534; font-size: 1.4rem; margin-top: 2rem;">
+            ✅ Thank you! Your RSVP has been received.<br>
+            (This is just a test — no data was saved)
+        </div>
+    </div>
+
+    <script>
+        function startRSVP() {
+            if (document.getElementById('password').value.trim() !== "") {
+                document.getElementById('form').style.display = 'block';
+            } else {
+                alert("Please enter any password to continue (this is a test).");
+            }
+        }
+
+        function submitTestRSVP() {
+            document.getElementById('form').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
