@@ -52,6 +52,31 @@
             color: white;
             text-decoration: none;
         }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -110,8 +135,10 @@
             <h1 class="text-5xl mb-8">Test RSVP</h1>
             <p class="text-lg mb-8">Password for testing: <strong>testing</strong></p>
 
-            <input type="password" id="password" placeholder="Enter password">
-            <button onclick="checkPassword()">Continue to RSVP</button>
+            <div id="passwordSection">
+                <input type="password" id="password" placeholder="Enter password">
+                <button onclick="checkPassword()">Continue to RSVP</button>
+            </div>
 
             <!-- Hidden Form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
@@ -171,8 +198,8 @@
 
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "testing") {
+                document.getElementById('passwordSection').style.display = 'none';
                 document.getElementById('rsvpForm').style.display = 'block';
-                document.getElementById('password').style.display = 'none';
             } else {
                 alert("Incorrect password.");
             }
