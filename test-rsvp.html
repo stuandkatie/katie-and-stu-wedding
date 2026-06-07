@@ -12,20 +12,80 @@
             font-family: 'Inter', system-ui, sans-serif; 
             color: #44403c;
             line-height: 1.7;
-            background: #f8f5f0;
         }
-        h1 { 
+        h1, h2, h3 { 
             font-family: 'Playfair Display', serif; 
             font-weight: 400; 
-            text-align: center;
         }
-        .container {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 2.5rem;
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 110px;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+        }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
             background: white;
+            color: #44403c;
+        }
+        .content {
+            background: rgba(248, 245, 240, 0.55);
+            padding: 3rem 2rem;
+            max-width: 950px;
+            width: 100%;
+            margin: 0 1rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
         }
         input, select, button {
             width: 100%;
@@ -40,81 +100,100 @@
             color: white;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 1rem;
         }
         button:hover {
             background: #14532d;
         }
         label {
             display: block;
-            margin-top: 1rem;
             text-align: left;
+            margin: 1.2rem 0 0.5rem 0;
             font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Test RSVP</h1>
-        <p style="text-align: center; margin-bottom: 2rem;">Password for testing: <strong>testing</strong></p>
-
-        <input type="password" id="password" placeholder="Enter password">
-        <button onclick="checkPassword()">Continue to RSVP</button>
-
-        <!-- Hidden Form -->
-        <div id="rsvpForm" style="display: none; margin-top: 2rem;">
-            <h2 style="text-align: center;">Guest Information</h2>
-            <input type="text" placeholder="Your Full Name" id="name">
-            
-            <label>Will you be attending?</label>
-            <select id="attendance" onchange="toggleGuestFields()">
-                <option value="">Please select...</option>
-                <option value="no">I won't be able to attend</option>
-                <option value="one">Just myself</option>
-                <option value="two">Myself plus one</option>
-            </select>
-
-            <div id="guestNameField" style="display: none;">
-                <input type="text" placeholder="Guest's Full Name" id="guestName">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
             </div>
+            <button class="hamburger" id="hamburger">☰</button>
+        </div>
+    </nav>
 
-            <!-- Meal Choices -->
-            <div id="mealSection" style="display: none;">
-                <label>Your Meal Preference</label>
-                <select id="meal1">
-                    <option>Standard Meal</option>
-                    <option>Vegetarian</option>
-                    <option>Vegan</option>
-                    <option>Gluten-Free</option>
+    <!-- Test RSVP Content -->
+    <div class="hero-bg">
+        <div class="content">
+            <h1 class="text-5xl mb-8">Test RSVP</h1>
+            <p class="text-lg mb-8">Password for testing: <strong>testing</strong></p>
+
+            <input type="password" id="password" placeholder="Enter password">
+            <button onclick="checkPassword()">Continue to RSVP</button>
+
+            <!-- Hidden Form -->
+            <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
+                <h2 style="text-align: center;">Guest Information</h2>
+                <input type="text" placeholder="Your Full Name" id="name">
+                
+                <label>Will you be attending?</label>
+                <select id="attendance" onchange="toggleGuestFields()">
+                    <option value="">Please select...</option>
+                    <option value="no">I won't be able to attend</option>
+                    <option value="one">Just myself</option>
+                    <option value="two">Myself plus one</option>
                 </select>
 
-                <div id="guestMealField" style="display: none;">
-                    <label>Guest's Meal Preference</label>
-                    <select id="meal2">
+                <div id="guestNameField" style="display: none;">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName">
+                </div>
+
+                <!-- Meal Choices -->
+                <div id="mealSection" style="display: none;">
+                    <label>Your Meal Preference</label>
+                    <select id="meal1">
                         <option>Standard Meal</option>
                         <option>Vegetarian</option>
                         <option>Vegan</option>
                         <option>Gluten-Free</option>
                     </select>
+
+                    <div id="guestMealField" style="display: none;">
+                        <label>Guest's Meal Preference</label>
+                        <select id="meal2">
+                            <option>Standard Meal</option>
+                            <option>Vegetarian</option>
+                            <option>Vegan</option>
+                            <option>Gluten-Free</option>
+                        </select>
+                    </div>
                 </div>
+
+                <input type="text" placeholder="Any allergies or special requests?" id="notes">
+
+                <button onclick="submitRSVP()" style="background: #166534; margin-top: 1rem;">Submit RSVP</button>
             </div>
 
-            <input type="text" placeholder="Any allergies or special requests?" id="notes">
-
-            <button onclick="submitRSVP()">Submit RSVP</button>
-        </div>
-
-        <div id="successMessage" style="display: none; text-align: center; color: #166534; font-size: 1.4rem; margin-top: 2rem;">
-            ✅ Thank you! Your RSVP has been received.<br>
-            (This is a test — no data was saved)
+            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem;">
+                ✅ Thank you! Your RSVP has been received.<br>
+                (This is a test — no data was saved)
+            </div>
         </div>
     </div>
 
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        if (hamburger) hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "testing") {
@@ -127,17 +206,9 @@
 
         function toggleGuestFields() {
             const attendance = document.getElementById('attendance').value;
-            const guestField = document.getElementById('guestNameField');
-            const guestMealField = document.getElementById('guestMealField');
-            const mealSection = document.getElementById('mealSection');
-
-            if (attendance === "no") {
-                mealSection.style.display = 'none';
-            } else {
-                mealSection.style.display = 'block';
-                guestField.style.display = (attendance === "two") ? 'block' : 'none';
-                guestMealField.style.display = (attendance === "two") ? 'block' : 'none';
-            }
+            document.getElementById('guestNameField').style.display = (attendance === "two") ? 'block' : 'none';
+            document.getElementById('guestMealField').style.display = (attendance === "two") ? 'block' : 'none';
+            document.getElementById('mealSection').style.display = (attendance !== "no") ? 'block' : 'none';
         }
 
         function submitRSVP() {
