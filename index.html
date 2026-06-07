@@ -69,7 +69,6 @@
         .nav-links a:hover {
             background: white;
             color: #44403c;
-            border-color: white;
         }
         .hero-content h1 {
             font-size: 5rem;
@@ -90,16 +89,27 @@
         .btn-outline { border: 2px solid white; color: white; }
         .btn-outline:hover { background: white; color: #44403c; }
 
+        /* ==================== MOBILE IMPROVEMENTS ==================== */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3.4rem; }
-            .logo { font-size: 1.9rem; }
-            .nav-links a { padding: 8px 14px; font-size: 1rem; margin: 0 3px; }
+            .hero-content h1 { font-size: 3.6rem; }
+            .hero-content p { margin-bottom: 1rem; }
+            .nav-container { padding: 1rem 1rem; }
+            .logo { font-size: 2rem; }
+            .nav-links a { 
+                padding: 8px 14px; 
+                font-size: 0.95rem; 
+                margin: 2px; 
+            }
+            .btn {
+                padding: 13px 28px;
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation - Overlay on Hero -->
+    <!-- Navigation Overlay -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
@@ -118,10 +128,10 @@
     <!-- Hero -->
     <header class="hero-bg">
         <div class="hero-content">
-            <p class="tracking-[0.125em] text-amber-100 text-lg mb-4">AMERON NEUSCHWANSTEIN • BAVARIA, GERMANY</p>
+            <p class="tracking-[0.125em] text-amber-100 text-base md:text-lg mb-4">AMERON NEUSCHWANSTEIN • BAVARIA, GERMANY</p>
             <h1 class="tracking-tight">Katie &amp; Stu</h1>
-            <p class="text-4xl md:text-5xl mb-6">September 18, 2027</p>
-            <p class="text-2xl mb-12">Welcome Party • September 17</p>
+            <p class="text-3xl md:text-5xl mb-6">September 18, 2027</p>
+            <p class="text-xl md:text-2xl mb-12">Welcome Party • September 17</p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="about.html" class="btn btn-primary">Our Story</a>
