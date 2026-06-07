@@ -87,8 +87,18 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             text-align: center;
         }
-        ul { text-align: left; padding-left: 1.5rem; }
-        li { margin-bottom: 0.8rem; }
+        h2 {
+            font-size: 2.1rem;
+            margin: 2rem 0 1rem 0;
+            text-align: left;
+        }
+        ul { 
+            text-align: left; 
+            padding-left: 1.5rem; 
+        }
+        li { 
+            margin-bottom: 0.9rem; 
+        }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -140,35 +150,55 @@
             <div class="story text-left text-lg leading-relaxed">
                 <p>We’re so excited to celebrate with you in Europe! Below you’ll find everything you need to know to make your trip smooth and enjoyable.</p>
                 
-                <h2 class="text-3xl mt-10 mb-4">Travel Documents</h2>
+                <h2>Travel Documents</h2>
                 <ul>
                     <li>A valid passport is required for entry into Germany and Austria. If you don’t already have one, please allow at least 2 months (ideally 3) to apply or renew.</li>
                     <li>If your passport expires within 12 months of the wedding, we strongly recommend renewing it now to avoid any issues.</li>
                     <li>No visa is required for U.S. citizens for stays under 90 days.</li>
                 </ul>
 
-                <h2 class="text-3xl mt-10 mb-4">Wedding Weekend Timeline</h2>
+                <h2>Wedding Weekend Timeline</h2>
                 <ul>
                     <li><strong>Day Before – Welcome Party:</strong> Oktoberfest themed</li>
                     <li><strong>Wedding Day:</strong> Outdoor wedding with beautiful lake and mountain views</li>
                 </ul>
 
-                <h2 class="text-3xl mt-10 mb-4">Dress Code</h2>
+                <h2>Dress Code</h2>
                 <ul>
                     <li><strong>Welcome Party:</strong> Feel free to wear Cocktail or Oktoberfest attire</li>
                     <li><strong>Wedding Ceremony & Reception:</strong> Elegant evening attire (we will hopefully be outside for the ceremony and cocktails. Dinner and reception will be indoors)</li>
                 </ul>
 
-                <h2 class="text-3xl mt-10 mb-4">What to Pack</h2>
+                <h2>What to Pack</h2>
                 <ul>
                     <li>Comfortable walking shoes (there will be some cobblestones and light walking).</li>
                     <li>Layers — September evenings in the Alps can get cool.</li>
                 </ul>
 
-                <h2 class="text-3xl mt-10 mb-4">Dietary Needs & Allergies</h2>
+                <h2>Dietary Needs & Allergies</h2>
                 <p>Please let us know in advance if you have any dietary restrictions (vegetarian, vegan, gluten-free, nut allergies, etc.) so we can make sure the menus work for everyone.</p>
 
-                <h2 class="text-3xl mt-10 mb-4">Kids / Family</h2>
+                <h2>Kids / Family</h2>
                 <p>Please note that the wedding ceremony and reception will be adults-only. That said, kids are warmly invited to join us for the Welcome Party the day before. The hotel can also assist with childcare arrangements during the wedding day events if needed.</p>
 
-                <h2 class="text-3xl mt-10 mb-4">Gifts & Registry</
+                <h2>Gifts & Registry</h2>
+                <p>Your presence is the greatest gift! If you’d like to give something, we’ve created a registry. We also have a honeymoon fund if you prefer.</p>
+
+                <h2>Weather in September</h2>
+                <p>Expect mild days (60–70°F / 15–21°C) and cooler evenings. Rain is always possible in the mountains, so a light jacket or compact umbrella is smart.</p>
+
+                <p class="text-center text-xl mt-12 italic">Questions? Reach out to Katie or Stu. We’re happy to help!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+
+</body>
+</html>
