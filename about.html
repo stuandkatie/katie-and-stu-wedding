@@ -18,16 +18,14 @@
             font-weight: 400; 
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-            padding-bottom: 8vh;
-            padding-top: 80px; /* Space for nav on mobile */
         }
         .nav {
             position: fixed;
@@ -79,8 +77,8 @@
             color: #44403c;
         }
         .content {
-            background: rgba(248, 245, 240, 0.95);
-            padding: 3rem 2rem;
+            background: rgba(248, 245, 240, 0.85);   /* More translucent */
+            padding: 3rem 2.5rem;
             max-width: 820px;
             margin: 0 1rem;
             border-radius: 16px;
@@ -105,7 +103,7 @@
             .nav-links a { color: #44403c; text-align: center; }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
-            .hero-bg { padding-top: 70px; }
+            .content { padding: 2.5rem 1.5rem; }
         }
     </style>
 </head>
@@ -130,7 +128,7 @@
         </div>
     </nav>
 
-    <!-- Story Content at bottom -->
+    <!-- Story Content - Centered -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-10">Our Story</h1>
@@ -142,7 +140,7 @@
                 
                 <p>One more stress test was in order: a road trip to Page, Arizona. That’s where it happened. Stu had secretly booked a private engagement tour at a beautiful vineyard. Under a stunning pergola, he dropped to one knee and got as far as “Will you mar—” before Katie excitedly shouted “YES!”</p>
                 
-                <p>Since we first met, we’ve been on many adventures together—traveling through 14 U.S. states and 10 countries, with Stu happily chauffeuring Katie through two of those international countries. And we’re just getting started!</p>
+                <p>Since we first met, we’ve been on many adventures together—traveling through 14 U.S. states and 6 countries, with Stu happily chauffeuring Katie through two of those international countries. And we’re just getting started!</p>
                 
                 <p class="text-center text-xl mt-12 italic">We’d love for you to join us as we celebrate our next big adventure with the people we love!</p>
             </div>
