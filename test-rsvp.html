@@ -1,9 +1,10 @@
 fetch("https://script.google.com/macros/s/AKfycbz9tfG4X9sZzSHkzEn9Jxfp6dVyjRAebsRjzG0rXaiOCa5-hZ0gLapEt7YMbuqsOtGI/exec", {
-    method: "POST",
-    body: new URLSearchParams({
-        name: "Console Test",
-        attendance: "Just myself",
-        notes: "Testing from browser console"
-    })
-}).then(() => console.log("✅ Sent successfully! Check your sheet"))
-  .catch(err => console.error("❌ Error:", err));
+  method: "POST",
+  body: new URLSearchParams({
+    name: "Console Test",
+    attendance: "Just myself",
+    notes: "Testing from browser console"
+  })
+})
+.then(() => console.log("✅ Success! Check your Google Sheet now"))
+.catch(err => console.error("❌ Error:", err));
