@@ -110,8 +110,9 @@
         }
         .check-section {
             margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px solid #ddd;
+            padding: 2rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -145,16 +146,17 @@
             </div>
 
             <!-- Check Previous RSVP -->
-            <div class="check-section">
+            <div id="checkSection" class="check-section" style="display: none;">
                 <h2>Already RSVP'd?</h2>
-                <input type="email" id="checkEmail" placeholder="Enter your email to check your RSVP">
+                <input type="email" id="checkEmail" placeholder="Enter your email">
                 <button onclick="checkPreviousRSVP()">Check My RSVP</button>
                 <div id="checkResult" style="margin-top: 1rem; min-height: 1.5em;"></div>
+                <button onclick="showNewRSVPForm()" style="margin-top: 1rem; background:#666;">Submit a New RSVP Instead</button>
             </div>
 
             <!-- New RSVP Form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
-                <h2 style="text-align: center;">Guest Information</h2>
+                <h2 style="text-align: center;">New RSVP</h2>
                 
                 <input type="text" placeholder="Your Full Name" id="name" autocomplete="name" required>
                 <input type="email" placeholder="Your Email Address" id="email" autocomplete="email" required>
@@ -215,10 +217,15 @@
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "test") {
                 document.getElementById('passwordSection').style.display = 'none';
-                document.getElementById('rsvpForm').style.display = 'block';
+                document.getElementById('checkSection').style.display = 'block';
             } else {
                 alert("Incorrect password.");
             }
+        }
+
+        function showNewRSVPForm() {
+            document.getElementById('checkSection').style.display = 'none';
+            document.getElementById('rsvpForm').style.display = 'block';
         }
 
         function toggleGuestFields() {
@@ -227,12 +234,6 @@
             document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
             document.getElementById('mealSection').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
             document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
-        }
-
-        function updateGuestLabel() {
-            const guestName = document.getElementById('guestName').value.trim();
-            const firstName = guestName.split(' ')[0] || "Guest";
-            document.getElementById('guestMealLabel').textContent = firstName + "'s Meal Preference";
         }
 
         function submitRSVP() {
@@ -247,7 +248,6 @@
                 notes: document.getElementById('notes').value || ""
             };
 
-            // Only include meal preferences if actually attending
             if (isAttending) {
                 formData.meal1 = document.getElementById('meal1').value || "";
                 if (attendance === "Myself plus one") {
@@ -271,7 +271,6 @@
             .catch(() => alert("Network error. Please check your connection."));
         }
 
-        // Check Previous RSVP
         function checkPreviousRSVP() {
             const email = document.getElementById('checkEmail').value.trim();
             const resultDiv = document.getElementById('checkResult');
@@ -298,7 +297,7 @@
                             ${data.notes ? `Notes: ${data.notes}` : ''}
                         `;
                     } else {
-                        resultDiv.innerHTML = '<span style="color:orange;">No RSVP found for this email yet.</span>';
+                        resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
                     }
                 })
                 .catch(() => {
