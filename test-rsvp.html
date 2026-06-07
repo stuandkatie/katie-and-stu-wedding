@@ -96,13 +96,22 @@
             font-size: 1.05rem;
         }
         button {
-            background: #3CB371;   /* Medium Sea Green */
+            background: #A65F46;
             color: white;
             font-weight: 600;
             cursor: pointer;
         }
         button:hover { 
-            background: #2E8B57;   /* Slightly darker on hover */
+            background: #8F4F3A; 
+        }
+        .choice-btn {
+            background: #A65F46;
+            margin: 12px 0;
+            padding: 16px;
+            font-size: 1.1rem;
+        }
+        .choice-btn:hover {
+            background: #8F4F3A;
         }
         label {
             display: block;
@@ -131,23 +140,39 @@
         </div>
     </nav>
 
-    <!-- Test RSVP Content -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-8">Test RSVP</h1>
-            <p class="text-lg mb-8">Password for testing: <strong>testing</strong></p>
+            <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
 
             <div id="passwordSection">
                 <input type="password" id="password" placeholder="Enter password">
-                <button onclick="checkPassword()">Continue to RSVP</button>
+                <button onclick="checkPassword()">Continue</button>
             </div>
 
+            <!-- Choice Buttons -->
+            <div id="choiceSection" style="display: none; margin-top: 2rem;">
+                <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
+                <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
+            </div>
+
+            <!-- Check Previous RSVP -->
+            <div id="checkForm" style="display: none; margin-top: 2rem;">
+                <h2>Check My RSVP</h2>
+                <input type="email" id="checkEmail" placeholder="Enter your email">
+                <button onclick="checkPreviousRSVP()">Check My RSVP</button>
+                <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
+            </div>
+
+            <!-- Submit New RSVP Form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
-                <h2 style="text-align: center;">Guest Information</h2>
-                <input type="text" placeholder="Your Full Name" id="name" oninput="updateGuestLabel()">
+                <h2 style="text-align: center;">New RSVP</h2>
+                
+                <input type="text" placeholder="Your Full Name" id="name" autocomplete="name" required>
+                <input type="email" placeholder="Your Email Address" id="email" autocomplete="email" required>
                 
                 <label>Will you be attending?</label>
-                <select id="attendance" onchange="toggleGuestFields()">
+                <select id="attendance" onchange="toggleGuestFields()" required>
                     <option value="">Please select...</option>
                     <option value="I won't be able to attend">I won't be able to attend</option>
                     <option value="Just myself">Just myself</option>
@@ -155,7 +180,7 @@
                 </select>
 
                 <div id="guestNameField" style="display: none;">
-                    <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateGuestLabel()">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName">
                 </div>
 
                 <div id="mealSection" style="display: none;">
@@ -197,15 +222,25 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdP7FDnJowpCv0Pa0vEBCBH3s2n7PqOvND8OtXeyfSXX3qVzBwTr6y6fg_N-Vg1VTFzA/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EleryF4_LlfLvPrdHnn8geA0CVN9Q4zCoEJzPeV_GoIvTJkWol7lKJbkAB4T2e9-mQ/exec";
 
         function checkPassword() {
-            if (document.getElementById('password').value.trim() === "testing") {
+            if (document.getElementById('password').value.trim() === "test") {
                 document.getElementById('passwordSection').style.display = 'none';
-                document.getElementById('rsvpForm').style.display = 'block';
+                document.getElementById('choiceSection').style.display = 'block';
             } else {
                 alert("Incorrect password.");
             }
+        }
+
+        function showCheckForm() {
+            document.getElementById('choiceSection').style.display = 'none';
+            document.getElementById('checkForm').style.display = 'block';
+        }
+
+        function showSubmitForm() {
+            document.getElementById('choiceSection').style.display = 'none';
+            document.getElementById('rsvpForm').style.display = 'block';
         }
 
         function toggleGuestFields() {
@@ -216,31 +251,73 @@
             document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
         }
 
-        function updateGuestLabel() {
-            const guestName = document.getElementById('guestName').value.trim();
-            const firstName = guestName.split(' ')[0] || "Guest";
-            document.getElementById('guestMealLabel').textContent = firstName + "'s Meal Preference";
-        }
-
         function submitRSVP() {
+            const attendance = document.getElementById('attendance').value;
+            const isAttending = attendance !== "I won't be able to attend";
+
             const formData = {
                 name: document.getElementById('name').value,
-                attendance: document.getElementById('attendance').value,
+                email: document.getElementById('email').value,
+                attendance: attendance,
                 guestName: document.getElementById('guestName').value || "",
-                meal1: document.getElementById('meal1').value || "",
-                meal2: document.getElementById('meal2') ? document.getElementById('meal2').value : "",
                 notes: document.getElementById('notes').value || ""
             };
+
+            if (isAttending) {
+                formData.meal1 = document.getElementById('meal1').value || "";
+                if (attendance === "Myself plus one") {
+                    formData.meal2 = document.getElementById('meal2').value || "";
+                }
+            }
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: new URLSearchParams(formData)
             })
-            .then(() => {
-                document.getElementById('rsvpForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
+            .then(response => response.text())
+            .then(text => {
+                if (text.startsWith("success")) {
+                    document.getElementById('rsvpForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                } else {
+                    alert("There was a problem saving your RSVP.\n\nServer said: " + text);
+                }
             })
-            .catch(() => alert("Something went wrong. Please try again."));
+            .catch(() => alert("Network error. Please check your connection."));
+        }
+
+        function checkPreviousRSVP() {
+            const email = document.getElementById('checkEmail').value.trim();
+            const resultDiv = document.getElementById('checkResult');
+
+            if (!email) {
+                resultDiv.innerHTML = '<span style="color:red;">Please enter your email</span>';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Searching...';
+
+            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
+                .then(response => response.text())
+                .then(text => {
+                    const data = JSON.parse(text);
+                    if (data.found) {
+                        resultDiv.innerHTML = `
+                            <strong>Found your RSVP!</strong><br>
+                            Name: ${data.name}<br>
+                            Attendance: ${data.attendance}<br>
+                            ${data.guestName ? `Guest: ${data.guestName}<br>` : ''}
+                            ${data.yourMeal ? `Meal: ${data.yourMeal}<br>` : ''}
+                            ${data.guestMeal ? `Guest Meal: ${data.guestMeal}<br>` : ''}
+                            ${data.notes ? `Notes: ${data.notes}` : ''}
+                        `;
+                    } else {
+                        resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
+                    }
+                })
+                .catch(() => {
+                    resultDiv.innerHTML = '<span style="color:red;">Error checking RSVP. Try again.</span>';
+                });
         }
     </script>
 
