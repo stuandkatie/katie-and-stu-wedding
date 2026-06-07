@@ -108,6 +108,11 @@
             margin: 1.2rem 0 0.5rem 0;
             font-weight: 500;
         }
+        .check-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +145,15 @@
                 <button onclick="checkPassword()">Continue to RSVP</button>
             </div>
 
+            <!-- Check Previous RSVP -->
+            <div class="check-section">
+                <h2>Already RSVP'd?</h2>
+                <input type="email" id="checkEmail" placeholder="Enter your email to check your RSVP">
+                <button onclick="checkPreviousRSVP()">Check My RSVP</button>
+                <div id="checkResult" style="margin-top: 1rem; min-height: 1.5em;"></div>
+            </div>
+
+            <!-- New RSVP Form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">Guest Information</h2>
                 
@@ -197,7 +211,7 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyE6Dtx2p9o-abTPKdNMpgmiVGI0_-Us2LcGaJkdgMAUr6AD0EJ9zAheR1e90dx7cRkUg/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EleryF4_LlfLvPrdHnn8geA0CVN9Q4zCoEJzPeV_GoIvTJkWol7lKJbkAB4T2e9-mQ/exec";
 
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "test") {
@@ -246,9 +260,40 @@
                     alert("There was a problem saving your RSVP.\n\nServer said: " + text);
                 }
             })
-            .catch(() => {
-                alert("Network error. Please check your connection and try again.");
-            });
+            .catch(() => alert("Network error. Please check your connection."));
+        }
+
+        // Check Previous RSVP
+        function checkPreviousRSVP() {
+            const email = document.getElementById('checkEmail').value.trim();
+            const resultDiv = document.getElementById('checkResult');
+
+            if (!email) {
+                resultDiv.innerHTML = '<span style="color:red;">Please enter your email</span>';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Searching...';
+
+            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
+                .then(response => response.text())
+                .then(text => {
+                    const data = JSON.parse(text);
+                    if (data.found) {
+                        resultDiv.innerHTML = `
+                            <strong>Found your RSVP!</strong><br>
+                            Name: ${data.name}<br>
+                            Attendance: ${data.attendance}<br>
+                            ${data.guestName ? `Guest: ${data.guestName}<br>` : ''}
+                            ${data.yourMeal ? `Meal: ${data.yourMeal}` : ''}
+                        `;
+                    } else {
+                        resultDiv.innerHTML = '<span style="color:orange;">No RSVP found for this email yet.</span>';
+                    }
+                })
+                .catch(() => {
+                    resultDiv.innerHTML = '<span style="color:red;">Error checking RSVP. Try again.</span>';
+                });
         }
     </script>
 
