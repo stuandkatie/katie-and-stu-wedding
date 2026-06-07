@@ -52,6 +52,31 @@
             color: white;
             text-decoration: none;
         }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -130,7 +155,6 @@
                     <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateGuestLabel()">
                 </div>
 
-                <!-- Meal Choices -->
                 <div id="mealSection" style="display: none;">
                     <label id="mainMealLabel">Your Meal Preference</label>
                     <select id="meal1">
