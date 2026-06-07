@@ -13,7 +13,7 @@
             color: #44403c;
             line-height: 1.7;
         }
-        h1, h2, h3 { 
+        h1 { 
             font-family: 'Playfair Display', serif; 
             font-weight: 400; 
         }
@@ -52,31 +52,6 @@
             color: white;
             text-decoration: none;
         }
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
-        }
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -101,9 +76,7 @@
             font-weight: 600;
             cursor: pointer;
         }
-        button:hover {
-            background: #14532d;
-        }
+        button:hover { background: #14532d; }
         label {
             display: block;
             text-align: left;
@@ -143,7 +116,7 @@
             <!-- Hidden Form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">Guest Information</h2>
-                <input type="text" placeholder="Your Full Name" id="name">
+                <input type="text" placeholder="Your Full Name" id="name" oninput="updateGuestLabel()">
                 
                 <label>Will you be attending?</label>
                 <select id="attendance" onchange="toggleGuestFields()">
@@ -154,12 +127,12 @@
                 </select>
 
                 <div id="guestNameField" style="display: none;">
-                    <input type="text" placeholder="Guest's Full Name" id="guestName">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateGuestLabel()">
                 </div>
 
                 <!-- Meal Choices -->
                 <div id="mealSection" style="display: none;">
-                    <label>Your Meal Preference</label>
+                    <label id="mainMealLabel">Your Meal Preference</label>
                     <select id="meal1">
                         <option>Standard Meal</option>
                         <option>Vegetarian</option>
@@ -168,7 +141,7 @@
                     </select>
 
                     <div id="guestMealField" style="display: none;">
-                        <label>Guest's Meal Preference</label>
+                        <label id="guestMealLabel">Guest's Meal Preference</label>
                         <select id="meal2">
                             <option>Standard Meal</option>
                             <option>Vegetarian</option>
@@ -209,6 +182,12 @@
             document.getElementById('guestNameField').style.display = (attendance === "two") ? 'block' : 'none';
             document.getElementById('guestMealField').style.display = (attendance === "two") ? 'block' : 'none';
             document.getElementById('mealSection').style.display = (attendance !== "no") ? 'block' : 'none';
+        }
+
+        function updateGuestLabel() {
+            const guestName = document.getElementById('guestName').value.trim();
+            const firstName = guestName.split(' ')[0] || "Guest";
+            document.getElementById('guestMealLabel').textContent = firstName + "'s Meal Preference";
         }
 
         function submitRSVP() {
