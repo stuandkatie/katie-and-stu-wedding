@@ -57,11 +57,12 @@
         }
         .hamburger {
             display: none;
-            font-size: 2rem;
+            font-size: 2.2rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
+            padding: 5px 10px;
         }
         .nav-links {
             display: flex;
@@ -105,6 +106,30 @@
         .gallery-container img:hover {
             transform: scale(1.02);
         }
+
+        /* Mobile Hamburger */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: rgba(255,255,255,0.98); 
+                padding: 1.5rem;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a { 
+                color: #44403c; 
+                text-align: center;
+                font-size: 1.1rem;
+            }
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -142,7 +167,6 @@
             navLinks.classList.toggle('show');
         });
 
-        // All your photos in order
         const photos = [
             "Website pics/Ashville trip 1.jpg",
             "Website pics/Beach 1.jpg",
