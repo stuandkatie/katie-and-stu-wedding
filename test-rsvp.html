@@ -113,8 +113,19 @@
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
                 <h2 style="text-align: center;">Guest Information</h2>
                 <input type="text" placeholder="Full Name" id="name">
-                <input type="number" placeholder="Number of Guests" id="guests" value="1">
                 
+                <label>Will you be attending?</label>
+                <select id="attendance" onchange="toggleGuestName()">
+                    <option value="">Please select...</option>
+                    <option value="no">I won't be able to attend</option>
+                    <option value="one">Just myself</option>
+                    <option value="two">Myself plus one</option>
+                </select>
+
+                <div id="guestNameField" style="display: none;">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName">
+                </div>
+
                 <label>Dietary Restrictions / Meal Preference</label>
                 <select id="meal">
                     <option>Standard Meal</option>
@@ -149,6 +160,16 @@
                 document.getElementById('password').style.display = 'none';
             } else {
                 alert("Incorrect password. For testing, use: testing");
+            }
+        }
+
+        function toggleGuestName() {
+            const attendance = document.getElementById('attendance').value;
+            const guestField = document.getElementById('guestNameField');
+            if (attendance === "two") {
+                guestField.style.display = 'block';
+            } else {
+                guestField.style.display = 'none';
             }
         }
 
