@@ -196,7 +196,7 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAcyGOfrwqG3OD2kJ8h6FsyOH7S7XHV_opnw1UfaDG5PLCyg7p02S5nR1cjPUjkpuw/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9tfG4X9sZzSHkzEn9Jxfp6dVyjRAebsRjzG0rXaiOCa5-hZ0gLapEt7YMbuqsOtGI/exec";
 
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "testing") {
@@ -235,6 +235,7 @@
                 method: 'POST',
                 body: new URLSearchParams(formData)
             })
+            .then(response => response.json())
             .then(() => {
                 document.getElementById('rsvpForm').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
