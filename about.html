@@ -18,22 +18,22 @@
             font-weight: 400; 
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.5)), url('Background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-end;
+            align-items: flex-start;
             justify-content: center;
-            padding-bottom: 8vh;
+            padding-top: 110px;   /* Good spacing below nav */
         }
         .nav {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 50;
+            z-index: 100;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
         }
@@ -78,23 +78,36 @@
             color: #44403c;
         }
         .content {
-            background: rgba(248, 245, 240, 0.95);
-            padding: 3rem 2rem;
-            max-width: 820px;
+            max-width: 950px;
+            width: 100%;
             margin: 0 1rem;
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
             text-align: center;
+            color: white;
+        }
+        .story p {
+            font-size: 1.18rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.75);
         }
 
         /* Mobile */
         @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; gap: 8px; }
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: rgba(255,255,255,0.95); 
+                padding: 1rem; 
+                gap: 8px; 
+            }
             .nav-links.show { display: flex; }
             .nav-links a { color: #44403c; text-align: center; }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
-            .content { padding: 2.5rem 1.5rem; }
+            .hero-bg { padding-top: 90px; }
         }
     </style>
 </head>
@@ -108,10 +121,9 @@
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
-                <a href="wedding.html">Wedding</a>
+                <a href="schedule.html">Schedule</a>
                 <a href="travel.html">Travel</a>
                 <a href="registry.html">Registry</a>
-                <a href="guestbook.html">Guest Book</a>
                 <a href="rsvp.html">RSVP</a>
             </div>
 
@@ -119,12 +131,12 @@
         </div>
     </nav>
 
-    <!-- Story Content - Positioned at bottom -->
+    <!-- Story Content - Semi-transparent, near top -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-10">Our Story</h1>
             
-            <div class="story text-left text-lg leading-relaxed">
+            <div class="story">
                 <p>Katie and Stu met on Bumble in early 2023. The connection was instant—two adventure lovers swapping stories of travels near and far. After many dates filled with laughter and great conversation, we decided to put the relationship to the test with a road trip to Asheville for Katie’s 32nd birthday—just a few months after meeting. We laughed the whole way, no arguments. We both thought, “Okay… we might actually have a shot at this.”</p>
                 
                 <p>So naturally, we decided to stress-test it again with an international trip. Just after our one-year anniversary, we flew to Norway to chase the Northern Lights. Another success. After two big trips with zero relationship meltdowns, Stu finally started to think that Katie might be the one.</p>
