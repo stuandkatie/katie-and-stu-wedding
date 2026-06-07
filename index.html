@@ -56,15 +56,14 @@
         }
         .nav-links {
             display: flex;
-            gap: 6px;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 4px 0;
-            -webkit-overflow-scrolling: touch;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            max-width: 420px;
         }
         .nav-links a {
             display: inline-block;
-            padding: 8px 14px;
+            padding: 9px 16px;
             border-radius: 9999px;
             font-size: 0.95rem;
             font-weight: 500;
@@ -97,11 +96,11 @@
         .btn-outline { border: 2px solid white; color: white; }
         .btn-outline:hover { background: white; color: #44403c; }
 
-        /* Mobile tweaks */
+        /* Mobile */
         @media (max-width: 768px) {
-            .logo { font-size: 1.9rem; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .nav-links a { font-size: 0.9rem; padding: 7px 12px; }
+            .logo { font-size: 1.95rem; }
+            .hero-content h1 { font-size: 3.4rem; }
+            .nav-links a { font-size: 0.9rem; padding: 8px 14px; }
         }
     </style>
 </head>
