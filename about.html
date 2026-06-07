@@ -27,14 +27,13 @@
             align-items: flex-end;
             justify-content: center;
             padding-bottom: 8vh;
-            padding-top: 80px; /* Space for nav on mobile */
         }
         .nav {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
+            z-index: 50;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
         }
@@ -90,22 +89,12 @@
 
         /* Mobile */
         @media (max-width: 768px) {
-            .nav-links { 
-                display: none; 
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: rgba(255,255,255,0.95); 
-                padding: 1rem; 
-                gap: 8px; 
-            }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; gap: 8px; }
             .nav-links.show { display: flex; }
             .nav-links a { color: #44403c; text-align: center; }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
-            .hero-bg { padding-top: 70px; }
+            .content { padding: 2.5rem 1.5rem; }
         }
     </style>
 </head>
@@ -130,7 +119,7 @@
         </div>
     </nav>
 
-    <!-- Story Content at bottom -->
+    <!-- Story Content - Positioned at bottom -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-10">Our Story</h1>
