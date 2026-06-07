@@ -77,6 +77,33 @@
             background: white;
             color: #44403c;
         }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0,0,0,0.85);
+                padding: 1rem;
+                gap: 8px;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .nav-links a {
+                text-align: center;
+                border: none;
+                padding: 12px;
+            }
+        }
+
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -96,22 +123,22 @@
             font-size: 1.05rem;
         }
         button {
-            background: #A65F46;
+            background: #9CAF88;
             color: white;
             font-weight: 600;
             cursor: pointer;
         }
         button:hover { 
-            background: #8F4F3A; 
+            background: #7F8F6F; 
         }
         .choice-btn {
-            background: #A65F46;
+            background: #9CAF88;
             margin: 12px 0;
             padding: 16px;
             font-size: 1.1rem;
         }
         .choice-btn:hover {
-            background: #8F4F3A;
+            background: #7F8F6F;
         }
         label {
             display: block;
