@@ -142,10 +142,12 @@
 
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">Guest Information</h2>
-                <input type="text" placeholder="Your Full Name" id="name" oninput="updateGuestLabel()">
+                
+                <input type="text" placeholder="Your Full Name" id="name" required>
+                <input type="email" placeholder="Your Email Address" id="email" required>
                 
                 <label>Will you be attending?</label>
-                <select id="attendance" onchange="toggleGuestFields()">
+                <select id="attendance" onchange="toggleGuestFields()" required>
                     <option value="">Please select...</option>
                     <option value="I won't be able to attend">I won't be able to attend</option>
                     <option value="Just myself">Just myself</option>
@@ -153,7 +155,7 @@
                 </select>
 
                 <div id="guestNameField" style="display: none;">
-                    <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateGuestLabel()">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName">
                 </div>
 
                 <div id="mealSection" style="display: none;">
@@ -223,6 +225,7 @@
         function submitRSVP() {
             const formData = {
                 name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
                 attendance: document.getElementById('attendance').value,
                 guestName: document.getElementById('guestName').value || "",
                 meal1: document.getElementById('meal1').value || "",
