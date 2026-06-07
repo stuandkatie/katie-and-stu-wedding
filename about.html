@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Katie & Stu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #44403c;
+            margin: 0;
+            line-height: 1.7;
+        }
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 400; 
+        }
+        .hero-small {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            border-bottom: 1px solid #e7e5e4;
+        }
+        .content {
+            padding: 5rem 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Small Hero -->
+    <header class="hero-small">
+        <div>
+            <h1 class="text-5xl md:text-6xl tracking-tight">Our Story</h1>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-light tracking-tight">Katie &amp; Stu</a>
+            <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="wedding.html">Wedding</a>
+                <a href="travel.html">Travel</a>
+                <a href="registry.html">Registry</a>
+                <a href="guestbook.html">Guest Book</a>
+                <a href="rsvp.html">RSVP</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="prose prose-lg max-w-none">
+            <h2 class="text-4xl mb-8 text-center">How We Met</h2>
+            
+            <p>We'll put your full love story here. For now, here's a placeholder:</p>
+            
+            <p>Katie and Stu met on Bumble in early 2023. Their connection was instant — sharing stories of adventure, travel, and a love for the outdoors. After many dates filled with laughter and great conversation, Stu proposed during an Arizona road trip in May 2025 at Page Springs.</p>
+            
+            <p>Since then, they've enjoyed many adventures together, including a memorable road trip through Slovenia in 2026. Stu's ultrarunning journey and their shared love for exploring new places continue to strengthen their bond as they prepare for their destination wedding in Germany.</p>
+            
+            <!-- You can expand this with more paragraphs, photos, timeline, etc. -->
+        </div>
+    </div>
+
+    <footer class="bg-stone-900 text-white py-16 text-center">
+        <p class="mb-2">Katie Lawless &amp; Steuart “Stu” Turner • September 2027</p>
+        <p>Katieandstuwedding.com</p>
+    </footer>
+
+</body>
+</html>
