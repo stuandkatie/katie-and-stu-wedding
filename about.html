@@ -18,15 +18,16 @@
             font-weight: 400; 
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.55)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
+            align-items: flex-end;
             justify-content: center;
-            padding-top: 90px;   /* Reduced top space */
+            padding-bottom: 10vh;
+            padding-top: 80px;
         }
         .nav {
             position: fixed;
@@ -78,14 +79,15 @@
             color: #44403c;
         }
         .content {
-            background: rgba(248, 245, 240, 0.95);
-            padding: 3rem 2rem;
-            max-width: 1100px;
-            width: 100%;
+            max-width: 900px;
             margin: 0 1rem;
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
             text-align: center;
+            color: white;
+        }
+        .story p {
+            font-size: 1.15rem;
+            margin-bottom: 1.4rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
 
         /* Mobile */
@@ -105,7 +107,7 @@
             .nav-links a { color: #44403c; text-align: center; }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
-            .hero-bg { padding-top: 80px; }
+            .hero-bg { padding-top: 70px; }
         }
     </style>
 </head>
@@ -129,12 +131,12 @@
         </div>
     </nav>
 
-    <!-- Story Content - At the top -->
+    <!-- Story Content - Transparent -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-10">Our Story</h1>
             
-            <div class="story text-left text-lg leading-relaxed">
+            <div class="story">
                 <p>Katie and Stu met on Bumble in early 2023. The connection was instant—two adventure lovers swapping stories of travels near and far. After many dates filled with laughter and great conversation, we decided to put the relationship to the test with a road trip to Asheville for Katie’s 32nd birthday—just a few months after meeting. We laughed the whole way, no arguments. We both thought, “Okay… we might actually have a shot at this.”</p>
                 
                 <p>So naturally, we decided to stress-test it again with an international trip. Just after our one-year anniversary, we flew to Norway to chase the Northern Lights. Another success. After two big trips with zero relationship meltdowns, Stu finally started to think that Katie might be the one.</p>
