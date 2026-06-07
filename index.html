@@ -54,18 +54,24 @@
             text-decoration: none;
             color: white;
         }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
             gap: 8px;
-            justify-content: center;
-            max-width: 420px;
         }
         .nav-links a {
             display: inline-block;
-            padding: 9px 16px;
+            padding: 9px 18px;
             border-radius: 9999px;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 500;
             text-decoration: none;
             color: white;
@@ -77,30 +83,33 @@
             background: white;
             color: #44403c;
         }
-        .hero-content h1 {
-            font-size: 4.8rem;
-            line-height: 1;
-            margin-bottom: 0.4rem;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-primary { background: white; color: #44403c; }
-        .btn-primary:hover { background: #f5f5f4; transform: translateY(-2px); }
-        .btn-outline { border: 2px solid white; color: white; }
-        .btn-outline:hover { background: white; color: #44403c; }
 
-        /* Mobile */
+        /* Mobile Hamburger Menu */
         @media (max-width: 768px) {
-            .logo { font-size: 1.95rem; }
-            .hero-content h1 { font-size: 3.4rem; }
-            .nav-links a { font-size: 0.9rem; padding: 8px 14px; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255,255,255,0.95);
+                padding: 1rem;
+                gap: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .nav-links a {
+                color: #44403c;
+                text-align: center;
+                border: 1px solid #ddd;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero-content h1 { font-size: 3.6rem; }
         }
     </style>
 </head>
@@ -110,7 +119,12 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
-            <div class="nav-links">
+            
+            <!-- Hamburger Button (Mobile only) -->
+            <button class="hamburger" id="hamburger">☰</button>
+            
+            <!-- Desktop + Mobile Dropdown Links -->
+            <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="wedding.html">Wedding</a>
@@ -136,6 +150,15 @@
             </div>
         </div>
     </header>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
