@@ -52,31 +52,6 @@
             color: white;
             text-decoration: none;
         }
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
-        }
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -175,7 +150,9 @@
                     </div>
                 </div>
 
-                <input type="text" placeholder="Any allergies or special requests?" id="notes">
+                <div id="allergiesField">
+                    <input type="text" placeholder="Any allergies or special requests?" id="notes">
+                </div>
 
                 <button onclick="submitRSVP()" style="background: #166534; margin-top: 1rem;">Submit RSVP</button>
             </div>
@@ -197,7 +174,7 @@
                 document.getElementById('rsvpForm').style.display = 'block';
                 document.getElementById('password').style.display = 'none';
             } else {
-                alert("Incorrect password. For testing, use: testing");
+                alert("Incorrect password.");
             }
         }
 
@@ -206,6 +183,7 @@
             document.getElementById('guestNameField').style.display = (attendance === "two") ? 'block' : 'none';
             document.getElementById('guestMealField').style.display = (attendance === "two") ? 'block' : 'none';
             document.getElementById('mealSection').style.display = (attendance !== "no") ? 'block' : 'none';
+            document.getElementById('allergiesField').style.display = (attendance !== "no") ? 'block' : 'none';
         }
 
         function updateGuestLabel() {
