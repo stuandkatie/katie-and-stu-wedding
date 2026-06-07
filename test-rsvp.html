@@ -195,7 +195,7 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdP7FDnJowpCv0Pa0vEBCBH3s2n7PqOvND8OtXeyfSXX3qVzBwTr6y6fg_N-Vg1VTFzA/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxThpZVc3FiAjQ6nmOK6yxJsW_XRf3q8jloPL4WAKuE81mUEFqxKY9bVntOc7IeUv15Q/exec";
 
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "testing") {
@@ -234,11 +234,18 @@
                 method: 'POST',
                 body: new URLSearchParams(formData)
             })
-            .then(() => {
-                document.getElementById('rsvpForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
+            .then(response => response.text())
+            .then(text => {
+                if (text.startsWith("success")) {
+                    document.getElementById('rsvpForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                } else {
+                    alert("There was a problem saving your RSVP.\n\nServer said: " + text);
+                }
             })
-            .catch(() => alert("Something went wrong. Please try again."));
+            .catch(() => {
+                alert("Network error. Please check your connection and try again.");
+            });
         }
     </script>
 
