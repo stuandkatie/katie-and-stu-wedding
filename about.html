@@ -18,16 +18,15 @@
             font-weight: 400; 
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-end;
+            align-items: flex-start;
             justify-content: center;
-            padding-bottom: 6vh;
-            padding-top: 80px;
+            padding-top: 90px;   /* Reduced top space */
         }
         .nav {
             position: fixed;
@@ -81,8 +80,8 @@
         .content {
             background: rgba(248, 245, 240, 0.95);
             padding: 3rem 2rem;
-            width: 100%;
             max-width: 1100px;
+            width: 100%;
             margin: 0 1rem;
             border-radius: 16px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.25);
@@ -106,8 +105,7 @@
             .nav-links a { color: #44403c; text-align: center; }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
-            .hero-bg { padding-top: 70px; }
-            .content { padding: 2.5rem 1.5rem; margin: 1rem; }
+            .hero-bg { padding-top: 80px; }
         }
     </style>
 </head>
@@ -131,7 +129,7 @@
         </div>
     </nav>
 
-    <!-- Story Content -->
+    <!-- Story Content - At the top -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-10">Our Story</h1>
