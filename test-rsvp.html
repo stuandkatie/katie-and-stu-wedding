@@ -133,7 +133,7 @@
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-8">Test RSVP</h1>
-            <p class="text-lg mb-8">Password for testing: <strong>testing</strong></p>
+            <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
 
             <div id="passwordSection">
                 <input type="password" id="password" placeholder="Enter password">
@@ -195,10 +195,10 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxThpZVc3FiAjQ6nmOK6yxJsW_XRf3q8jloPL4WAKuE81mUEFqxKY9bVntOc7IeUv15Q/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7T4uiOkKzIgVKba4bj280LC-vUmCgW3Nanb-eRln7D5QZpGZdr89yowRljcZoRwVjIw/exec";
 
         function checkPassword() {
-            if (document.getElementById('password').value.trim() === "testing") {
+            if (document.getElementById('password').value.trim() === "test") {
                 document.getElementById('passwordSection').style.display = 'none';
                 document.getElementById('rsvpForm').style.display = 'block';
             } else {
