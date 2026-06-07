@@ -65,10 +65,10 @@
         <!-- Hidden Form -->
         <div id="rsvpForm" style="display: none; margin-top: 2rem;">
             <h2 style="text-align: center;">Guest Information</h2>
-            <input type="text" placeholder="Full Name" id="name">
+            <input type="text" placeholder="Your Full Name" id="name">
             
             <label>Will you be attending?</label>
-            <select id="attendance" onchange="toggleGuestName()">
+            <select id="attendance" onchange="toggleGuestFields()">
                 <option value="">Please select...</option>
                 <option value="no">I won't be able to attend</option>
                 <option value="one">Just myself</option>
@@ -79,14 +79,27 @@
                 <input type="text" placeholder="Guest's Full Name" id="guestName">
             </div>
 
-            <label>Dietary Restrictions / Meal Preference</label>
-            <select id="meal">
-                <option>Standard Meal</option>
-                <option>Vegetarian</option>
-                <option>Vegan</option>
-                <option>Gluten-Free</option>
-                <option>Other (please specify below)</option>
-            </select>
+            <!-- Meal Choices -->
+            <div id="mealSection" style="display: none;">
+                <label>Your Meal Preference</label>
+                <select id="meal1">
+                    <option>Standard Meal</option>
+                    <option>Vegetarian</option>
+                    <option>Vegan</option>
+                    <option>Gluten-Free</option>
+                </select>
+
+                <div id="guestMealField" style="display: none;">
+                    <label>Guest's Meal Preference</label>
+                    <select id="meal2">
+                        <option>Standard Meal</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                        <option>Gluten-Free</option>
+                    </select>
+                </div>
+            </div>
+
             <input type="text" placeholder="Any allergies or special requests?" id="notes">
 
             <button onclick="submitRSVP()">Submit RSVP</button>
@@ -99,9 +112,12 @@
     </div>
 
     <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if (hamburger) hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+
         function checkPassword() {
-            const pass = document.getElementById('password').value.trim();
-            if (pass === "testing") {
+            if (document.getElementById('password').value.trim() === "testing") {
                 document.getElementById('rsvpForm').style.display = 'block';
                 document.getElementById('password').style.display = 'none';
             } else {
@@ -109,9 +125,19 @@
             }
         }
 
-        function toggleGuestName() {
+        function toggleGuestFields() {
             const attendance = document.getElementById('attendance').value;
-            document.getElementById('guestNameField').style.display = (attendance === "two") ? 'block' : 'none';
+            const guestField = document.getElementById('guestNameField');
+            const guestMealField = document.getElementById('guestMealField');
+            const mealSection = document.getElementById('mealSection');
+
+            if (attendance === "no") {
+                mealSection.style.display = 'none';
+            } else {
+                mealSection.style.display = 'block';
+                guestField.style.display = (attendance === "two") ? 'block' : 'none';
+                guestMealField.style.display = (attendance === "two") ? 'block' : 'none';
+            }
         }
 
         function submitRSVP() {
