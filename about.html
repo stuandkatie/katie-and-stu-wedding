@@ -7,86 +7,140 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
+        body { 
+            margin: 0; 
+            font-family: 'Inter', system-ui, sans-serif; 
             color: #44403c;
-            margin: 0;
             line-height: 1.7;
         }
         h1, h2, h3 { 
             font-family: 'Playfair Display', serif; 
             font-weight: 400; 
         }
-        .hero-small {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Background.jpg');
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('Background.jpg');
             background-size: cover;
             background-position: center;
-            height: 50vh;
+            background-attachment: fixed;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+            flex-direction: column;
         }
         .nav {
-            position: sticky;
+            position: absolute;
             top: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            left: 0;
+            right: 0;
             z-index: 50;
-            border-bottom: 1px solid #e7e5e4;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+        }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
         }
         .content {
-            padding: 5rem 1.5rem;
-            max-width: 900px;
+            padding: 140px 1.5rem 4rem;
+            max-width: 820px;
             margin: 0 auto;
+            background: rgba(248, 245, 240, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; gap: 8px; }
+            .nav-links.show { display: flex; }
+            .nav-links a { color: #44403c; text-align: center; }
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Small Hero -->
-    <header class="hero-small">
-        <div>
-            <h1 class="text-5xl md:text-6xl tracking-tight">Our Story</h1>
-        </div>
-    </header>
-
-    <!-- Navigation - Bigger & Prominent -->
+    <!-- Navigation -->
     <nav class="nav">
-        <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-light tracking-tight">Katie &amp; Stu</a>
-            <div class="hidden md:flex gap-8 text-base tracking-widest uppercase font-medium">
-                <a href="about.html" class="hover:text-emerald-700 transition">Our Story</a>
-                <a href="gallery.html" class="hover:text-emerald-700 transition">Gallery</a>
-                <a href="wedding.html" class="hover:text-emerald-700 transition">Wedding</a>
-                <a href="travel.html" class="hover:text-emerald-700 transition">Travel</a>
-                <a href="registry.html" class="hover:text-emerald-700 transition">Registry</a>
-                <a href="guestbook.html" class="hover:text-emerald-700 transition">Guest Book</a>
-                <a href="rsvp.html" class="hover:text-emerald-700 transition">RSVP</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="wedding.html">Wedding</a>
+                <a href="travel.html">Travel</a>
+                <a href="registry.html">Registry</a>
+                <a href="guestbook.html">Guest Book</a>
+                <a href="rsvp.html">RSVP</a>
             </div>
+
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="content">
-        <div class="prose prose-lg max-w-none">
-            <h2 class="text-4xl mb-8 text-center">How We Met</h2>
+    <!-- Story Content -->
+    <div class="hero-bg">
+        <div class="content">
+            <h1 class="text-5xl text-center mb-12">Our Story</h1>
             
-            <p>We'll put your full love story here. For now, here's a placeholder:</p>
-            
-            <p>Katie and Stu met on Bumble in early 2023. Their connection was instant — sharing stories of adventure, travel, and a love for the outdoors. After many dates filled with laughter and great conversation, Stu proposed during an Arizona road trip in May 2025 at Page Springs.</p>
-            
-            <p>Since then, they've enjoyed many adventures together, including a memorable road trip through Slovenia in 2026. Stu's ultrarunning journey and their shared love for exploring new places continue to strengthen their bond as they prepare for their destination wedding in Germany.</p>
-            
-            <!-- You can expand this with more paragraphs, photos, timeline, etc. -->
+            <div class="story text-lg">
+                <p>Katie and Stu met on Bumble in early 2023. The connection was instant—two adventure lovers swapping stories of travels near and far. After many dates filled with laughter and great conversation, we decided to put the relationship to the test with a road trip to Asheville for Katie’s 32nd birthday—just a few months after meeting. We laughed the whole way, no arguments. We both thought, “Okay… we might actually have a shot at this.”</p>
+                
+                <p>So naturally, we decided to stress-test it again with an international trip. Just after our one-year anniversary, we flew to Norway to chase the Northern Lights. Another success. After two big trips with zero relationship meltdowns, Stu finally started to think that Katie might be the one.</p>
+                
+                <p>One more stress test was in order: a road trip to Page, Arizona. That’s where it happened. Stu had secretly booked a private engagement tour at a beautiful vineyard. Under a stunning pergola, he dropped to one knee and got as far as “Will you mar—” before Katie excitedly shouted “YES!”</p>
+                
+                <p>Since we first met, we’ve been on many adventures together—traveling through 14 U.S. states and 6 countries, with Stu happily chauffeuring Katie through two of those international countries. And we’re just getting started!</p>
+                
+                <p class="text-center text-xl mt-12 italic">We’d love for you to join us as we celebrate our next big adventure with the people we love!</p>
+            </div>
         </div>
     </div>
 
-    <footer class="bg-stone-900 text-white py-16 text-center">
-        <p class="mb-2">Katie Lawless &amp; Steuart “Stu” Turner • September 2027</p>
-        <p>Katieandstuwedding.com</p>
-    </footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
 
 </body>
 </html>
