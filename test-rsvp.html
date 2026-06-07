@@ -148,9 +148,9 @@
                 <label>Will you be attending?</label>
                 <select id="attendance" onchange="toggleGuestFields()">
                     <option value="">Please select...</option>
-                    <option value="no">I won't be able to attend</option>
-                    <option value="one">Just myself</option>
-                    <option value="two">Myself plus one</option>
+                    <option value="I won't be able to attend">I won't be able to attend</option>
+                    <option value="Just myself">Just myself</option>
+                    <option value="Myself plus one">Myself plus one</option>
                 </select>
 
                 <div id="guestNameField" style="display: none;">
@@ -181,12 +181,12 @@
                     <input type="text" placeholder="Any allergies or special requests?" id="notes">
                 </div>
 
-                <button onclick="submitRSVP()" style="background: #166534; margin-top: 1rem;">Submit RSVP</button>
+                <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
             <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem;">
                 ✅ Thank you! Your RSVP has been received.<br>
-                (This is a test — no data was saved)
+                We can't wait to celebrate with you!
             </div>
         </div>
     </div>
@@ -195,6 +195,8 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAcyGOfrwqG3OD2kJ8h6FsyOH7S7XHV_opnw1UfaDG5PLCyg7p02S5nR1cjPUjkpuw/exec";
 
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "testing") {
@@ -207,10 +209,10 @@
 
         function toggleGuestFields() {
             const attendance = document.getElementById('attendance').value;
-            document.getElementById('guestNameField').style.display = (attendance === "two") ? 'block' : 'none';
-            document.getElementById('guestMealField').style.display = (attendance === "two") ? 'block' : 'none';
-            document.getElementById('mealSection').style.display = (attendance !== "no") ? 'block' : 'none';
-            document.getElementById('allergiesField').style.display = (attendance !== "no") ? 'block' : 'none';
+            document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
+            document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
+            document.getElementById('mealSection').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
+            document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
         }
 
         function updateGuestLabel() {
@@ -220,8 +222,24 @@
         }
 
         function submitRSVP() {
-            document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
+            const formData = {
+                name: document.getElementById('name').value,
+                attendance: document.getElementById('attendance').value,
+                guestName: document.getElementById('guestName').value || "",
+                meal1: document.getElementById('meal1').value || "",
+                meal2: document.getElementById('meal2') ? document.getElementById('meal2').value : "",
+                notes: document.getElementById('notes').value || ""
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            })
+            .then(() => {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            })
+            .catch(() => alert("Something went wrong. Please try again."));
         }
     </script>
 
