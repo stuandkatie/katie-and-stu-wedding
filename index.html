@@ -7,16 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            color: #44403c;
-            margin: 0;
-            line-height: 1.6;
-        }
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 400; 
-        }
+        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
             background-size: cover;
@@ -29,31 +22,54 @@
             color: white;
             position: relative;
         }
+
         .nav {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             z-index: 50;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
         }
+
         .nav-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 1rem;
+            padding: 1.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 2.2rem;
-            font-weight: 400;
-            text-decoration: none;
+            font-size: 2.4rem;
             color: white;
+            text-decoration: none;
         }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
+
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -61,30 +77,9 @@
             border: none;
             color: white;
             cursor: pointer;
-            padding: 5px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 8px;
-        }
-        .nav-links a {
-            display: inline-block;
-            padding: 9px 18px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            white-space: nowrap;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s ease;
-        }
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
         }
 
-        /* Mobile Hamburger Menu */
+        /* Mobile */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -96,7 +91,6 @@
                 background: rgba(255,255,255,0.95);
                 padding: 1rem;
                 gap: 8px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
             .nav-links.show {
                 display: flex;
@@ -104,12 +98,11 @@
             .nav-links a {
                 color: #44403c;
                 text-align: center;
-                border: 1px solid #ddd;
             }
             .hamburger {
                 display: block;
             }
-            .hero-content h1 { font-size: 3.6rem; }
+            .logo { font-size: 2rem; }
         }
     </style>
 </head>
@@ -120,10 +113,6 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
             
-            <!-- Hamburger Button (Mobile only) -->
-            <button class="hamburger" id="hamburger">☰</button>
-            
-            <!-- Desktop + Mobile Dropdown Links -->
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
@@ -133,20 +122,22 @@
                 <a href="guestbook.html">Guest Book</a>
                 <a href="rsvp.html">RSVP</a>
             </div>
+
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
     <!-- Hero -->
     <header class="hero-bg">
-        <div class="hero-content">
-            <p class="tracking-[0.125em] text-amber-100 text-base md:text-lg mb-4">AMERON NEUSCHWANSTEIN • BAVARIA, GERMANY</p>
-            <h1 class="tracking-tight">Katie &amp; Stu</h1>
-            <p class="text-3xl md:text-5xl mb-6">September 18, 2027</p>
-            <p class="text-xl md:text-2xl mb-12">Welcome Party • September 17</p>
+        <div>
+            <p class="tracking-[0.125em] text-amber-100 text-lg mb-4">AMERON NEUSCHWANSTEIN • BAVARIA, GERMANY</p>
+            <h1 class="text-5xl md:text-6xl tracking-tight">Katie &amp; Stu</h1>
+            <p class="text-4xl md:text-5xl mb-6">September 18, 2027</p>
+            <p class="text-2xl mb-12">Welcome Party • September 17</p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="about.html" class="btn btn-primary">Our Story</a>
-                <a href="rsvp.html" class="btn btn-outline">RSVP</a>
+                <a href="about.html" class="inline-block bg-white text-stone-900 px-10 py-4 rounded-full text-lg font-medium hover:bg-amber-100 transition">Our Story</a>
+                <a href="rsvp.html" class="inline-block border-2 border-white text-white px-10 py-4 rounded-full text-lg font-medium hover:bg-white hover:text-stone-900 transition">RSVP</a>
             </div>
         </div>
     </header>
