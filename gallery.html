@@ -52,6 +52,31 @@
             color: white;
             text-decoration: none;
         }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -98,13 +123,13 @@
         </div>
     </nav>
 
-    <!-- Gallery Content - Single Column -->
+    <!-- Gallery Content -->
     <div class="hero-bg">
         <div class="content">
             <h1 class="text-5xl mb-10">Gallery</h1>
             
             <div class="gallery-container" id="galleryContainer">
-                <!-- Photos will load here -->
+                <!-- Photos load here -->
             </div>
         </div>
     </div>
@@ -132,7 +157,7 @@
             "Website pics/Snow 1.jpg",
             "Website pics/cute.jpg",
             "Website pics/norway 2.jpg"
-            // Add the rest of your photos here, one per line
+            // Add remaining photos here
         ];
 
         const container = document.getElementById('galleryContainer');
