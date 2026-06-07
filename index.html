@@ -13,7 +13,7 @@
             font-family: 'Inter', system-ui, sans-serif;
             color: #44403c;
             margin: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
@@ -36,18 +36,18 @@
             position: sticky;
             top: 0;
             background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             z-index: 50;
             border-bottom: 1px solid #e7e5e4;
         }
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 14px 36px;
             border-radius: 9999px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 500;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         .btn-primary {
             background: white;
@@ -66,14 +66,21 @@
             color: #44403c;
         }
         .section {
-            padding: 6rem 1.5rem;
-            max-width: 1200px;
+            padding: 5rem 1.5rem;
+            max-width: 1100px;
             margin: 0 auto;
+        }
+        .nav-links a {
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #166534;
         }
     </style>
 </head>
 <body>
-    <!-- Hero with YOUR photo -->
+
+    <!-- Hero -->
     <header class="hero-bg">
         <div>
             <p class="tracking-[0.125em] text-amber-100 text-lg mb-6">AMERON NEUSCHWANSTEIN • BAVARIA, GERMANY</p>
@@ -93,14 +100,14 @@
     <nav class="nav">
         <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
             <a href="#" class="text-2xl font-light tracking-tight">Katie &amp; Stu</a>
-            <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
-                <a href="#about" class="hover:text-amber-700 transition">Our Story</a>
-                <a href="#gallery" class="hover:text-amber-700 transition">Gallery</a>
-                <a href="#wedding" class="hover:text-amber-700 transition">Wedding</a>
-                <a href="#travel" class="hover:text-amber-700 transition">Travel</a>
-                <a href="#registry" class="hover:text-amber-700 transition">Registry</a>
-                <a href="#message" class="hover:text-amber-700 transition">Guest Book</a>
-                <a href="#rsvp" class="hover:text-amber-700 transition">RSVP</a>
+            <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase nav-links">
+                <a href="#about">Our Story</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#wedding">Wedding</a>
+                <a href="#travel">Travel</a>
+                <a href="#registry">Registry</a>
+                <a href="#message">Guest Book</a>
+                <a href="#rsvp">RSVP</a>
             </div>
         </div>
     </nav>
@@ -110,7 +117,7 @@
         <div class="text-center">
             <h2 class="text-5xl mb-8">How We Met</h2>
             <p class="text-lg max-w-2xl mx-auto text-stone-600">
-                Your full love story will go here...
+                Your full love story will go here (Bumble, Arizona proposal, Slovenia adventures, ultrarunning, etc.)
             </p>
         </div>
     </section>
@@ -119,5 +126,6 @@
         <p class="mb-2">Katie Lawless &amp; Steuart “Stu” Turner • 2027</p>
         <p>Katieandstuwedding.com</p>
     </footer>
+
 </body>
 </html>
