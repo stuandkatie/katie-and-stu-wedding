@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | Katie & Stu</title>
+    <title>Katie & Stu | September 18, 2027</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
-        body { 
-            margin: 0; 
-            font-family: 'Inter', system-ui, sans-serif; 
-            color: #44403c;
+        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
         }
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 400; 
-        }
+
         .nav {
             position: absolute;
             top: 0;
@@ -25,6 +32,7 @@
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
         }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -33,6 +41,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -40,6 +49,7 @@
             color: white;
             text-decoration: none;
         }
+
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -48,10 +58,12 @@
             color: white;
             cursor: pointer;
         }
+
         .nav-links {
             display: flex;
             gap: 10px;
         }
+
         .nav-links a {
             padding: 10px 20px;
             border-radius: 9999px;
@@ -61,41 +73,40 @@
             border: 1px solid rgba(255,255,255,0.5);
             transition: all 0.3s;
         }
+
         .nav-links a:hover {
             background: white;
             color: #44403c;
         }
-        .content {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Background.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
+
+        .hero-content h1 {
+            font-size: 4.8rem;
+            line-height: 1;
+            margin-bottom: 0.4rem;
         }
 
-        /* Mobile Hamburger */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 9999px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: white; color: #44403c; }
+        .btn-primary:hover { background: #f5f5f4; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid white; color: white; }
+        .btn-outline:hover { background: white; color: #44403c; }
+
+        /* Mobile */
         @media (max-width: 768px) {
-            .nav-links { 
-                display: none; 
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: rgba(255,255,255,0.95); 
-                padding: 1rem; 
-                gap: 8px; 
-            }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; gap: 8px; }
             .nav-links.show { display: flex; }
             .nav-links a { color: #44403c; text-align: center; }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
+            .hero-content h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -120,18 +131,24 @@
         </div>
     </nav>
 
-    <!-- Under Construction Content -->
-    <div class="content">
-        <h1 class="text-6xl md:text-7xl mb-6">Gallery</h1>
-        <p class="text-2xl md:text-3xl mb-8">Our favorite moments together</p>
-        <p class="text-xl max-w-md">We're currently adding photos from our adventures — including our Slovenia trip and more. Come back soon!</p>
-        <p class="mt-12 text-amber-100">❤️ Stay tuned</p>
-    </div>
+    <!-- Hero -->
+    <header class="hero-bg">
+        <div class="hero-content">
+            <p class="tracking-[0.125em] text-amber-100 text-base md:text-lg mb-4">AMERON NEUSCHWANSTEIN • BAVARIA, GERMANY</p>
+            <h1 class="tracking-tight">Katie &amp; Stu</h1>
+            <p class="text-4xl md:text-5xl mb-6">September 18, 2027</p>
+            <p class="text-xl md:text-2xl mb-12">Welcome Party • September 17</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="about.html" class="btn btn-primary">Our Story</a>
+                <a href="rsvp.html" class="btn btn-outline">RSVP</a>
+            </div>
+        </div>
+    </header>
 
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
