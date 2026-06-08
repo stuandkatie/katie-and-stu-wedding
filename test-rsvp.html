@@ -24,9 +24,9 @@
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
-            padding-top: 110px;
+            padding: 80px 20px 40px;
         }
         .nav {
             position: fixed;
@@ -80,9 +80,7 @@
 
         /* Mobile Menu */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
+            .hamburger { display: block; }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -94,26 +92,20 @@
                 padding: 1rem;
                 gap: 8px;
             }
-            .nav-links.show {
-                display: flex;
-            }
-            .nav-links a {
-                text-align: center;
-                border: none;
-                padding: 12px;
-            }
+            .nav-links.show { display: flex; }
+            .nav-links a { text-align: center; border: none; padding: 12px; }
         }
 
         .content {
-            background: rgba(248, 245, 240, 0.55);
-            padding: 3rem 2rem;
+            background: rgba(248, 245, 240, 0.9);
+            padding: 2.5rem 2rem;
             max-width: 950px;
             width: 100%;
-            margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             text-align: center;
         }
+
         input, select, button {
             width: 100%;
             padding: 14px;
