@@ -15,7 +15,10 @@
         }
         h1 { 
             font-family: 'Playfair Display', serif; 
-            font-weight: 400; 
+            font-weight: 700; 
+            text-align: center; 
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
         }
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
@@ -24,9 +27,9 @@
             background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            padding: 80px 20px 40px;
+            padding-top: 110px;
         }
         .nav {
             position: fixed;
@@ -54,11 +57,12 @@
         }
         .hamburger {
             display: none;
-            font-size: 2rem;
+            font-size: 2.2rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
+            padding: 5px 10px;
         }
         .nav-links {
             display: flex;
@@ -77,33 +81,38 @@
             background: white;
             color: #44403c;
         }
-
-        /* Mobile Menu */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(0,0,0,0.85);
-                padding: 1rem;
-                gap: 8px;
-            }
-            .nav-links.show { display: flex; }
-            .nav-links a { text-align: center; border: none; padding: 12px; }
-        }
-
         .content {
-            background: rgba(248, 245, 240, 0.9);
-            padding: 2.5rem 2rem;
+            background: rgba(248, 245, 240, 0.55);
+            padding: 3rem 2rem;
             max-width: 950px;
             width: 100%;
+            margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            text-align: center;
+        }
+
+        /* Mobile Hamburger */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: rgba(255,255,255,0.98); 
+                padding: 1.5rem;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a { 
+                color: #44403c; 
+                text-align: center;
+                font-size: 1.1rem;
+            }
+            .logo { font-size: 2rem; }
         }
 
         input, select, button {
@@ -159,18 +168,13 @@
         </div>
     </nav>
 
+    <!-- Test RSVP Content -->
     <div class="hero-bg">
         <div class="content">
-            <h1 class="text-5xl mb-8">Test RSVP</h1>
+            <h1>Test RSVP</h1>
             <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
 
-            <div id="passwordSection">
-                <input type="password" id="password" placeholder="Enter password">
-                <button onclick="checkPassword()">Continue</button>
-            </div>
-
-            <!-- Choice Buttons -->
-            <div id="choiceSection" style="display: none; margin-top: 2rem;">
+            <div id="choiceSection" style="display: none; margin-top: 1rem;">
                 <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
                 <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
             </div>
