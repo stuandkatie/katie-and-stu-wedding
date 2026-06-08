@@ -3,36 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katie & Stu | September 17–18, 2027</title>
+    <title>Guest Information | Katie & Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
-        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
-
+        body { 
+            margin: 0; 
+            font-family: 'Inter', system-ui, sans-serif; 
+            color: #44403c;
+            line-height: 1.7;
+        }
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 400; 
+        }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            background-attachment: fixed;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
             justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
+            padding-top: 110px;
         }
-
         .nav {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 50;
+            z-index: 100;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -41,7 +45,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -49,7 +52,6 @@
             color: white;
             text-decoration: none;
         }
-
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -58,12 +60,10 @@
             color: white;
             cursor: pointer;
         }
-
         .nav-links {
             display: flex;
             gap: 10px;
         }
-
         .nav-links a {
             padding: 10px 20px;
             border-radius: 9999px;
@@ -73,71 +73,23 @@
             border: 1px solid rgba(255,255,255,0.5);
             transition: all 0.3s;
         }
-
         .nav-links a:hover {
             background: white;
             color: #44403c;
         }
-
-        .hero-content h1 {
-            font-size: 4.8rem;
-            line-height: 1;
-            margin-bottom: 0.4rem;
+        .content {
+            background: rgba(248, 245, 240, 0.55);
+            padding: 3rem 2rem;
+            max-width: 950px;
+            width: 100%;
+            margin: 0 1rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
         }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 36px;
-            border-radius: 9999px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-primary { background: white; color: #44403c; }
-        .btn-primary:hover { background: #f5f5f4; transform: translateY(-2px); }
-        .btn-outline { border: 2px solid white; color: white; }
-        .btn-outline:hover { background: white; color: #44403c; }
-
-        /* Location styling - split on mobile */
-        .location-castle {
-            tracking: [0.125em];
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .location-country {
-            tracking: [0.125em];
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 769px) {
-            .location-castle,
-            .location-country {
-                display: inline;
-                margin: 0;
-            }
-            .location-country::before {
-                content: " • ";
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; gap: 8px; }
-            .nav-links.show { display: flex; }
-            .nav-links a { color: #44403c; text-align: center; }
-            .hamburger { display: block; }
-            .logo { font-size: 2rem; }
-            .hero-content h1 { font-size: 3.5rem; }
-            
-            .location-castle,
-            .location-country {
-                display: block;
-                text-align: center;
-            }
-        }
+        ul { text-align: left; line-height: 1.8; }
+        li { margin-bottom: 12px; }
+        h2, h3 { text-align: center; }
     </style>
 </head>
 <body>
@@ -146,44 +98,75 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
-            
-<div class="nav-links" id="navLinks">
-    <a href="about.html">Our Story</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="schedule.html">Schedule</a>
-    <a href="travel.html">Travel</a>
-    <a href="guest-information.html">Guest Information</a>
-    <a href="registry.html">Registry</a>
-    <a href="rsvp.html">RSVP</a>
-</div>
-
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
+            </div>
             <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="hero-bg">
-        <div class="hero-content">
-            <p class="location-castle text-amber-100 text-base md:text-lg">AMERON NEUSCHWANSTEIN</p>
-            <p class="location-country text-amber-100 text-base md:text-lg">BAVARIA, GERMANY</p>
+    <!-- Content -->
+    <div class="hero-bg">
+        <div class="content">
+            <h1 class="text-5xl mb-10">Guest Information</h1>
             
-            <h1 class="tracking-tight">Katie &amp; Stu</h1>
-            <p class="text-4xl md:text-5xl mb-6">Wedding • September 18, 2027</p>
-            <p class="text-xl md:text-2xl mb-12">Welcome Party • September 17, 2027</p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="about.html" class="btn btn-primary">Our Story</a>
-                <a href="rsvp.html" class="btn btn-outline">RSVP</a>
+            <div style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <h2>We’re so excited to celebrate with you in Europe!</h2>
+                <p>Below you’ll find everything you need to know to make your trip smooth and enjoyable.</p>
+
+                <h3>Travel Documents</h3>
+                <ul>
+                    <li>A valid passport is required for entry into Germany and Austria. If you don’t already have one, please allow at least 2 months (ideally 3) to apply or renew.</li>
+                    <li>If your passport expires within 12 months of the wedding, we strongly recommend renewing it now to avoid any issues.</li>
+                </ul>
+
+                <h3>Wedding Weekend Timeline</h3>
+                <ul>
+                    <li><strong>Day Before – Welcome Party:</strong> Oktoberfest themed</li>
+                    <li><strong>Wedding Day:</strong> Outdoor wedding with beautiful lake and mountain views</li>
+                </ul>
+
+                <h3>Dress Code</h3>
+                <ul>
+                    <li><strong>Welcome Party:</strong> Casual or Oktoberfest attire</li>
+                    <li><strong>Wedding Ceremony & Reception:</strong> Elegant evening attire (we will hopefully be outside for the ceremony and cocktails. Dinner and reception will be indoors)</li>
+                </ul>
+
+                <h3>What to Pack</h3>
+                <ul>
+                    <li>Comfortable walking shoes (there will be some cobblestones and light walking).</li>
+                    <li>Layers — September evenings in the Alps can get cool.</li>
+                </ul>
+
+                <h3>Dietary Needs & Allergies</h3>
+                <p>Please let us know in advance if you have any dietary restrictions (vegetarian, vegan, gluten-free, nut allergies, etc.) so we can make sure the menus work for everyone.</p>
+
+                <h3>Kids / Family</h3>
+                <p>Please note that the wedding ceremony and reception will be adults-only.<br>
+                That said, kids are warmly invited to join us for the Welcome Party the day before. The hotel can also assist with childcare arrangements during the wedding day events if needed.</p>
+
+                <h3>Gifts & Registry</h3>
+                <p>Your presence is the greatest gift! If you’d like to give something, we’ve created a registry. We also have a honeymoon fund if you prefer.</p>
+
+                <h3>Weather in September</h3>
+                <p>Expect mild days (60–70°F / 15–21°C) and cooler evenings. Rain is always possible in the mountains, so a light jacket or compact umbrella is smart.</p>
+
+                <h3>Questions?</h3>
+                <p>Reach out to Katie or Stu. We’re happy to help!</p>
             </div>
         </div>
-    </header>
+    </div>
 
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
     </script>
 
 </body>
