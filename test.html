@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP | Katie & Stu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; }
+        body { 
+            margin: 0; 
+            font-family: 'Inter', system-ui, sans-serif; 
+            color: #44403c;
+            line-height: 1.7;
+h1, h2, h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700; 
+    text-align: center; 
+}
 
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+h2, h3 {
+    font-size: 2.1rem;
+    margin: 2.2rem 0 1.2rem 0;
+}
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 110px;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+        }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
+        .content {
+            background: rgba(248, 245, 240, 0.55);
+            padding: 3rem 2rem;
+            max-width: 950px;
+            width: 100%;
+            margin: 0 1rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+ /* Mobile */
+               @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: rgba(255,255,255,0.98); 
+                padding: 1.5rem;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a { 
+                color: #44403c; 
+                text-align: center;
+                font-size: 1.1rem;
+            }
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            
+<div class="nav-links" id="navLinks">
+    <a href="about.html">Our Story</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="travel.html">Travel</a>
+    <a href="guest-information.html">Guest Information</a>
+    <a href="registry.html">Registry</a>
+    <a href="rsvp.html">RSVP</a>
+</div>
+
+            <button class="hamburger" id="hamburger">☰</button>
+        </div>
+    </nav>
+
+     <!-- Test RSVP Content -->
+    <div class="hero-bg">
+        <div class="content">
+            <h1>Test RSVP</h1>
+            <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
+
+            <!-- Password Section -->
+            <div id="passwordSection">
+                <input type="password" id="password" placeholder="Enter password">
+                <button onclick="checkPassword()">Continue</button>
+            </div>
+
+            <!-- Choice Buttons -->
+            <div id="choiceSection" style="display: none; margin-top: 2rem;">
+                <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
+                <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
+            </div>
+
+            <!-- Check Previous RSVP -->
+            <div id="checkForm" style="display: none; margin-top: 2rem;">
+                <h2>Check My RSVP</h2>
+                <input type="email" id="checkEmail" placeholder="Enter your email">
+                <button onclick="checkPreviousRSVP()">Check My RSVP</button>
+                <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
+            </div>
+
+            <!-- Submit New RSVP Form -->
+            <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
+                <h2 style="text-align: center;">New RSVP</h2>
+                
+                <input type="text" placeholder="Your Full Name" id="name" autocomplete="name" required>
+                <input type="email" placeholder="Your Email Address" id="email" autocomplete="email" required>
+                
+                <label>Will you be attending?</label>
+                <select id="attendance" onchange="toggleGuestFields()" required>
+                    <option value="">Please select...</option>
+                    <option value="I won't be able to attend">I won't be able to attend</option>
+                    <option value="Just myself">Just myself</option>
+                    <option value="Myself plus one">Myself plus one</option>
+                </select>
+
+                <div id="guestNameField" style="display: none;">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName">
+                </div>
+
+                <div id="mealSection" style="display: none;">
+                    <label id="mainMealLabel">Your Meal Preference</label>
+                    <select id="meal1">
+                        <option>Standard Meal</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                        <option>Gluten-Free</option>
+                    </select>
+
+                    <div id="guestMealField" style="display: none;">
+                        <label id="guestMealLabel">Guest's Meal Preference</label>
+                        <select id="meal2">
+                            <option>Standard Meal</option>
+                            <option>Vegetarian</option>
+                            <option>Vegan</option>
+                            <option>Gluten-Free</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="allergiesField">
+                    <input type="text" placeholder="Any allergies or special requests?" id="notes">
+                </div>
+
+                <button onclick="submitRSVP()">Submit RSVP</button>
+            </div>
+
+            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem;">
+                ✅ Thank you! Your RSVP has been received.<br>
+                We can't wait to celebrate with you!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EleryF4_LlfLvPrdHnn8geA0CVN9Q4zCoEJzPeV_GoIvTJkWol7lKJbkAB4T2e9-mQ/exec";
+
+        function checkPassword() {
+            if (document.getElementById('password').value.trim() === "test") {
+                document.getElementById('passwordSection').style.display = 'none';
+                document.getElementById('choiceSection').style.display = 'block';
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+
+        function showCheckForm() {
+            document.getElementById('choiceSection').style.display = 'none';
+            document.getElementById('checkForm').style.display = 'block';
+        }
+
+        function showSubmitForm() {
+            document.getElementById('choiceSection').style.display = 'none';
+            document.getElementById('rsvpForm').style.display = 'block';
+        }
+
+        function toggleGuestFields() {
+            const attendance = document.getElementById('attendance').value;
+            document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
+            document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
+            document.getElementById('mealSection').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
+            document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
+        }
+
+        function submitRSVP() {
+            const attendance = document.getElementById('attendance').value;
+            const isAttending = attendance !== "I won't be able to attend";
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                attendance: attendance,
+                guestName: document.getElementById('guestName').value || "",
+                notes: document.getElementById('notes').value || ""
+            };
+
+            if (isAttending) {
+                formData.meal1 = document.getElementById('meal1').value || "";
+                if (attendance === "Myself plus one") {
+                    formData.meal2 = document.getElementById('meal2').value || "";
+                }
+            }
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            })
+            .then(response => response.text())
+            .then(text => {
+                if (text.startsWith("success")) {
+                    document.getElementById('rsvpForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                } else {
+                    alert("There was a problem saving your RSVP.\n\nServer said: " + text);
+                }
+            })
+            .catch(() => alert("Network error. Please check your connection."));
+        }
+
+        function checkPreviousRSVP() {
+            const email = document.getElementById('checkEmail').value.trim();
+            const resultDiv = document.getElementById('checkResult');
+
+            if (!email) {
+                resultDiv.innerHTML = '<span style="color:red;">Please enter your email</span>';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Searching...';
+
+            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
+                .then(response => response.text())
+                .then(text => {
+                    const data = JSON.parse(text);
+                    if (data.found) {
+                        resultDiv.innerHTML = `
+                            <strong>Found your RSVP!</strong><br>
+                            Name: ${data.name}<br>
+                            Attendance: ${data.attendance}<br>
+                            ${data.guestName ? `Guest: ${data.guestName}<br>` : ''}
+                            ${data.yourMeal ? `Meal: ${data.yourMeal}<br>` : ''}
+                            ${data.guestMeal ? `Guest Meal: ${data.guestMeal}<br>` : ''}
+                            ${data.notes ? `Notes: ${data.notes}<br>` : ''}
+                            <br><strong>If you need to change something, please contact Katie or Stu.</strong>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
+                    }
+                })
+                .catch(() => {
+                    resultDiv.innerHTML = '<span style="color:red;">Error checking RSVP. Try again.</span>';
+                });
+        }
+    </script>
+
+</body>
+</html>
