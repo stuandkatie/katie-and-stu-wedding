@@ -91,7 +91,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile Hamburger */
+        /* Mobile Hamburger - Matching Gallery */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -174,7 +174,7 @@
             <h1>Test RSVP</h1>
             <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
 
-            <!-- Password Section - Always visible first -->
+            <!-- Password Section -->
             <div id="passwordSection">
                 <input type="password" id="password" placeholder="Enter password">
                 <button onclick="checkPassword()">Continue</button>
@@ -339,7 +339,8 @@
                             ${data.guestName ? `Guest: ${data.guestName}<br>` : ''}
                             ${data.yourMeal ? `Meal: ${data.yourMeal}<br>` : ''}
                             ${data.guestMeal ? `Guest Meal: ${data.guestMeal}<br>` : ''}
-                            ${data.notes ? `Notes: ${data.notes}` : ''}
+                            ${data.notes ? `Notes: ${data.notes}<br>` : ''}
+                            <br><strong>If you need to change something, please contact Katie or Stu.</strong>
                         `;
                     } else {
                         resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
