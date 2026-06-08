@@ -174,7 +174,14 @@
             <h1>Test RSVP</h1>
             <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
 
-            <div id="choiceSection" style="display: none; margin-top: 1rem;">
+            <!-- Password Section - Always visible first -->
+            <div id="passwordSection">
+                <input type="password" id="password" placeholder="Enter password">
+                <button onclick="checkPassword()">Continue</button>
+            </div>
+
+            <!-- Choice Buttons -->
+            <div id="choiceSection" style="display: none; margin-top: 2rem;">
                 <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
                 <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
             </div>
