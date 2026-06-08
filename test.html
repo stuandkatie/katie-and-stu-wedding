@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guest Information | Katie & Stu</title>
+    <title>Schedule | Katie & Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
@@ -90,28 +90,16 @@ h2, h3 {
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
-            max-width: 950px;
+            max-width: 950px;           /* Matched to Our Story width */
             width: 100%;
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             text-align: center;
         }
-        h2 {
-            font-size: 2.1rem;
-            margin: 2.2rem 0 1.2rem 0;
-            text-align: center;           /* Centered headings */
-        }
-        ul { 
-            text-align: left; 
-            padding-left: 1.5rem; 
-        }
-        li { 
-            margin-bottom: 0.9rem; 
-        }
 
         /* Mobile */
-        @media (max-width: 768px) {
+               @media (max-width: 768px) {
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -119,15 +107,19 @@ h2, h3 {
                 top: 100%; 
                 left: 0; 
                 right: 0; 
-                background: rgba(255,255,255,0.95); 
-                padding: 1rem; 
-                gap: 8px; 
+                background: rgba(255,255,255,0.98); 
+                padding: 1.5rem;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
             .nav-links.show { display: flex; }
-            .nav-links a { color: #44403c; text-align: center; }
+            .nav-links a { 
+                color: #44403c; 
+                text-align: center;
+                font-size: 1.1rem;
+            }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
-            .hero-bg { padding-top: 90px; }
         }
     </style>
 </head>
@@ -138,65 +130,31 @@ h2, h3 {
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
             
-            <div class="nav-links" id="navLinks">
-                <a href="about.html">Our Story</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="schedule.html">Schedule</a>
-                <a href="travel.html">Travel</a>
-                <a href="guest-information.html">Guest Information</a>
-                <a href="registry.html">Registry</a>
-                <a href="rsvp.html">RSVP</a>
-            </div>
+<div class="nav-links" id="navLinks">
+    <a href="about.html">Our Story</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="travel.html">Travel</a>
+    <a href="guest-information.html">Guest Information</a>
+    <a href="registry.html">Registry</a>
+    <a href="rsvp.html">RSVP</a>
+</div>
 
             <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
-    <!-- Guest Information Content -->
+    <!-- Schedule Content -->
     <div class="hero-bg">
         <div class="content">
-            <h1 class="text-5xl mb-10">Guest Information</h1>
+            <h1 class="text-5xl mb-10">Schedule</h1>
             
             <div class="story text-left text-lg leading-relaxed">
-                <p>We’re so excited to celebrate with you in Europe! Below you’ll find everything you need to know to make your trip smooth and enjoyable.</p>
+                <p>We’re still ironing out the final details of our Wedding Weekend (there’s a lot of adventure to coordinate!).</p>
                 
-                <h2>Travel Documents</h2>
-                <ul>
-                    <li>A valid passport is required for entry into Germany and Austria. If you don’t already have one, please allow at least 2 months (ideally 3) to apply or renew.</li>
-                    <li>If your passport expires within 12 months of the wedding, we strongly recommend renewing it now to avoid any issues.</li>
-                </ul>
-
-                <h2>Wedding Weekend Timeline</h2>
-                <ul>
-                    <li><strong>Day Before – Welcome Party:</strong> Oktoberfest themed</li>
-                    <li><strong>Wedding Day:</strong> Outdoor wedding with beautiful lake and mountain views</li>
-                </ul>
-
-                <h2>Dress Code</h2>
-                <ul>
-                    <li><strong>Welcome Party:</strong> Feel free to wear casual or Oktoberfest themed attire</li>
-                    <li><strong>Wedding Ceremony & Reception:</strong> Elegant evening attire (we will hopefully be outside for the ceremony and cocktails. Dinner and reception will be indoors)</li>
-                </ul>
-
-                <h2>What to Pack</h2>
-                <ul>
-                    <li>Comfortable walking shoes (there will be some cobblestones and light walking).</li>
-                    <li>Layers — September evenings in the Alps can get cool.</li>
-                </ul>
-
-                <h2>Dietary Needs & Allergies</h2>
-                <p>Please let us know in advance if you have any dietary restrictions (vegetarian, vegan, gluten-free, nut allergies, etc.) so we can make sure the menus work for everyone.</p>
-
-                <h2>Kids / Family</h2>
-                <p>Please note that the wedding ceremony and reception will be adults-only. That said, kids are warmly invited to join us for the Welcome Party the day before. The hotel can also assist with childcare arrangements during the wedding day events if needed.</p>
-
-                <h2>Gifts & Registry</h2>
-                <p>Your presence is the greatest gift! If you’d like to give something, we’ve created a registry. We also have a honeymoon fund if you prefer.</p>
-
-                <h2>Weather in September</h2>
-                <p>Expect mild days (60–70°F / 15–21°C) and cooler evenings. Rain is always possible in the mountains, so a light jacket or compact umbrella is smart.</p>
-
-                <p class="text-center text-xl mt-12 italic">Questions? Reach out to Katie or Stu. We’re happy to help!</p>
+                <p>Once everything is locked in, you’ll find the full schedule, timings, welcome party info, ceremony details, and all the good stuff right here.</p>
+                
+                <p class="text-center text-xl mt-12 italic">Stay tuned — we’ll update this page as soon as it’s ready!</p>
             </div>
         </div>
     </div>
