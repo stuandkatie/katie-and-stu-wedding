@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test RSVP | Katie & Stu</title>
+    <title>RSVP | Katie & Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
@@ -91,7 +92,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile Hamburger - Matching Gallery */
+        /* Mobile Hamburger */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -168,11 +169,11 @@
         </div>
     </nav>
 
-    <!-- Test RSVP Content -->
+    <!-- RSVP Content -->
     <div class="hero-bg">
         <div class="content">
-            <h1>Test RSVP</h1>
-            <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
+            <h1>RSVP</h1>
+            <p class="text-lg mb-8">Please enter the password below</p>
 
             <!-- Password Section -->
             <div id="passwordSection">
@@ -255,7 +256,7 @@
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EleryF4_LlfLvPrdHnn8geA0CVN9Q4zCoEJzPeV_GoIvTJkWol7lKJbkAB4T2e9-mQ/exec";
 
         function checkPassword() {
-            if (document.getElementById('password').value.trim() === "test") {
+            if (document.getElementById('password').value.trim() === "katieandstu2027") {
                 document.getElementById('passwordSection').style.display = 'none';
                 document.getElementById('choiceSection').style.display = 'block';
             } else {
