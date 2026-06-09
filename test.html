@@ -54,6 +54,8 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
+            white-space: nowrap;   /* prevents "Katie & Stu" from wrapping to two lines */
+            flex-shrink: 0;        /* prevents the logo flex item from shrinking */
         }
         .hamburger {
             display: none;
@@ -88,12 +90,14 @@
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            text-align: center;
         }
 
-        /* Mobile Hamburger - Matching guest-information.html exactly */
+        /* Mobile styles - matched to guest-information.html */
         @media (max-width: 768px) {
-            .hamburger { display: block; }
+            .hamburger { 
+                display: block; 
+                margin-left: auto;
+            }
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -151,7 +155,7 @@
 </head>
 <body>
 
-    <!-- Navigation (now identical to guest-information.html) -->
+    <!-- Navigation (matched to guest-information.html) -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
