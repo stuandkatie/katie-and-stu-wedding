@@ -57,12 +57,11 @@
         }
         .hamburger {
             display: none;
-            font-size: 2.2rem;
+            font-size: 2rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
-            padding: 5px 10px;
         }
         .nav-links {
             display: flex;
@@ -91,8 +90,9 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
- /* Mobile */
-               @media (max-width: 768px) {
+        /* Mobile Hamburger - Matching guest-information.html exactly */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -111,7 +111,6 @@
                 text-align: center;
                 font-size: 1.1rem;
             }
-            .hamburger { display: block; }
             .logo { font-size: 2rem; }
         }
 
@@ -151,7 +150,7 @@
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation (now identical to guest-information.html) -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
