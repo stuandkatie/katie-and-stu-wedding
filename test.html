@@ -57,11 +57,12 @@
         }
         .hamburger {
             display: none;
-            font-size: 2rem;
+            font-size: 2.2rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
+            padding: 5px 10px;
         }
         .nav-links {
             display: flex;
@@ -90,12 +91,9 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile navigation - matched across pages */
+        /* Mobile Hamburger - Matching Gallery */
         @media (max-width: 768px) {
-            .hamburger { 
-                display: block; 
-                margin-left: auto;
-            }
+            .hamburger { display: block; }
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -153,7 +151,7 @@
 </head>
 <body>
 
-    <!-- Navigation (matched) -->
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
