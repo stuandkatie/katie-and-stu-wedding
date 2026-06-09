@@ -54,7 +54,7 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap;
+            white-space: nowrap; /* Prevents name wrapping onto two lines */
         }
         .hamburger {
             display: none;
@@ -116,21 +116,24 @@
             .logo { font-size: 2rem; }
         }
 
-        input, select, button {
+        /* Form Controls - Scoped specifically to .content so it ignores the nav bar buttons */
+        .content input, .content select, .content button {
             width: 100%;
             padding: 14px;
             margin: 12px 0;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1.05rem;
+            box-sizing: border-box;
         }
-        button {
+        .content button {
             background: #9CAF88;
             color: white;
             font-weight: 600;
             cursor: pointer;
+            border: none;
         }
-        button:hover { 
+        .content button:hover { 
             background: #7F8F6F; 
         }
         .choice-btn {
@@ -249,7 +252,6 @@
 
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EleryF4_LlfLvPrdHnn8geA0CVN9Q4zCoEJzPeV_GoIvTJkWol7lKJbkAB4T2e9-mQ/exec";
 
-        // Keeps your exact original JavaScript behavior completely intact...
         function checkPassword() {
             if (document.getElementById('password').value.trim() === "test") {
                 document.getElementById('passwordSection').style.display = 'none';
