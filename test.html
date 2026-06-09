@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test RSVP | Katie & Stu</title>
@@ -55,8 +54,8 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap;   /* prevents "Katie & Stu" from wrapping to two lines */
-            flex-shrink: 0;        /* prevents the logo flex item from shrinking */
+            white-space: nowrap;   /* prevents "Katie & Stu" from wrapping */
+            flex-shrink: 0;        /* keeps logo as single unit */
         }
         .hamburger {
             display: none;
@@ -93,7 +92,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile styles - matched to guest-information.html */
+        /* Mobile navigation - matched across pages */
         @media (max-width: 768px) {
             .hamburger { 
                 display: block; 
@@ -156,7 +155,7 @@
 </head>
 <body>
 
-    <!-- Navigation (matched to guest-information.html) -->
+    <!-- Navigation (matched) -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
