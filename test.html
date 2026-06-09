@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test RSVP | Katie & Stu</title>
+    <title>RSVP | Katie & Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
@@ -55,7 +54,7 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; /* Prevents name wrapping onto two lines */
+            white-space: nowrap;
         }
         .hamburger {
             display: none;
@@ -93,7 +92,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile Hamburger - Matching Gallery Exactly */
+        /* Mobile Hamburger - Matching Gallery */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -117,7 +116,6 @@
             .logo { font-size: 2rem; }
         }
 
-        /* Form Controls - Scoped specifically to .content so it ignores the nav bar buttons */
         .content input, .content select, .content button {
             width: 100%;
             padding: 14px;
@@ -174,19 +172,22 @@
 
     <div class="hero-bg">
         <div class="content">
-            <h1>Test RSVP</h1>
-            <p class="text-lg mb-8">Password for testing: <strong>test</strong></p>
+            <h1>RSVP</h1>
+            <p class="text-lg mb-8">Please enter the password below</p>
 
+            <!-- Password Section -->
             <div id="passwordSection">
                 <input type="password" id="password" placeholder="Enter password">
                 <button onclick="checkPassword()">Continue</button>
             </div>
 
+            <!-- Choice Buttons -->
             <div id="choiceSection" style="display: none; margin-top: 2rem;">
                 <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
                 <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
             </div>
 
+            <!-- Check Previous RSVP -->
             <div id="checkForm" style="display: none; margin-top: 2rem;">
                 <h2>Check My RSVP</h2>
                 <input type="email" id="checkEmail" placeholder="Enter your email">
@@ -194,6 +195,7 @@
                 <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
             </div>
 
+            <!-- Submit New RSVP Form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">New RSVP</h2>
                 
@@ -254,7 +256,7 @@
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4EleryF4_LlfLvPrdHnn8geA0CVN9Q4zCoEJzPeV_GoIvTJkWol7lKJbkAB4T2e9-mQ/exec";
 
         function checkPassword() {
-            if (document.getElementById('password').value.trim() === "test") {
+            if (document.getElementById('password').value.trim() === "katieandstu2027") {
                 document.getElementById('passwordSection').style.display = 'none';
                 document.getElementById('choiceSection').style.display = 'block';
             } else {
