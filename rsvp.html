@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP | Katie &amp; Stu</title>
@@ -40,6 +39,7 @@
             z-index: 100;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .nav-container {
             max-width: 1200px;
@@ -48,6 +48,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         .logo {
             font-family: 'Playfair Display', serif;
@@ -55,6 +56,8 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
+            white-space: nowrap;
+            z-index: 101;
         }
         .hamburger {
             display: none;
@@ -64,6 +67,7 @@
             color: white;
             cursor: pointer;
             padding: 5px 10px;
+            z-index: 101;
         }
         .nav-links {
             display: flex;
@@ -90,10 +94,14 @@
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
+        /* Fixed Mobile Breakpoint Mappings */
+        @media (max-width: 991px) {
+            .hamburger { 
+                display: block; 
+            }
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -101,16 +109,30 @@
                 top: 100%; 
                 left: 0; 
                 right: 0; 
-                background: rgba(255,255,255,0.98); 
+                background: rgba(255, 255, 255, 0.98); 
                 padding: 1.5rem;
-                gap: 10px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                gap: 12px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                border-bottom: 1px solid #e5e5e5;
             }
-            .nav-links.show { display: flex; }
+            .nav-links.show { 
+                display: flex; 
+            }
             .nav-links a { 
                 color: #44403c; 
                 text-align: center;
                 font-size: 1.1rem;
+                border: 1px solid #e5e5e5;
+                padding: 12px 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .nav-links a:hover {
+                background: #f4f1eb;
+                color: #44403c;
+            }
+            .logo {
+                font-size: 2rem;
             }
         }
 
@@ -134,6 +156,7 @@
             color: white;
             font-weight: 600;
             cursor: pointer;
+            border: none;
         }
         button:hover { background: #7F8F6F; }
         .choice-btn {
@@ -179,8 +202,8 @@
                 <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
             </div>
 
-            <div id="checkForm" style="display: none; margin-top: 2rem;">
-                <h2>Check My RSVP</h2>
+            <div id="checkForm" style="display: none; margin-top: 2rem; text-align: left;">
+                <h2 style="text-align: center;">Check My RSVP</h2>
                 <input type="email" id="checkEmail" placeholder="Enter your email">
                 <button onclick="checkPreviousRSVP()">Check My RSVP</button>
                 <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
@@ -243,6 +266,11 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
+        // Smoothly collapse mobile nav drawer if clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('show'));
+        });
+
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
 
         function checkPassword() {
@@ -281,12 +309,10 @@
             updateMealLabels();
         }
 
-        // Extracts the first name string before any space character
         function getFirstName(fullName) {
             return fullName.trim().split(" ")[0];
         }
 
-        // Updates meal preference section headers dynamically using only first names
         function updateMealLabels() {
             const primaryFull = document.getElementById('name').value.trim();
             const guestFull = document.getElementById('guestName').value.trim();
