@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP | Katie &amp; Stu</title>
@@ -242,14 +243,14 @@
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        // PASTE YOUR NEW DEPLOYED GOOGLE SCRIPT URL HERE
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMl2RxnDIJJvnpRgAxfavqc3jg3rk6GAL_XGB5Z66RBFU3jMf1D2p6A3Q1LZqCg2gU3w/exec";
+        // Updated Apps Script URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwB_2knkdrA3zQSwXvmhzuZ3S7vXVu5i0e5cXaxF_hJvvzjzbbHil3TQkF05RLmQ6VWAw/exec";
 
         function checkPassword() {
             const pwd = document.getElementById('password').value.trim();
             if (!pwd) return alert("Please enter a password.");
 
-            fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
+            fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd), { redirect: "follow" })
                 .then(r => r.text())
                 .then(text => {
                     if (text.trim() === "valid") {
@@ -301,7 +302,8 @@
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: new URLSearchParams(formData)
+                body: new URLSearchParams(formData),
+                redirect: "follow"
             })
             .then(r => r.text())
             .then(text => {
@@ -324,7 +326,7 @@
             }
             resultDiv.innerHTML = 'Searching...';
 
-            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
+            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email), { redirect: "follow" })
                 .then(r => r.json())
                 .then(data => {
                     if (data.found) {
