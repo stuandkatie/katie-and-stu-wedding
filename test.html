@@ -12,7 +12,7 @@
            GLOBAL VARIABLES & BASE STYLES
            ========================================= */
         :root { 
-            --gold: #d4af37; /* Reusable accent color */
+            --gold: #d4af37;
         }
         
         body { 
@@ -34,7 +34,6 @@
            BACKGROUND & LAYOUT WRAPPERS
            ========================================= */
         .hero-bg {
-            /* Dark gradient overlay + background image for readability */
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
             background-position: center;
@@ -43,11 +42,10 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 110px; /* Pushes content down below the fixed nav */
+            padding-top: 110px; 
         }
 
         .content {
-            /* Main semi-transparent container for forms */
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
             max-width: 950px;
@@ -65,7 +63,7 @@
             top: 0; left: 0; right: 0;
             z-index: 100;
             background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px); /* Frosted glass effect */
+            backdrop-filter: blur(10px); 
         }
 
         .nav-container {
@@ -75,7 +73,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: nowrap; /* Prevents logo and menu from stacking on desktop */
+            flex-wrap: nowrap; 
         }
 
         .logo {
@@ -84,18 +82,18 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; /* CRITICAL: Prevents 'Katie & Stu' from breaking onto 2 lines */
+            white-space: nowrap; 
         }
 
         .hamburger {
-            display: none; /* Hidden on desktop screens */
+            display: none; 
             font-size: 2.2rem;
             background: none;
             border: none;
             color: white;
             cursor: pointer;
             padding: 5px 10px;
-            flex-shrink: 0; /* Prevents the hamburger icon from getting squished */
+            flex-shrink: 0; 
         }
 
         .nav-links {
@@ -105,7 +103,7 @@
 
         .nav-links a {
             padding: 10px 20px;
-            border-radius: 9999px; /* Pill shape buttons */
+            border-radius: 9999px; 
             font-size: 1.05rem;
             color: white;
             text-decoration: none;
@@ -123,32 +121,35 @@
            ========================================= */
         @media (max-width: 768px) {
             .nav-container { 
-                padding: 0.6rem 1rem; /* Slimmer padding for mobile header */
+                padding: 0.8rem 1rem; /* Matched to standard mobile header height */
             }
             .logo {
-                font-size: 1.6rem; /* Shrinks logo to fit next to the hamburger icon */
+                font-size: 1.8rem; /* Restored size to match gallery */
             }
             .hamburger { 
-                display: block; /* Show hamburger menu on mobile */
+                display: block; 
+                font-size: 1.8rem; /* Scaled down slightly */
+                padding: 0px 5px;  /* Removed excess touch-target padding */
+                margin: 0;
             }
             .nav-links { 
-                display: none; /* Hide standard links on mobile initially */
+                display: none; 
                 flex-direction: column; 
                 position: absolute; 
                 top: 100%; 
                 left: 0; right: 0; 
-                background: rgba(255,255,255,0.98); /* Solid background for dropdown */
+                background: rgba(255,255,255,0.98); 
                 padding: 1.5rem;
                 gap: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            .nav-links.show { display: flex; } /* Toggled by Javascript */
+            .nav-links.show { display: flex; } 
             
             .nav-links a { 
-                color: #44403c; /* Dark text for the solid white dropdown */
+                color: #44403c; 
                 text-align: center;
                 font-size: 1.1rem;
-                border: none; /* Cleaner look without borders in mobile dropdown */
+                border: none; 
             }
         }
 
@@ -162,18 +163,24 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1.05rem;
-            box-sizing: border-box; /* Keeps padding inside the defined width */
+            box-sizing: border-box; 
+        }
+
+        /* Custom class to mask text without triggering browser save-password prompts */
+        .masked-password-input {
+            -webkit-text-security: disc !important;
+            text-security: disc !important;
         }
 
         button {
-            background: #9CAF88; /* Sage green theme */
+            background: #9CAF88; 
             color: white;
             font-weight: 600;
             cursor: pointer;
         }
 
         button:hover { 
-            background: #7F8F6F; /* Darker green on hover */
+            background: #7F8F6F; 
         }
 
         .choice-btn {
@@ -219,7 +226,7 @@
             
             <div id="passwordSection">
                 <p class="text-lg mb-8" style="text-align: center;">Please enter the password below</p>
-                <input type="password" id="password" placeholder="Enter password">
+                <input type="text" id="password" class="masked-password-input" placeholder="Enter password" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
                 <button onclick="checkPassword()">Continue</button>
             </div>
 
@@ -294,7 +301,7 @@
         // Adds/removes the 'show' class when hamburger is clicked
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        // 2. Google Apps Script Endpoint (Corrected URL)
+        // 2. Google Apps Script Endpoint
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
 
         // 3. Password Verification Logic
