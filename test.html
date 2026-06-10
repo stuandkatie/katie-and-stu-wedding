@@ -82,20 +82,21 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; 
+            /* Removed white-space: nowrap to allow stacking on mobile */
+            line-height: 1.1; /* Keeps the stacked text tightly spaced */
         }
 
         /* Pure styling for the hamburger to prevent global button pollution */
         .hamburger {
             display: none; 
             font-size: 2.2rem;
-            background: transparent !important; /* Forces it to match the nav bar */
+            background: transparent !important; 
             border: none !important;
             color: white;
             cursor: pointer;
             padding: 0 !important;
             margin: 0 !important;
-            width: auto !important; /* Prevents it from stretching */
+            width: auto !important; 
             flex-shrink: 0; 
         }
 
@@ -125,13 +126,15 @@
         @media (max-width: 768px) {
             .nav-container { 
                 padding: 0.8rem 1rem; 
+                align-items: flex-start; /* Aligns hamburger to the top if text stacks */
             }
             .logo {
-                font-size: 1.8rem; 
+                font-size: 2.2rem; /* Bumped size back up to match gallery */
             }
             .hamburger { 
                 display: block; 
                 font-size: 2rem; 
+                margin-top: 5px !important; /* Slight tweak to align visually with the top line of text */
             }
             .nav-links { 
                 display: none; 
@@ -157,7 +160,6 @@
         /* =========================================
            FORM ELEMENTS (Scoped to .content ONLY)
            ========================================= */
-        /* By adding .content in front, we guarantee these never affect the header */
         .content input, .content select, .content button {
             width: 100%;
             padding: 14px;
@@ -209,7 +211,7 @@
 
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            <a href="index.html" class="logo">Katie &amp; <br>Stu</a>
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
@@ -298,15 +300,12 @@
     </div>
 
     <script>
-        // 1. Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        // 2. Google Apps Script Endpoint
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
 
-        // 3. Password Verification Logic
         function checkPassword() {
             const pwd = document.getElementById('password').value.trim();
             if (!pwd) return;
@@ -324,7 +323,6 @@
                 .catch(() => alert("Network error. Please try again."));
         }
 
-        // 4. UI Transition Functions
         function showCheckForm() {
             document.getElementById('choiceSection').style.display = 'none';
             document.getElementById('checkForm').style.display = 'block';
@@ -335,7 +333,6 @@
             document.getElementById('rsvpForm').style.display = 'block';
         }
 
-        // 5. Dynamic Form Field Display Based on Attendance
         function toggleGuestFields() {
             const attendance = document.getElementById('attendance').value;
             
@@ -346,7 +343,6 @@
             document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
         }
 
-        // 6. Submit New RSVP Logic
         function submitRSVP() {
             const attendance = document.getElementById('attendance').value;
             const isAttending = attendance !== "I won't be able to attend";
@@ -382,7 +378,6 @@
             .catch(() => alert("Network error."));
         }
 
-        // 7. Check Existing RSVP Logic
         function checkPreviousRSVP() {
             const email = document.getElementById('checkEmail').value.trim();
             const resultDiv = document.getElementById('checkResult');
