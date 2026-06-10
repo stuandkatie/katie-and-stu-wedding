@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSVP | Katie & Stu</title>
+    <title>RSVP | Katie &amp; Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
@@ -124,7 +123,6 @@
             box-sizing: border-box;
         }
 
-        /* Hides text like a password field without alerting browser password managers */
         .masked-password-input {
             -webkit-text-security: disc !important;
             text-security: disc !important;
@@ -168,9 +166,9 @@
     <div class="hero-bg">
         <div class="content">
             <h1>RSVP</h1>
-            <p class="text-lg mb-8">Please enter the password below</p>
 
             <div id="passwordSection">
+                <p class="text-lg mb-8" style="text-align: center;">Please enter the password below</p>
                 <input type="text" id="password" class="masked-password-input" placeholder="Enter password" autocomplete="off">
                 <button onclick="checkPassword()">Continue</button>
             </div>
@@ -232,7 +230,7 @@
                 <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
-            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem;">
+            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
                 ✅ Thank you! Your RSVP has been received.<br>
                 We can't wait to celebrate with you!
             </div>
@@ -282,13 +280,21 @@
             updateMealLabels();
         }
 
-        // Updates meal preference section text dynamically with user-entered names
+        // Extracts the first name string before any space character
+        function getFirstName(fullName) {
+            return fullName.trim().split(" ")[0];
+        }
+
+        // Updates meal preference section headers dynamically using only first names
         function updateMealLabels() {
-            const primaryName = document.getElementById('name').value.trim();
-            const guestName = document.getElementById('guestName').value.trim();
+            const primaryFull = document.getElementById('name').value.trim();
+            const guestFull = document.getElementById('guestName').value.trim();
             
-            document.getElementById('mainMealLabel').textContent = primaryName ? `${primaryName}'s Meal Preference` : "Your Meal Preference";
-            document.getElementById('guestMealLabel').textContent = guestName ? `${guestName}'s Meal Preference` : "Guest's Meal Preference";
+            const primaryFirst = getFirstName(primaryFull);
+            const guestFirst = getFirstName(guestFull);
+            
+            document.getElementById('mainMealLabel').textContent = primaryFirst ? `${primaryFirst}'s Meal Preference` : "Your Meal Preference";
+            document.getElementById('guestMealLabel').textContent = guestFirst ? `${guestFirst}'s Meal Preference` : "Guest's Meal Preference";
         }
 
         function submitRSVP() {
