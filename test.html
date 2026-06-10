@@ -85,14 +85,17 @@
             white-space: nowrap; 
         }
 
+        /* Pure styling for the hamburger to prevent global button pollution */
         .hamburger {
             display: none; 
             font-size: 2.2rem;
-            background: none;
-            border: none;
+            background: transparent !important; /* Forces it to match the nav bar */
+            border: none !important;
             color: white;
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: auto !important; /* Prevents it from stretching */
             flex-shrink: 0; 
         }
 
@@ -121,16 +124,14 @@
            ========================================= */
         @media (max-width: 768px) {
             .nav-container { 
-                padding: 0.8rem 1rem; /* Matched to standard mobile header height */
+                padding: 0.8rem 1rem; 
             }
             .logo {
-                font-size: 1.8rem; /* Restored size to match gallery */
+                font-size: 1.8rem; 
             }
             .hamburger { 
                 display: block; 
-                font-size: 1.8rem; /* Scaled down slightly */
-                padding: 0px 5px;  /* Removed excess touch-target padding */
-                margin: 0;
+                font-size: 2rem; 
             }
             .nav-links { 
                 display: none; 
@@ -154,9 +155,10 @@
         }
 
         /* =========================================
-           FORM ELEMENTS (Inputs, Buttons, Selects)
+           FORM ELEMENTS (Scoped to .content ONLY)
            ========================================= */
-        input, select, button {
+        /* By adding .content in front, we guarantee these never affect the header */
+        .content input, .content select, .content button {
             width: 100%;
             padding: 14px;
             margin: 12px 0;
@@ -172,14 +174,15 @@
             text-security: disc !important;
         }
 
-        button {
+        .content button {
             background: #9CAF88; 
             color: white;
             font-weight: 600;
             cursor: pointer;
+            border: none;
         }
 
-        button:hover { 
+        .content button:hover { 
             background: #7F8F6F; 
         }
 
@@ -298,7 +301,6 @@
         // 1. Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        // Adds/removes the 'show' class when hamburger is clicked
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
         // 2. Google Apps Script Endpoint
@@ -309,12 +311,10 @@
             const pwd = document.getElementById('password').value.trim();
             if (!pwd) return;
 
-            // Send password to server for validation
             fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
                 .then(r => r.text())
                 .then(text => {
                     if (text === "valid") {
-                        // Hide password section, show choices
                         document.getElementById('passwordSection').style.display = 'none';
                         document.getElementById('choiceSection').style.display = 'block';
                     } else {
@@ -339,11 +339,9 @@
         function toggleGuestFields() {
             const attendance = document.getElementById('attendance').value;
             
-            // Show guest fields only if bringing a plus one
             document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
             document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
             
-            // Show meals/notes only if they are attending
             document.getElementById('mealSection').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
             document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
         }
@@ -353,7 +351,6 @@
             const attendance = document.getElementById('attendance').value;
             const isAttending = attendance !== "I won't be able to attend";
 
-            // Package the form data
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
@@ -362,7 +359,6 @@
                 notes: document.getElementById('notes').value || ""
             };
 
-            // Only append meal data if attending
             if (isAttending) {
                 formData.meal1 = document.getElementById('meal1').value || "";
                 if (attendance === "Myself plus one") {
@@ -370,7 +366,6 @@
                 }
             }
 
-            // POST data to Google Sheets
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: new URLSearchParams(formData)
@@ -378,7 +373,6 @@
             .then(r => r.text())
             .then(text => {
                 if (text.startsWith("success")) {
-                    // Hide form, show success graphic
                     document.getElementById('rsvpForm').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
                 } else {
@@ -400,13 +394,11 @@
             
             resultDiv.innerHTML = 'Searching...';
 
-            // Query server via GET request
             fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
                 .then(r => r.text())
                 .then(text => {
                     const data = JSON.parse(text);
                     if (data.found) {
-                        // Dynamically build the result text
                         resultDiv.innerHTML = `
                             <strong>Found your RSVP!</strong><br>
                             Name: ${data.name}<br>
