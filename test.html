@@ -54,6 +54,7 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
+            white-space: nowrap; /* Prevents text wrapping on small screens */
         }
         .hamburger {
             display: none;
@@ -91,6 +92,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
+        /* Mobile Hamburger Settings - Matching Gallery Layout */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -111,31 +113,44 @@
                 text-align: center;
                 font-size: 1.1rem;
             }
+            .logo { font-size: 2rem; }
         }
 
-        input, select, button {
+        /* Form Inputs & Buttons - Isolated securely to .content box */
+        .content input, .content select, .content button {
             width: 100%;
             padding: 14px;
             margin: 12px 0;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1.05rem;
+            box-sizing: border-box;
         }
-        button {
+        .content button {
             background: #9CAF88;
             color: white;
             font-weight: 600;
             cursor: pointer;
+            border: none;
         }
-        button:hover { background: #7F8F6F; }
+        .content button:hover { 
+            background: #7F8F6F; 
+        }
         .choice-btn {
             background: #9CAF88;
             margin: 12px 0;
             padding: 16px;
             font-size: 1.1rem;
         }
-        .choice-btn:hover { background: #7F8F6F; }
-        label { display: block; text-align: left; margin: 1.2rem 0 0.5rem 0; font-weight: 500; }
+        .choice-btn:hover { 
+            background: #7F8F6F; 
+        }
+        label { 
+            display: block; 
+            text-align: left; 
+            margin: 1.2rem 0 0.5rem 0; 
+            font-weight: 500; 
+        }
     </style>
 </head>
 <body>
@@ -223,7 +238,7 @@
                 <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
-            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem;">
+            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
                 ✅ Thank you! Your RSVP has been received.<br>
                 We can't wait to celebrate with you!
             </div>
@@ -231,27 +246,34 @@
     </div>
 
     <script>
+        // Hamburger Menu Toggle Initialization
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLkSg2FAEYdfKOTArcRGtXi45U0M2oUC1Nxme9F1KyujpZYZAlUYcF_Ua6wHimav9TWA/exec";
+        // Target endpoint corresponding with your active Google Apps Script project
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLkSg2FAEYdfKOTArcRGtXi45U0M2oUC1Nxme9F1KyujpZYZAlUYcF_Ua6wHimav9TWA/exec";
 
+        // Communicates validation processing securely with Google Sheets Web App configuration
         function checkPassword() {
             const pwd = document.getElementById('password').value.trim();
-            if (!pwd) return;
+            if (!pwd) {
+                alert("Please enter a password.");
+                return;
+            }
 
+            // Performs a GET request using the parameter setup expected by your Apps Script's doGet()
             fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
                 .then(r => r.text())
                 .then(text => {
-                    if (text === "valid") {
+                    if (text.trim() === "valid") {
                         document.getElementById('passwordSection').style.display = 'none';
                         document.getElementById('choiceSection').style.display = 'block';
                     } else {
                         alert("Incorrect password. Please try again.");
                     }
                 })
-                .catch(() => alert("Network error. Please try again."));
+                .catch(() => alert("Network validation error. Please try again later."));
         }
 
         function showCheckForm() {
@@ -274,6 +296,10 @@
 
         function submitRSVP() {
             const attendance = document.getElementById('attendance').value;
+            if (!attendance) {
+                alert("Please select your attendance status.");
+                return;
+            }
             const isAttending = attendance !== "I won't be able to attend";
 
             const formData = {
@@ -304,7 +330,7 @@
                     alert("Error saving RSVP. Please try again.");
                 }
             })
-            .catch(() => alert("Network error."));
+            .catch(() => alert("Network error. Could not save your selection."));
         }
 
         function checkPreviousRSVP() {
@@ -335,7 +361,7 @@
                         resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
                     }
                 })
-                .catch(() => resultDiv.innerHTML = '<span style="color:red;">Error checking. Try again.</span>');
+                .catch(() => resultDiv.innerHTML = '<span style="color:red;">Error checking data. Please try again.</span>');
         }
     </script>
 </body>
