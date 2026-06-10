@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP | Katie & Stu</title>
@@ -55,7 +54,7 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; /* Prevents text wrapping on small screens */
+            white-space: nowrap;
         }
         .hamburger {
             display: none;
@@ -93,7 +92,6 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile Hamburger Settings - Matching Gallery Layout */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -117,8 +115,7 @@
             .logo { font-size: 2rem; }
         }
 
-        /* Form Inputs & Buttons - Isolated securely to .content box */
-        .content input, .content select, .content button {
+        input, select, button {
             width: 100%;
             padding: 14px;
             margin: 12px 0;
@@ -127,31 +124,22 @@
             font-size: 1.05rem;
             box-sizing: border-box;
         }
-        .content button {
+        button {
             background: #9CAF88;
             color: white;
             font-weight: 600;
             cursor: pointer;
             border: none;
         }
-        .content button:hover { 
-            background: #7F8F6F; 
-        }
+        button:hover { background: #7F8F6F; }
         .choice-btn {
             background: #9CAF88;
             margin: 12px 0;
             padding: 16px;
             font-size: 1.1rem;
         }
-        .choice-btn:hover { 
-            background: #7F8F6F; 
-        }
-        label { 
-            display: block; 
-            text-align: left; 
-            margin: 1.2rem 0 0.5rem 0; 
-            font-weight: 500; 
-        }
+        .choice-btn:hover { background: #7F8F6F; }
+        label { display: block; text-align: left; margin: 1.2rem 0 0.5rem 0; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -247,15 +235,15 @@
     </div>
 
     <script>
-        // Hamburger Menu Toggle Initialization
+        // Hamburger Mobile Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        // Target endpoint corresponding with your active Google Apps Script project
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLkSg2FAEYdfKOTArcRGtXi45U0M2oUC1Nxme9F1KyujpZYZAlUYcF_Ua6wHimav9TWA/exec";
+        // Master App Script URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjykTPEJYV5hDGrV_s74z1pgqFkFLlAtXopc0jZKeIFAhESvHmFRjghEsDIDoHW9nBMA/exec";
 
-        // Communicates validation processing securely with Google Sheets Web App configuration
+        // Password Validation 
         function checkPassword() {
             const pwd = document.getElementById('password').value.trim();
             if (!pwd) {
@@ -263,7 +251,6 @@
                 return;
             }
 
-            // Performs a GET request using the parameter setup expected by your Apps Script's doGet()
             fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
                 .then(r => r.text())
                 .then(text => {
