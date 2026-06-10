@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSVP | Katie &amp; Stu</title>
+    <title>RSVP | Katie & Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; }
@@ -55,7 +55,6 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; /* Prevents text splitting on narrow screens */
         }
         .hamburger {
             display: none;
@@ -93,7 +92,6 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        /* Mobile Viewport Alignments */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -113,13 +111,10 @@
                 color: #44403c; 
                 text-align: center;
                 font-size: 1.1rem;
-                border: 1px solid #ddd;
             }
-            .logo { font-size: 2rem; }
         }
 
-        /* Input scopes tied cleanly to form fields inside the card */
-        .content input, .content select, .content button {
+        input, select, button {
             width: 100%;
             padding: 14px;
             margin: 12px 0;
@@ -128,20 +123,27 @@
             font-size: 1.05rem;
             box-sizing: border-box;
         }
-        .content button {
+
+        /* Hides text like a password field without alerting browser password managers */
+        .masked-password-input {
+            -webkit-text-security: disc !important;
+            text-security: disc !important;
+        }
+
+        button {
             background: #9CAF88;
             color: white;
             font-weight: 600;
             cursor: pointer;
-            border: none;
         }
-        .content button:hover { background: #7F8F6F; }
+        button:hover { background: #7F8F6F; }
         .choice-btn {
             background: #9CAF88;
             margin: 12px 0;
             padding: 16px;
             font-size: 1.1rem;
         }
+        .choice-btn:hover { background: #7F8F6F; }
         label { display: block; text-align: left; margin: 1.2rem 0 0.5rem 0; font-weight: 500; }
     </style>
 </head>
@@ -166,10 +168,10 @@
     <div class="hero-bg">
         <div class="content">
             <h1>RSVP</h1>
+            <p class="text-lg mb-8">Please enter the password below</p>
 
             <div id="passwordSection">
-                <p class="text-lg mb-8" style="text-align: center;">Please enter the password below</p>
-                <input type="password" id="password" placeholder="Enter password">
+                <input type="text" id="password" class="masked-password-input" placeholder="Enter password" autocomplete="off">
                 <button onclick="checkPassword()">Continue</button>
             </div>
 
@@ -181,14 +183,14 @@
             <div id="checkForm" style="display: none; margin-top: 2rem;">
                 <h2>Check My RSVP</h2>
                 <input type="email" id="checkEmail" placeholder="Enter your email">
-                <button onclick="checkPreviousRSVP()">Check Status</button>
-                <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em; text-align: left;"></div>
+                <button onclick="checkPreviousRSVP()">Check My RSVP</button>
+                <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
             </div>
 
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">New RSVP</h2>
                 
-                <input type="text" placeholder="Your Full Name" id="name" required>
+                <input type="text" placeholder="Your Full Name" id="name" oninput="updateMealLabels()" required>
                 <input type="email" placeholder="Your Email Address" id="email" required>
                 
                 <label>Will you be attending?</label>
@@ -200,7 +202,7 @@
                 </select>
 
                 <div id="guestNameField" style="display: none;">
-                    <input type="text" placeholder="Guest's Full Name" id="guestName">
+                    <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateMealLabels()">
                 </div>
 
                 <div id="mealSection" style="display: none;">
@@ -230,7 +232,7 @@
                 <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
-            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
+            <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem;">
                 ✅ Thank you! Your RSVP has been received.<br>
                 We can't wait to celebrate with you!
             </div>
@@ -238,29 +240,27 @@
     </div>
 
     <script>
-        // Hamburger Menu Logic
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-        // Updated Apps Script URL
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
 
         function checkPassword() {
             const pwd = document.getElementById('password').value.trim();
-            if (!pwd) return alert("Please enter a password.");
+            if (!pwd) return;
 
-            fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd), { redirect: "follow" })
+            fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
                 .then(r => r.text())
                 .then(text => {
-                    if (text.trim() === "valid") {
+                    if (text === "valid") {
                         document.getElementById('passwordSection').style.display = 'none';
                         document.getElementById('choiceSection').style.display = 'block';
                     } else {
                         alert("Incorrect password. Please try again.");
                     }
                 })
-                .catch(() => alert("Network authorization error."));
+                .catch(() => alert("Network error. Please try again."));
         }
 
         function showCheckForm() {
@@ -279,11 +279,21 @@
             document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
             document.getElementById('mealSection').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
             document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
+            updateMealLabels();
+        }
+
+        // Updates meal preference section text dynamically with user-entered names
+        function updateMealLabels() {
+            const primaryName = document.getElementById('name').value.trim();
+            const guestName = document.getElementById('guestName').value.trim();
+            
+            document.getElementById('mainMealLabel').textContent = primaryName ? `${primaryName}'s Meal Preference` : "Your Meal Preference";
+            document.getElementById('guestMealLabel').textContent = guestName ? `${guestName}'s Meal Preference` : "Guest's Meal Preference";
         }
 
         function submitRSVP() {
             const attendance = document.getElementById('attendance').value;
-            if (!attendance) return alert("Please select your attendance status.");
+            const isAttending = attendance !== "I won't be able to attend";
 
             const formData = {
                 name: document.getElementById('name').value,
@@ -293,7 +303,7 @@
                 notes: document.getElementById('notes').value || ""
             };
 
-            if (attendance !== "I won't be able to attend") {
+            if (isAttending) {
                 formData.meal1 = document.getElementById('meal1').value || "";
                 if (attendance === "Myself plus one") {
                     formData.meal2 = document.getElementById('meal2').value || "";
@@ -302,19 +312,18 @@
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: new URLSearchParams(formData),
-                redirect: "follow"
+                body: new URLSearchParams(formData)
             })
             .then(r => r.text())
             .then(text => {
-                if (text.trim().includes("success")) {
+                if (text.startsWith("success")) {
                     document.getElementById('rsvpForm').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
                 } else {
-                    alert("System response unexpected. Details: " + text);
+                    alert("Error saving RSVP. Please try again.");
                 }
             })
-            .catch(() => alert("Network processing error. Could not send RSVP."));
+            .catch(() => alert("Network error."));
         }
 
         function checkPreviousRSVP() {
@@ -326,9 +335,10 @@
             }
             resultDiv.innerHTML = 'Searching...';
 
-            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email), { redirect: "follow" })
-                .then(r => r.json())
-                .then(data => {
+            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
+                .then(r => r.text())
+                .then(text => {
+                    const data = JSON.parse(text);
                     if (data.found) {
                         resultDiv.innerHTML = `
                             <strong>Found your RSVP!</strong><br>
@@ -341,10 +351,10 @@
                             <br><strong>If you need to change something, please contact Katie or Stu.</strong>
                         `;
                     } else {
-                        resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email address.</strong>';
+                        resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
                     }
                 })
-                .catch(() => resultDiv.innerHTML = '<span style="color:red;">Error checking database. Please try again.</span>');
+                .catch(() => resultDiv.innerHTML = '<span style="color:red;">Error checking. Try again.</span>');
         }
     </script>
 </body>
