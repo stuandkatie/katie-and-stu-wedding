@@ -11,9 +11,6 @@
         :root { --gold: #d4af37; }
         body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: #44403c; line-height: 1.7; }
         
-        /* Typography */
-        h1 { font-family: 'Playfair Display', serif; font-weight: 700; text-align: center; font-size: 2.8rem; margin-bottom: 1.5rem; }
-        
         /* Layout */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
@@ -21,7 +18,7 @@
             min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding-top: 110px;
         }
 
-        /* Navigation: Standardized to match Gallery */
+        /* Navigation: Standardized */
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.3rem; color: white; text-decoration: none; }
@@ -31,11 +28,11 @@
         .nav-links a { padding: 10px 20px; border-radius: 9999px; font-size: 1.05rem; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.5); transition: all 0.3s; }
         .nav-links a:hover { background: white; color: #44403c; }
 
-        /* Mobile Navigation: Explicitly thinner padding to match Gallery */
+        /* FIXED: Mobile Navigation Padding & Logo Size */
         @media (max-width: 768px) {
-            .nav-container { padding: 0.6rem 1rem; } /* Reduced padding for mobile thinness */
+            .nav-container { padding: 0.5rem 1rem !important; } /* Tighter padding for mobile */
+            .logo { font-size: 1.6rem !important; } /* Smaller logo to prevent wrapping */
             .hamburger { display: block; }
-            .logo { font-size: 1.8rem; } /* Shrink logo slightly on mobile */
             .nav-links { 
                 display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; 
                 background: rgba(255,255,255,0.98); padding: 1.5rem; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -53,6 +50,7 @@
         .choice-btn { background: #9CAF88; margin: 12px 0; padding: 16px; font-size: 1.1rem; }
         .choice-btn:hover { background: #7F8F6F; }
         label { display: block; text-align: left; margin: 1.2rem 0 0.5rem 0; font-weight: 500; }
+        h1 { font-family: 'Playfair Display', serif; font-weight: 700; text-align: center; font-size: 2.8rem; margin-bottom: 1.5rem; }
     </style>
 </head>
 <body>
