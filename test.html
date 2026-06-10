@@ -82,8 +82,7 @@
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            /* Removed white-space: nowrap to allow stacking on mobile */
-            line-height: 1.1; /* Keeps the stacked text tightly spaced */
+            white-space: nowrap; /* Forces text to stay on a single line */
         }
 
         /* Pure styling for the hamburger to prevent global button pollution */
@@ -126,15 +125,14 @@
         @media (max-width: 768px) {
             .nav-container { 
                 padding: 0.8rem 1rem; 
-                align-items: flex-start; /* Aligns hamburger to the top if text stacks */
+                align-items: center; 
             }
             .logo {
-                font-size: 2.2rem; /* Bumped size back up to match gallery */
+                font-size: 1.8rem; /* Perfectly sized to fit next to the menu on one line */
             }
             .hamburger { 
                 display: block; 
                 font-size: 2rem; 
-                margin-top: 5px !important; /* Slight tweak to align visually with the top line of text */
             }
             .nav-links { 
                 display: none; 
@@ -211,7 +209,7 @@
 
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">Katie &amp; <br>Stu</a>
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
