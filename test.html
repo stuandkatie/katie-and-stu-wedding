@@ -1,98 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP | Katie &amp; Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
         :root { --gold: #d4af37; }
-        body { 
-            margin: 0; 
-            font-family: 'Inter', system-ui, sans-serif; 
-            color: #44403c;
-            line-height: 1.7;
-        }
-        h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700; 
-            text-align: center; 
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-        }
+        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: #44403c; line-height: 1.7; }
+        h1 { font-family: 'Playfair Display', serif; font-weight: 700; text-align: center; font-size: 2.8rem; margin-bottom: 1.5rem; }
+        
+        /* Hero section background and layout */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 110px;
-        }
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.3rem;
-            color: white;
-            text-decoration: none;
-        }
-        .hamburger {
-            display: none;
-            font-size: 2.2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 5px 10px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
-        }
-        .content {
-            background: rgba(248, 245, 240, 0.55);
-            padding: 3rem 2rem;
-            max-width: 950px;
-            width: 100%;
-            margin: 0 1rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background-size: cover; background-position: center; background-attachment: fixed;
+            min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding-top: 110px;
         }
 
+        /* Fixed Navigation Bar */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.3rem; color: white; text-decoration: none; }
+        .hamburger { display: none; font-size: 2.2rem; background: none; border: none; color: white; cursor: pointer; padding: 5px 10px; }
+        .nav-links { display: flex; gap: 10px; }
+        .nav-links a { padding: 10px 20px; border-radius: 9999px; font-size: 1.05rem; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.5); transition: all 0.3s; }
+        .nav-links a:hover { background: white; color: #44403c; }
+        
+        /* Central Content Container */
+        .content { background: rgba(248, 245, 240, 0.55); padding: 3rem 2rem; max-width: 950px; width: 100%; margin: 0 1rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+
+        /* Responsive Mobile Layout - Matches Gallery */
         @media (max-width: 768px) {
             .hamburger { display: block; }
+            .nav-container { padding: 0.8rem 1rem; }
             .nav-links { 
                 display: none; 
                 flex-direction: column; 
@@ -106,41 +48,16 @@
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
             .nav-links.show { display: flex; }
-            .nav-links a { 
-                color: #44403c; 
-                text-align: center;
-                font-size: 1.1rem;
-            }
+            .nav-links a { color: #44403c; text-align: center; font-size: 1.1rem; border: none; }
+            .logo { font-size: 1.8rem; }
         }
 
-        input, select, button {
-            width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            box-sizing: border-box;
-        }
-
-        .masked-password-input {
-            -webkit-text-security: disc !important;
-            text-security: disc !important;
-        }
-
-        button {
-            background: #9CAF88;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        /* Form Controls */
+        input, select, button { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 1.05rem; box-sizing: border-box; }
+        .masked-password-input { -webkit-text-security: disc !important; text-security: disc !important; }
+        button { background: #9CAF88; color: white; font-weight: 600; cursor: pointer; }
         button:hover { background: #7F8F6F; }
-        .choice-btn {
-            background: #9CAF88;
-            margin: 12px 0;
-            padding: 16px;
-            font-size: 1.1rem;
-        }
+        .choice-btn { background: #9CAF88; margin: 12px 0; padding: 16px; font-size: 1.1rem; }
         .choice-btn:hover { background: #7F8F6F; }
         label { display: block; text-align: left; margin: 1.2rem 0 0.5rem 0; font-weight: 500; }
     </style>
@@ -187,7 +104,6 @@
 
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">New RSVP</h2>
-                
                 <input type="text" placeholder="Your Full Name" id="name" oninput="updateMealLabels()" required>
                 <input type="email" placeholder="Your Email Address" id="email" required>
                 
@@ -206,71 +122,55 @@
                 <div id="mealSection" style="display: none;">
                     <label id="mainMealLabel">Your Meal Preference</label>
                     <select id="meal1">
-                        <option>Standard Meal</option>
-                        <option>Vegetarian</option>
-                        <option>Vegan</option>
-                        <option>Gluten-Free</option>
+                        <option>Standard Meal</option><option>Vegetarian</option><option>Vegan</option><option>Gluten-Free</option>
                     </select>
 
                     <div id="guestMealField" style="display: none;">
                         <label id="guestMealLabel">Guest's Meal Preference</label>
                         <select id="meal2">
-                            <option>Standard Meal</option>
-                            <option>Vegetarian</option>
-                            <option>Vegan</option>
-                            <option>Gluten-Free</option>
+                            <option>Standard Meal</option><option>Vegetarian</option><option>Vegan</option><option>Gluten-Free</option>
                         </select>
                     </div>
                 </div>
-
                 <div id="allergiesField">
                     <input type="text" placeholder="Any allergies or special requests?" id="notes">
                 </div>
-
                 <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
             <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
-                ✅ Thank you! Your RSVP has been received.<br>
-                We can't wait to celebrate with you!
+                ✅ Thank you! Your RSVP has been received.<br>We can't wait to celebrate with you!
             </div>
         </div>
     </div>
 
     <script>
+        // Navigation toggle for mobile
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
 
+        // Validate password via Apps Script
         function checkPassword() {
             const pwd = document.getElementById('password').value.trim();
             if (!pwd) return;
-
             fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
                 .then(r => r.text())
                 .then(text => {
                     if (text === "valid") {
                         document.getElementById('passwordSection').style.display = 'none';
                         document.getElementById('choiceSection').style.display = 'block';
-                    } else {
-                        alert("Incorrect password. Please try again.");
-                    }
-                })
-                .catch(() => alert("Network error. Please try again."));
+                    } else { alert("Incorrect password. Please try again."); }
+                }).catch(() => alert("Network error."));
         }
 
-        function showCheckForm() {
-            document.getElementById('choiceSection').style.display = 'none';
-            document.getElementById('checkForm').style.display = 'block';
-        }
+        // UI toggles for forms
+        function showCheckForm() { document.getElementById('choiceSection').style.display = 'none'; document.getElementById('checkForm').style.display = 'block'; }
+        function showSubmitForm() { document.getElementById('choiceSection').style.display = 'none'; document.getElementById('rsvpForm').style.display = 'block'; }
 
-        function showSubmitForm() {
-            document.getElementById('choiceSection').style.display = 'none';
-            document.getElementById('rsvpForm').style.display = 'block';
-        }
-
+        // Dynamic form field visibility
         function toggleGuestFields() {
             const attendance = document.getElementById('attendance').value;
             document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
@@ -280,87 +180,47 @@
             updateMealLabels();
         }
 
-        // Extracts the first name string before any space character
-        function getFirstName(fullName) {
-            return fullName.trim().split(" ")[0];
-        }
-
-        // Updates meal preference section headers dynamically using only first names
+        // Helper to update meal labels with first names
+        function getFirstName(fullName) { return fullName.trim().split(" ")[0]; }
         function updateMealLabels() {
-            const primaryFull = document.getElementById('name').value.trim();
-            const guestFull = document.getElementById('guestName').value.trim();
-            
-            const primaryFirst = getFirstName(primaryFull);
-            const guestFirst = getFirstName(guestFull);
-            
+            const primaryFirst = getFirstName(document.getElementById('name').value);
+            const guestFirst = getFirstName(document.getElementById('guestName').value);
             document.getElementById('mainMealLabel').textContent = primaryFirst ? `${primaryFirst}'s Meal Preference` : "Your Meal Preference";
             document.getElementById('guestMealLabel').textContent = guestFirst ? `${guestFirst}'s Meal Preference` : "Guest's Meal Preference";
         }
 
+        // Submit RSVP data to Google Sheet
         function submitRSVP() {
             const attendance = document.getElementById('attendance').value;
-            const isAttending = attendance !== "I won't be able to attend";
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                attendance: attendance,
-                guestName: document.getElementById('guestName').value || "",
-                notes: document.getElementById('notes').value || ""
-            };
-
-            if (isAttending) {
+            const formData = { name: document.getElementById('name').value, email: document.getElementById('email').value, attendance: attendance, guestName: document.getElementById('guestName').value || "", notes: document.getElementById('notes').value || "" };
+            if (attendance !== "I won't be able to attend") {
                 formData.meal1 = document.getElementById('meal1').value || "";
-                if (attendance === "Myself plus one") {
-                    formData.meal2 = document.getElementById('meal2').value || "";
-                }
+                if (attendance === "Myself plus one") formData.meal2 = document.getElementById('meal2').value || "";
             }
-
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: new URLSearchParams(formData)
-            })
+            fetch(SCRIPT_URL, { method: 'POST', body: new URLSearchParams(formData) })
             .then(r => r.text())
             .then(text => {
                 if (text.startsWith("success")) {
                     document.getElementById('rsvpForm').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
-                } else {
-                    alert("Error saving RSVP. Please try again.");
-                }
-            })
-            .catch(() => alert("Network error."));
+                } else { alert("Error saving RSVP."); }
+            }).catch(() => alert("Network error."));
         }
 
+        // Fetch and display existing RSVP status
         function checkPreviousRSVP() {
             const email = document.getElementById('checkEmail').value.trim();
             const resultDiv = document.getElementById('checkResult');
-            if (!email) {
-                resultDiv.innerHTML = '<span style="color:red;">Please enter your email</span>';
-                return;
-            }
+            if (!email) { resultDiv.innerHTML = '<span style="color:red;">Please enter your email</span>'; return; }
             resultDiv.innerHTML = 'Searching...';
-
             fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
                 .then(r => r.text())
                 .then(text => {
                     const data = JSON.parse(text);
                     if (data.found) {
-                        resultDiv.innerHTML = `
-                            <strong>Found your RSVP!</strong><br>
-                            Name: ${data.name}<br>
-                            Attendance: ${data.attendance}<br>
-                            ${data.guestName ? `Guest: ${data.guestName}<br>` : ''}
-                            ${data.yourMeal ? `Meal: ${data.yourMeal}<br>` : ''}
-                            ${data.guestMeal ? `Guest Meal: ${data.guestMeal}<br>` : ''}
-                            ${data.notes ? `Notes: ${data.notes}<br>` : ''}
-                            <br><strong>If you need to change something, please contact Katie or Stu.</strong>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>';
-                    }
-                })
-                .catch(() => resultDiv.innerHTML = '<span style="color:red;">Error checking. Try again.</span>');
+                        resultDiv.innerHTML = `<strong>Found your RSVP!</strong><br>Name: ${data.name}<br>Attendance: ${data.attendance}<br>...`;
+                    } else { resultDiv.innerHTML = '<strong style="color:black;">No RSVP found for this email.</strong>'; }
+                }).catch(() => resultDiv.innerHTML = '<span style="color:red;">Error checking. Try again.</span>');
         }
     </script>
 </body>
