@@ -1,33 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guest Information | Katie & Stu</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --gold: #d4af37; }
+        /* =========================================
+           GLOBAL VARIABLES & BASE STYLES
+           ========================================= */
+        :root { 
+            --gold: #d4af37; /* Theme accent color */
+        }
+        
         body { 
             margin: 0; 
             font-family: 'Inter', system-ui, sans-serif; 
             color: #44403c;
             line-height: 1.7;
-h1, h2, h3 { 
-    font-family: 'Playfair Display', serif; 
-    font-weight: 700; 
-    text-align: center; 
-}
+        }
 
-h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1.5rem;
-}
+        /* =========================================
+           TYPOGRAPHY
+           ========================================= */
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 700; 
+            text-align: center; 
+        }
 
-h2, h3 {
-    font-size: 2.1rem;
-    margin: 2.2rem 0 1.2rem 0;
-}
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.1rem;
+            margin: 2.2rem 0 1.2rem 0;
+            text-align: center; /* Enforces centered alignment for subheadings */
+        }
+
+        h3 {
+            font-size: 2.1rem;
+            margin: 2.2rem 0 1.2rem 0;
+        }
+
+        /* List styling for content areas */
+        ul { 
+            text-align: left; 
+            padding-left: 1.5rem; 
+        }
+        
+        li { 
+            margin-bottom: 0.9rem; 
+        }
+
+        /* =========================================
+           LAYOUT & BACKGROUND
+           ========================================= */
+        /* Full-screen hero background with dark gradient overlay for text readability */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
@@ -37,57 +72,10 @@ h2, h3 {
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 110px;
+            padding-top: 110px; /* Provides clearance for the fixed navbar */
         }
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.3rem;
-            color: white;
-            text-decoration: none;
-        }
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
-        }
+
+        /* Translucent glass-style container for main text content */
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -98,23 +86,79 @@ h2, h3 {
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             text-align: center;
         }
-        h2 {
-            font-size: 2.1rem;
-            margin: 2.2rem 0 1.2rem 0;
-            text-align: center;           /* Centered headings */
-        }
-        ul { 
-            text-align: left; 
-            padding-left: 1.5rem; 
-        }
-        li { 
-            margin-bottom: 0.9rem; 
+
+        /* =========================================
+           DESKTOP NAVIGATION
+           ========================================= */
+        /* Fixed top bar with a blur effect */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
         }
 
- /* Mobile */
-               @media (max-width: 768px) {
+        /* Inner container to constrain navigation width and align items */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Mobile menu button (hidden on desktop) */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Horizontal row for desktop links */
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Pill-shaped navigation links */
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        /* Hover effect for desktop links */
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE NAVIGATION (< 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Convert horizontal links into a dropdown panel */
             .nav-links { 
-                display: none; 
+                display: none; /* Hidden by default */
                 flex-direction: column; 
                 position: absolute; 
                 top: 100%; 
@@ -125,20 +169,33 @@ h2, h3 {
                 gap: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            .nav-links.show { display: flex; }
+            
+            /* Toggled via JavaScript to reveal the menu */
+            .nav-links.show { 
+                display: flex; 
+            }
+            
+            /* Mobile link styling adjustments */
             .nav-links a { 
                 color: #44403c; 
                 text-align: center;
                 font-size: 1.1rem;
             }
-            .hamburger { display: block; }
-            .logo { font-size: 2rem; }
+            
+            /* Reveal the hamburger icon */
+            .hamburger { 
+                display: block; 
+            }
+            
+            /* Shrink logo slightly to fit small screens */
+            .logo { 
+                font-size: 2rem; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
@@ -157,9 +214,9 @@ h2, h3 {
         </div>
     </nav>
 
-    <!-- Guest Information Content -->
     <div class="hero-bg">
         <div class="content">
+            
             <h1 class="text-5xl mb-10">Guest Information</h1>
             
             <div class="story text-left text-lg leading-relaxed">
@@ -207,8 +264,11 @@ h2, h3 {
     </div>
 
     <script>
+        // Select the hamburger button and the links container
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
+        
+        // Listen for a click on the hamburger button to toggle the '.show' class
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
