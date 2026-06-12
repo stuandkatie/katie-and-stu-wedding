@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | Katie & Stu</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --gold: #d4af37; }
+        /* =========================================
+           GLOBAL VARIABLES & BASE STYLES
+           ========================================= */
+        :root { 
+            --gold: #d4af37; /* Theme accent color */
+        }
+        
         body { 
             margin: 0; 
             font-family: 'Inter', system-ui, sans-serif; 
             color: #44403c;
             line-height: 1.7;
         }
+
+        /* =========================================
+           TYPOGRAPHY
+           ========================================= */
         h1 { 
             font-family: 'Playfair Display', serif; 
             font-weight: 700; 
@@ -21,6 +34,11 @@
             font-size: 2.8rem;
             margin-bottom: 1.5rem;
         }
+
+        /* =========================================
+           LAYOUT & BACKGROUND
+           ========================================= */
+        /* Full-screen background with a gradient overlay to enhance text readability */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
@@ -30,58 +48,10 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 110px;
+            padding-top: 110px; /* Accounts for the fixed navigation bar */
         }
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.3rem;
-            color: white;
-            text-decoration: none;
-        }
-        .hamburger {
-            display: none;
-            font-size: 2.2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 5px 10px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
-        }
+
+        /* Central content container with glass-morphism effect */
         .content {
             background: rgba(248, 245, 240, 0.55);
             padding: 3rem 2rem;
@@ -91,27 +61,106 @@
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
+
+        /* =========================================
+           GALLERY SPECIFIC STYLES
+           ========================================= */
+        /* Container for the stacked vertical images */
         .gallery-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 20px; /* Spacing between images */
             margin-top: 2rem;
         }
+
+        /* Individual image styling with hover effects */
         .gallery-container img {
             width: 100%;
             height: auto;
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-        .gallery-container img:hover {
-            transform: scale(1.02);
+            transition: transform 0.3s ease; /* Smooth scaling animation */
         }
 
-        /* Mobile Hamburger */
+        .gallery-container img:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+        }
+
+        /* =========================================
+           DESKTOP NAVIGATION
+           ========================================= */
+        /* Fixed top bar with blur filter */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Alignment container for logo and links */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Branding text */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap; /* Enforces text to stay on a single line */
+        }
+
+        /* Hidden on desktop, shown on mobile */
+        .hamburger {
+            display: none;
+            font-size: 2.2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        /* Horizontal link container */
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Pill-shaped desktop links */
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        /* Desktop hover effects */
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE NAVIGATION (< 768px)
+           ========================================= */
         @media (max-width: 768px) {
+            /* Transform row into a vertical dropdown menu */
             .nav-links { 
-                display: none; 
+                display: none; /* Hidden until toggled */
                 flex-direction: column; 
                 position: absolute; 
                 top: 100%; 
@@ -122,23 +171,38 @@
                 gap: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            .nav-links.show { display: flex; }
+            
+            /* Toggled class via JavaScript */
+            .nav-links.show { 
+                display: flex; 
+            }
+            
+            /* Mobile link styling */
             .nav-links a { 
                 color: #44403c; 
                 text-align: center;
                 font-size: 1.1rem;
+                border: none; /* Removes the white ghost borders */
             }
-            .hamburger { display: block; }
-            .logo { font-size: 2rem; }
+            
+            /* Reveal hamburger icon */
+            .hamburger { 
+                display: block; 
+            }
+            
+            /* Scale down logo slightly */
+            .logo { 
+                font-size: 2rem; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
+            
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
@@ -148,11 +212,11 @@
                 <a href="registry.html">Registry</a>
                 <a href="rsvp.html">RSVP</a>
             </div>
+            
             <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
-    <!-- Gallery Content -->
     <div class="hero-bg">
         <div class="content">
             <h1>Gallery</h1>
@@ -162,12 +226,20 @@
     </div>
 
     <script>
+        // -----------------------------------------
+        // Mobile Menu Toggle
+        // -----------------------------------------
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
+        
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
 
+        // -----------------------------------------
+        // Dynamic Gallery Rendering
+        // -----------------------------------------
+        // Array of image file paths (Left completely unmodified per instructions)
         const photos = [
             "Website pics/Ashville trip 1.jpg",
             "Website pics/Beach 1.jpg",
@@ -189,8 +261,10 @@
             "Website pics/Lake bled.jpg"
         ];
 
+        // Target the empty gallery container
         const container = document.getElementById('galleryContainer');
         
+        // Loop through the photo array, create an image element for each, and append to container
         photos.forEach(src => {
             const img = document.createElement('img');
             img.src = src;
