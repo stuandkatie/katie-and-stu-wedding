@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="description" content="Katie Lawless and Stu Turner are getting married on September 18, 2027 at Ameron Neuschwanstein in Germany. New Orleans and Tampa couple celebrating with family and friends.">
-    <meta name="keywords" content="Katie Lawless, Stu Turner, Katie and Stu wedding, New Orleans wedding, Tampa wedding, Germany wedding, Neuschwanstein wedding">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Katie Lawless and Stu Turner are getting married on September 18, 2027 at Ameron Neuschwanstein in Germany. New Orleans and Tampa couple celebrating with family and friends.">
+    <meta name="keywords" content="Katie Lawless, Stu Turner, Katie and Stu wedding, New Orleans wedding, Tampa wedding, Germany wedding, Neuschwanstein wedding">
     <title>Katie & Stu | September 17–18, 2027</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --gold: #d4af37; }
-        body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        /* =========================================
+           GLOBAL VARIABLES & BASE STYLES
+           ========================================= */
+        :root { 
+            --gold: #d4af37; /* Theme accent color */
+        }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Inter', system-ui, sans-serif; 
+        }
 
+        /* =========================================
+           TYPOGRAPHY
+           ========================================= */
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 400; 
+        }
+
+        /* =========================================
+           LAYOUT & BACKGROUND
+           ========================================= */
+        /* Full-screen hero background with a dark gradient overlay */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
             background-size: cover;
@@ -23,9 +46,20 @@
             justify-content: center;
             text-align: center;
             color: white;
-            position: relative;
+            position: relative; /* Acts as anchor for the absolute nav bar */
         }
 
+        /* Main hero header text sizing */
+        .hero-content h1 {
+            font-size: 4.8rem;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        /* =========================================
+           DESKTOP NAVIGATION
+           ========================================= */
+        /* Absolute positioned top bar with a glass blur filter */
         .nav {
             position: absolute;
             top: 0;
@@ -36,6 +70,7 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Alignment container for logo and links */
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -45,14 +80,17 @@
             align-items: center;
         }
 
+        /* Branding text */
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
+            white-space: nowrap; /* Enforces text to stay on a single line */
         }
 
+        /* Hidden on desktop, shown on mobile */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -62,11 +100,13 @@
             cursor: pointer;
         }
 
+        /* Horizontal link container */
         .nav-links {
             display: flex;
             gap: 10px;
         }
 
+        /* Pill-shaped desktop links */
         .nav-links a {
             padding: 10px 20px;
             border-radius: 9999px;
@@ -77,17 +117,16 @@
             transition: all 0.3s;
         }
 
+        /* Desktop hover effects */
         .nav-links a:hover {
             background: white;
             color: #44403c;
         }
 
-        .hero-content h1 {
-            font-size: 4.8rem;
-            line-height: 1;
-            margin-bottom: 0.4rem;
-        }
-
+        /* =========================================
+           BUTTON COMPONENTS
+           ========================================= */
+        /* Base button styling */
         .btn {
             display: inline-block;
             padding: 14px 36px;
@@ -97,44 +136,105 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        .btn-primary { background: white; color: #44403c; }
-        .btn-primary:hover { background: #f5f5f4; transform: translateY(-2px); }
-        .btn-outline { border: 2px solid white; color: white; }
-        .btn-outline:hover { background: white; color: #44403c; }
 
-        /* Location styling - split on mobile */
+        /* Solid primary button */
+        .btn-primary { 
+            background: white; 
+            color: #44403c; 
+        }
+
+        /* Hover state with slight upward lift */
+        .btn-primary:hover { 
+            background: #f5f5f4; 
+            transform: translateY(-2px); 
+        }
+
+        /* Transparent outline button */
+        .btn-outline { 
+            border: 2px solid white; 
+            color: white; 
+        }
+
+        /* Inverts colors on hover */
+        .btn-outline:hover { 
+            background: white; 
+            color: #44403c; 
+        }
+
+        /* =========================================
+           LOCATION TEXT STYLING
+           ========================================= */
         .location-castle {
-            tracking: [0.125em];
+            letter-spacing: 0.125em; /* Adjusted from invalid pseudo-CSS 'tracking' syntax */
             font-size: 1rem;
             margin-bottom: 0.25rem;
         }
         
         .location-country {
-            tracking: [0.125em];
+            letter-spacing: 0.125em; 
             font-size: 1rem;
             margin-bottom: 1rem;
         }
 
+        /* Desktop-only location formatting */
         @media (min-width: 769px) {
             .location-castle,
             .location-country {
                 display: inline;
                 margin: 0;
             }
+            
+            /* Inserts a bullet point between the two locations on larger screens */
             .location-country::before {
                 content: " • ";
             }
         }
 
-        /* Mobile */
+        /* =========================================
+           MOBILE RESPONSIVE STYLES (< 768px)
+           ========================================= */
         @media (max-width: 768px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.95); padding: 1rem; gap: 8px; }
-            .nav-links.show { display: flex; }
-            .nav-links a { color: #44403c; text-align: center; }
-            .hamburger { display: block; }
-            .logo { font-size: 2rem; }
-            .hero-content h1 { font-size: 3.5rem; }
+            /* Transform horizontal row into a vertical dropdown menu */
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: rgba(255,255,255,0.95); 
+                padding: 1rem; 
+                gap: 8px; 
+            }
             
+            /* Toggled class via JavaScript to open menu */
+            .nav-links.show { 
+                display: flex; 
+            }
+            
+            /* Mobile link styling */
+            .nav-links a { 
+                color: #44403c; 
+                text-align: center; 
+                border: none; /* Removes the white ghost borders */
+            }
+            
+            /* Reveal hamburger icon */
+            .hamburger { 
+                display: block; 
+            }
+            
+            /* Scale down logo sizing */
+            .logo { 
+                font-size: 2rem; 
+            }
+            
+            /* Scale down massive hero header for small screens */
+            .hero-content h1 { 
+                font-size: 3.5rem; 
+            }
+            
+            /* Stack location tags vertically on small screens */
             .location-castle,
             .location-country {
                 display: block;
@@ -145,26 +245,24 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
             
-<div class="nav-links" id="navLinks">
-    <a href="about.html">Our Story</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="schedule.html">Schedule</a>
-    <a href="travel.html">Travel</a>
-    <a href="guest-information.html">Guest Information</a>
-    <a href="registry.html">Registry</a>
-    <a href="rsvp.html">RSVP</a>
-</div>
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
+            </div>
 
             <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
-    <!-- Hero -->
     <header class="hero-bg">
         <div class="hero-content">
             <p class="location-castle text-amber-100 text-base md:text-lg">AMERON NEUSCHWANSTEIN</p>
@@ -182,8 +280,11 @@
     </header>
 
     <script>
+        // Target the hamburger button and navigation links container
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
+        
+        // Listen for click events to open/close the mobile menu
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
