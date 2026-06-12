@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story | Katie & Stu</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --gold: #d4af37; }
+        /* =========================================
+           GLOBAL VARIABLES & BASE STYLES
+           ========================================= */
+        :root { 
+            --gold: #d4af37; /* Theme accent color */
+        }
+        
         body { 
             margin: 0; 
             font-family: 'Inter', system-ui, sans-serif; 
             color: #44403c;
             line-height: 1.7;
-h1, h2, h3 { 
-    font-family: 'Playfair Display', serif; 
-    font-weight: 700; 
-    text-align: center; 
-}
+        } /* Note: Added missing closing bracket here */
 
-h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1.5rem;
-}
+        /* =========================================
+           TYPOGRAPHY
+           ========================================= */
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 700; 
+            text-align: center; 
+        }
 
-h2, h3 {
-    font-size: 2.1rem;
-    margin: 2.2rem 0 1.2rem 0;
-}
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2, h3 {
+            font-size: 2.1rem;
+            margin: 2.2rem 0 1.2rem 0;
+        }
+
+        /* =========================================
+           LAYOUT & BACKGROUND
+           ========================================= */
+        /* Full-screen background with a gradient overlay to enhance text contrast */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
@@ -37,8 +56,25 @@ h2, h3 {
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 110px;
+            padding-top: 110px; /* Accounts for the fixed navigation bar */
         }
+
+        /* Central content container with glass-morphism effect */
+        .content {
+            background: rgba(248, 245, 240, 0.55);
+            padding: 2.2rem 2rem;        
+            max-width: 1150px;           /* Wider layout specific to the About page */
+            width: 100%;
+            margin: 0 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        /* =========================================
+           DESKTOP NAVIGATION
+           ========================================= */
+        /* Fixed top bar with blur filter */
         .nav {
             position: fixed;
             top: 0;
@@ -48,6 +84,8 @@ h2, h3 {
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
         }
+
+        /* Alignment container for logo and links */
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -56,13 +94,18 @@ h2, h3 {
             justify-content: space-between;
             align-items: center;
         }
+
+        /* Branding text */
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
+            white-space: nowrap; /* Enforces text to stay on a single line */
         }
+
+        /* Hidden on desktop, shown on mobile */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -71,10 +114,14 @@ h2, h3 {
             color: white;
             cursor: pointer;
         }
+
+        /* Horizontal link container */
         .nav-links {
             display: flex;
             gap: 10px;
         }
+
+        /* Pill-shaped desktop links */
         .nav-links a {
             padding: 10px 20px;
             border-radius: 9999px;
@@ -84,25 +131,20 @@ h2, h3 {
             border: 1px solid rgba(255,255,255,0.5);
             transition: all 0.3s;
         }
+
+        /* Desktop hover effects */
         .nav-links a:hover {
             background: white;
             color: #44403c;
         }
-        .content {
-            background: rgba(248, 245, 240, 0.55);
-            padding: 2.2rem 2rem;        /* Reduced vertical padding */
-            max-width: 1150px;           /* Almost full width */
-            width: 100%;
-            margin: 0 20px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            text-align: center;
-        }
 
- /* Mobile */
-               @media (max-width: 768px) {
+        /* =========================================
+           MOBILE RESPONSIVE NAVIGATION (< 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Transform row into a vertical dropdown menu */
             .nav-links { 
-                display: none; 
+                display: none; /* Hidden until toggled */
                 flex-direction: column; 
                 position: absolute; 
                 top: 100%; 
@@ -113,41 +155,55 @@ h2, h3 {
                 gap: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            .nav-links.show { display: flex; }
+            
+            /* Toggled class via JavaScript */
+            .nav-links.show { 
+                display: flex; 
+            }
+            
+            /* Mobile link styling */
             .nav-links a { 
                 color: #44403c; 
                 text-align: center;
                 font-size: 1.1rem;
+                border: none; /* Removes the white ghost borders */
             }
-            .hamburger { display: block; }
-            .logo { font-size: 2rem; }
+            
+            /* Reveal hamburger icon */
+            .hamburger { 
+                display: block; 
+            }
+            
+            /* Scale down logo slightly */
+            .logo { 
+                font-size: 2rem; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
             
-<div class="nav-links" id="navLinks">
-    <a href="about.html">Our Story</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="schedule.html">Schedule</a>
-    <a href="travel.html">Travel</a>
-    <a href="guest-information.html">Guest Information</a>
-    <a href="registry.html">Registry</a>
-    <a href="rsvp.html">RSVP</a>
-</div>
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
+            </div>
 
             <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
 
-    <!-- Story Content -->
     <div class="hero-bg">
         <div class="content">
+            
             <h1 class="text-5xl mb-10">Our Story</h1>
             
             <div class="story text-left text-lg leading-relaxed">
@@ -161,12 +217,16 @@ h2, h3 {
                 
                 <p class="text-center text-xl mt-12 italic">We’d love for you to join us as we celebrate our next big adventure with the people we love!</p>
             </div>
+            
         </div>
     </div>
 
     <script>
+        // Target the hamburger button and navigation links container
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
+        
+        // Listen for click events to open/close the mobile menu
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
