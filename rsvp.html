@@ -249,7 +249,8 @@
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2 style="text-align: center;">New RSVP</h2>
                 
-                <input type="text" placeholder="Your Full Name" id="name" required>
+                <!-- Added oninput trigger to dynamically update the meal label -->
+                <input type="text" placeholder="Your Full Name" id="name" required oninput="updateMealLabels()">
                 <input type="email" placeholder="Your Email Address" id="email" required>
                 
                 <label>Will you be attending?</label>
@@ -261,7 +262,8 @@
                 </select>
 
                 <div id="guestNameField" style="display: none;">
-                    <input type="text" placeholder="Guest's Full Name" id="guestName">
+                    <!-- Added oninput trigger to dynamically update the guest meal label -->
+                    <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateMealLabels()">
                 </div>
 
                 <div id="mealSection" style="display: none;">
@@ -342,6 +344,31 @@
             document.getElementById('allergiesField').style.display = (attendance !== "I won't be able to attend") ? 'block' : 'none';
         }
 
+        // New function to update meal preference labels based on typed names
+        function updateMealLabels() {
+            const fullName = document.getElementById('name').value.trim();
+            const mainLabel = document.getElementById('mainMealLabel');
+            
+            // Extract the first name of the main guest and update their meal label
+            if (fullName) {
+                const firstName = fullName.split(' ')[0];
+                mainLabel.textContent = firstName + "'s Meal Preference";
+            } else {
+                mainLabel.textContent = "Your Meal Preference";
+            }
+
+            const guestName = document.getElementById('guestName').value.trim();
+            const guestLabel = document.getElementById('guestMealLabel');
+            
+            // Extract the first name of the plus-one and update their meal label
+            if (guestName) {
+                const guestFirstName = guestName.split(' ')[0];
+                guestLabel.textContent = guestFirstName + "'s Meal Preference";
+            } else {
+                guestLabel.textContent = "Guest's Meal Preference";
+            }
+        }
+
         function submitRSVP() {
             const attendance = document.getElementById('attendance').value;
             const isAttending = attendance !== "I won't be able to attend";
@@ -400,7 +427,7 @@
                             ${data.guestName ? `Guest: ${data.guestName}<br>` : ''}
                             ${data.yourMeal ? `Meal: ${data.yourMeal}<br>` : ''}
                             ${data.guestMeal ? `Guest Meal: ${data.guestMeal}<br>` : ''}
-                            ${data.notes ? `Notes: ${data.notes}<br>` : ''}
+                            ${data.notes ? `Allergies or special requests: ${data.notes}<br>` : ''}
                             <br><strong>If you need to change something, please contact Katie or Stu.</strong>
                         `;
                     } else {
