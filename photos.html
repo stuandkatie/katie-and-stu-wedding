@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://katieandstuwedding.com/photos.html">  
+    <meta property="og:title" content="Share Your Photos | Katie & Stu's Wedding"> 
+    <meta property="og:description" content="Upload your photos from Katie and Stu's wedding weekend!">
+    <meta property="og:image" content="https://katieandstuwedding.com/Website%20pics/Ashville%20trip%201.jpg"> 
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upload your favorite memories from Katie Lawless and Stu Turner's wedding in Germany.">
+    <title>Katie & Stu | Wedding Album Upload</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           GLOBAL VARIABLES & BASE STYLES
+           ========================================= */
+        :root { 
+            --gold: #d4af37; 
+        }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Inter', system-ui, sans-serif; 
+        }
+
+        /* =========================================
+           TYPOGRAPHY
+           ========================================= */
+        h1, h2, h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 400; 
+        }
+
+        /* =========================================
+           LAYOUT & BACKGROUND
+           ========================================= */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative; 
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content p.subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           DESKTOP NAVIGATION
+           ========================================= */
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap; 
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #44403c;
+        }
+
+        /* =========================================
+           BUTTON & FORM COMPONENTS
+           ========================================= */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 9999px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary { 
+            background: white; 
+            color: #44403c; 
+        }
+
+        .btn-primary:hover:not(:disabled) { 
+            background: #f5f5f4; 
+            transform: translateY(-2px); 
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Custom Photo Upload Card */
+        .upload-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            margin: 0 auto;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            margin-bottom: 1.5rem;
+            color: white;
+            border: 2px dashed rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+        }
+
+        .file-input::file-selector-button {
+            padding: 8px 16px;
+            border-radius: 9999px;
+            border: none;
+            background: var(--gold);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: background 0.3s;
+        }
+
+        .file-input::file-selector-button:hover {
+            background: #b5952f;
+        }
+
+        .status-message {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 1.5rem;
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE STYLES (< 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; 
+                background: rgba(255,255,255,0.95); 
+                padding: 1rem; 
+                gap: 8px; 
+            }
+            
+            .nav-links.show { 
+                display: flex; 
+            }
+            
+            .nav-links a { 
+                color: #44403c; 
+                text-align: center; 
+                border: none;
+            }
+            
+            .hamburger { 
+                display: block; 
+            }
+            
+            .logo { 
+                font-size: 2rem; 
+            }
+            
+            .hero-content h1 { 
+                font-size: 2.8rem; 
+            }
+
+            .upload-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
+                <a href="photos.html">Share Photos</a>
+            </div>
+
+            <button class="hamburger" id="hamburger">☰</button>
+        </div>
+    </nav>
+
+    <header class="hero-bg">
+        <div class="hero-content">
+            <h1>Share the Love</h1>
+            <p class="subtitle">Upload your favorite photos from the weekend to our shared album.</p>
+            
+            <div class="upload-card">
+                <form id="uploadForm">
+                    <input type="file" id="photoFile" accept="image/*" class="file-input" required />
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Upload Photo</button>
+                </form>
+                <div id="uploadStatus" class="status-message"></div>
+            </div>
+
+        </div>
+    </header>
+
+    <script>
+        // --- Mobile Navigation ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        // --- Photo Upload Logic ---
+        const form = document.getElementById("uploadForm");
+        const statusText = document.getElementById("uploadStatus");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById("photoFile");
+            if(fileInput.files.length === 0) return;
+            
+            const file = fileInput.files[0];
+            
+            // Update UI to show loading state
+            submitBtn.innerText = "Uploading...";
+            submitBtn.disabled = true;
+            statusText.innerText = "Sending to Katie & Stu's album...";
+            statusText.style.color = "white";
+
+            // Process and send the file
+            const fr = new FileReader();
+            fr.readAsArrayBuffer(file);
+            fr.onload = (f) => {
+                
+                // IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL!
+                const url = "https://script.google.com/macros/s/AKfycby38szNPQBqMISqMcvPwvZ0Lhw0Qo4aUJMNagxQ81PiWXlEFubLXmeeq_yJCZR8rOCy/exec"; 
+                
+                const qs = new URLSearchParams({ filename: file.name, mimeType: file.type });
+                
+                fetch(`${url}?${qs}`, {
+                    method: "POST",
+                    body: JSON.stringify([...new Int8Array(f.target.result)])
+                })
+                .then(res => {
+                    statusText.innerText = "Success! Thank you for sharing.";
+                    statusText.style.color = "#a7f3d0"; // Soft green
+                    submitBtn.innerText = "Upload Another Photo";
+                    submitBtn.disabled = false;
+                    form.reset(); // Clears the file input
+                })
+                .catch(err => {
+                    statusText.innerText = "Oops! Something went wrong. Please try again.";
+                    statusText.style.color = "#fecaca"; // Soft red
+                    submitBtn.innerText = "Upload Photo";
+                    submitBtn.disabled = false;
+                });
+            };
+        });
+    </script>
+
+</body>
+</html>
