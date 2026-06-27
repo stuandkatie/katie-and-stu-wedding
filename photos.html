@@ -1,392 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon.png"> 
-
-    <!-- =========================================
-         Section for what is displayed when sharing website via text
-         ========================================= -->  
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://katieandstuwedding.com/photos.html">  
-    <meta property="og:title" content="Share Your Photos | Katie & Stu's Wedding"> 
-    <meta property="og:description" content="Upload your photos from Katie and Stu's wedding weekend!">
-    <meta property="og:image" content="https://katieandstuwedding.com/Website%20pics/Ashville%20trip%201.jpg"> 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Upload your favorite memories from Katie Lawless and Stu Turner's wedding in Germany.">
-    <title>Katie & Stu | Wedding Album Upload</title>
-    
+    <title>Katie & Stu | Wedding Album</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
     <style>
-        /* =========================================
-           GLOBAL VARIABLES & BASE STYLES
-           ========================================= */
-        :root { 
-            --gold: #d4af37; 
-        }
-        
-        body { 
-            margin: 0; 
-            font-family: 'Inter', system-ui, sans-serif; 
-        }
-
-        /* =========================================
-           TYPOGRAPHY
-           ========================================= */
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 400; 
-        }
-
-        /* =========================================
-           LAYOUT & BACKGROUND
-           ========================================= */
+        :root { --gold: #d4af37; }
+        body { margin: 0; font-family: 'Inter', sans-serif; color: white; }
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative; 
+            background-size: cover; background-position: center;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
         }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-content p.subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        /* =========================================
-           DESKTOP NAVIGATION
-           ========================================= */
-        .nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.3rem;
-            color: white;
-            text-decoration: none;
-            white-space: nowrap; 
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
-            font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-
-        .nav-links a:hover {
-            background: white;
-            color: #44403c;
-        }
-
-        /* =========================================
-           BUTTON & FORM COMPONENTS
-           ========================================= */
-        .btn {
-            display: inline-block;
-            padding: 14px 36px;
-            border-radius: 9999px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary { 
-            background: white; 
-            color: #44403c; 
-        }
-
-        .btn-primary:hover:not(:disabled) { 
-            background: #f5f5f4; 
-            transform: translateY(-2px); 
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        /* Custom Photo Upload Card */
         .upload-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 500px;
-            width: 90%;
-            margin: 0 auto;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 16px;
+            padding: 2.5rem; max-width: 450px; width: 90%;
         }
-
         .file-input {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 15px;
-            margin-bottom: 1.5rem;
-            color: white;
-            border: 2px dashed rgba(255, 255, 255, 0.6);
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
+            width: 100%; padding: 15px; margin: 1rem 0;
+            border: 2px dashed rgba(255, 255, 255, 0.6); border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2); cursor: pointer; color: white; box-sizing: border-box;
         }
-
-        .file-input::file-selector-button {
-            padding: 8px 16px;
-            border-radius: 9999px;
-            border: none;
-            background: var(--gold);
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-            margin-right: 15px;
-            transition: background 0.3s;
+        .btn-primary { 
+            background: white; color: #44403c; padding: 14px 36px;
+            border-radius: 9999px; border: none; font-weight: 500;
+            cursor: pointer; width: 100%; transition: 0.3s;
         }
-
-        .file-input::file-selector-button:hover {
-            background: #b5952f;
-        }
-
-        .status-message {
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            min-height: 1.5rem;
-        }
-
-        /* =========================================
-           MOBILE RESPONSIVE STYLES (< 768px)
-           ========================================= */
-        @media (max-width: 768px) {
-            .nav-links { 
-                display: none; 
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: rgba(255,255,255,0.95); 
-                padding: 1rem; 
-                gap: 8px; 
-            }
-            
-            .nav-links.show { 
-                display: flex; 
-            }
-            
-            .nav-links a { 
-                color: #44403c; 
-                text-align: center; 
-                border: none;
-            }
-            
-            .hamburger { 
-                display: block; 
-            }
-            
-            .logo { 
-                font-size: 2rem; 
-            }
-            
-            .hero-content h1 { 
-                font-size: 2.8rem; 
-            }
-
-            .upload-card {
-                padding: 1.5rem;
-            }
-        }
+        .btn-primary:hover:not(:disabled) { background: #f5f5f4; }
     </style>
 </head>
 <body>
 
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Katie &amp; Stu</a>
-            
-            <div class="nav-links" id="navLinks">
-                <a href="about.html">Our Story</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="schedule.html">Schedule</a>
-                <a href="travel.html">Travel</a>
-                <a href="guest-information.html">Guest Information</a>
-                <a href="registry.html">Registry</a>
-                <a href="rsvp.html">RSVP</a>
-                <a href="photos.html">Share Photos</a>
-            </div>
-
-            <button class="hamburger" id="hamburger">☰</button>
-        </div>
-    </nav>
-
     <header class="hero-bg">
-        <div class="hero-content">
-            <h1>Share the Love</h1>
-            <p class="subtitle">Upload your favorite photos from the weekend to our shared album.</p>
-            
-            <div class="upload-card">
-                <form id="uploadForm">
-                    <!-- Added 'multiple' attribute here to allow batch selection -->
-                    <input type="file" id="photoFile" accept="image/*" class="file-input" multiple required />
-                    <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">Upload Photos</button>
-                </form>
-                <input type="text" id="guestName" placeholder="Your Name" required style="width: 100%; padding: 15px; margin-bottom: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); color: white;" />
-                <div id="uploadStatus" class="status-message"></div>
-            </div>
-
+        <div class="upload-card">
+            <h2 style="font-family: 'Playfair Display'; margin-top: 0;">Share Your Memories</h2>
+            <form id="uploadForm">
+                <div style="text-align: left;">
+                    <label>Your Name:</label>
+                    <input type="text" id="guestName" required style="width: 100%; padding: 12px; margin-top: 5px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); color: white; box-sizing: border-box;">
+                </div>
+                <input type="file" id="photoFile" accept="image/*" class="file-input" multiple required>
+                <button type="submit" id="submitBtn" class="btn-primary">Upload Photos</button>
+            </form>
+            <div id="uploadStatus" style="margin-top: 1rem; font-weight: 500;"></div>
         </div>
     </header>
 
     <script>
-        // --- Mobile Navigation ---
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-
-        // --- Photo Upload Logic ---
         const form = document.getElementById("uploadForm");
         const statusText = document.getElementById("uploadStatus");
         const submitBtn = document.getElementById("submitBtn");
 
-// Helper function to process individual files as promises
-       function uploadSingleFile(file, url) {
-    return new Promise((resolve, reject) => {
-        const fr = new FileReader();
-        fr.readAsDataURL(file); 
-        
-        fr.onload = (f) => {
-            const base64Data = f.target.result.split(',')[1];
-            
-            // --- ADD THE PAYLOAD OBJECT HERE ---
-            const payload = {
-                filename: file.name,
-                mimeType: file.type,
-                base64: base64Data,
-                guestName: document.getElementById("guestName").value 
-            };
-            // ------------------------------------
-
-            fetch(url, {
-                method: "POST",
-                body: JSON.stringify(payload) // Now the name is included in the package
-            })
-            .then(res => {
-                if (res.ok) {
-                    resolve();
-                } else {
-                    reject(new Error("Upload failed"));
-                }
-            })
-            .catch(reject);
-        };
-        fr.onerror = reject;
-    });
-}
+        async function uploadSingleFile(file, url) {
+            return new Promise((resolve, reject) => {
+                const fr = new FileReader();
+                fr.readAsDataURL(file);
+                fr.onload = (f) => {
+                    const payload = {
+                        filename: file.name,
+                        mimeType: file.type,
+                        base64: f.target.result.split(',')[1],
+                        guestName: document.getElementById("guestName").value
+                    };
+                    fetch(url, { method: "POST", body: JSON.stringify(payload) })
+                    .then(res => res.ok ? resolve() : reject())
+                    .catch(reject);
+                };
+            });
+        }
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            const files = document.getElementById("photoFile").files;
+            const url = "https://script.google.com/macros/s/AKfycbzLKz47CDuVz74X3hsRSUGCc68yQg5-uP0TPeab1tiCfqLLJcgEqUyJb3lDKk1xDx3b/exec"; // <--- REPLACE THIS
             
-            const fileInput = document.getElementById("photoFile");
-            if(fileInput.files.length === 0) return;
-            
-            const files = fileInput.files;
-            const totalFiles = files.length;
-            
-            // IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL!
-            const url = "https://script.google.com/macros/s/AKfycbzLKz47CDuVz74X3hsRSUGCc68yQg5-uP0TPeab1tiCfqLLJcgEqUyJb3lDKk1xDx3b/exec"; 
-            
-            // Update UI to show loading state
             submitBtn.disabled = true;
-            statusText.style.color = "white";
-
-            let successCount = 0;
-            let errorCount = 0;
-
-            // Loop through each file sequentially to avoid overwhelming the server
-            for (let i = 0; i < totalFiles; i++) {
-                const currentFile = files[i];
-                submitBtn.innerText = `Uploading ${i + 1} of ${totalFiles}...`;
-                statusText.innerText = `Sending ${currentFile.name}...`;
-                
-                try {
-                    await uploadSingleFile(currentFile, url);
-                    successCount++;
-                } catch (err) {
-                    errorCount++;
-                    console.error("Error uploading " + currentFile.name, err);
-                }
+            for (let i = 0; i < files.length; i++) {
+                submitBtn.innerText = `Uploading ${i + 1} of ${files.length}...`;
+                await uploadSingleFile(files[i], url).catch(() => console.error("Failed"));
             }
-
-            // Final UI update based on results
-            if (errorCount === 0) {
-                statusText.innerText = `Success! ${successCount} photo(s) shared. Thank you!`;
-                statusText.style.color = "#a7f3d0"; // Soft green
-            } else {
-                statusText.innerText = `Done: ${successCount} uploaded, ${errorCount} failed.`;
-                statusText.style.color = (successCount > 0) ? "#fde047" : "#fecaca"; // Yellow if mixed, red if all failed
-            }
-
-            submitBtn.innerText = "Upload More Photos";
+            statusText.innerText = "Success! Thank you for sharing.";
+            submitBtn.innerText = "Upload More";
             submitBtn.disabled = false;
-            form.reset(); // Clears the file input
         });
     </script>
-
 </body>
 </html>
