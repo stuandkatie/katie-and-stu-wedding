@@ -36,7 +36,7 @@
 
     <header class="hero-bg">
         <div class="upload-card">
-            <h2 style="font-family: 'Playfair Display'; margin-top: 0;">Share Your Memories</h2>
+            <h2 style="font-family: 'Playfair Display'; margin-top: 0;">Share Your Photos</h2>
             <form id="uploadForm">
                 <div style="text-align: left;">
                     <label>Your Name:</label>
@@ -82,7 +82,7 @@
                 submitBtn.innerText = `Uploading ${i + 1} of ${files.length}...`;
                 await uploadSingleFile(files[i], url).catch(() => console.error("Failed"));
             }
-            statusText.innerText = "Success! Thank you for sharing.";
+            statusText.innerText = "Thank you! Your memories have been successfully added to our collection.";
             submitBtn.innerText = "Upload More";
             submitBtn.disabled = false;
         });
