@@ -8,44 +8,73 @@
     <style>
         :root { --gold: #d4af37; }
         body { margin: 0; font-family: 'Inter', sans-serif; color: white; }
+        
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)), url('Background.jpg');
             background-size: cover; background-position: center;
             height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
         }
+
         .upload-card {
-            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 16px;
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 16px;
             padding: 2.5rem; max-width: 450px; width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+
+        .header-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 0.5rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+        }
+
         .file-input {
             width: 100%; padding: 15px; margin: 1rem 0;
             border: 2px dashed rgba(255, 255, 255, 0.6); border-radius: 8px;
             background: rgba(0, 0, 0, 0.2); cursor: pointer; color: white; box-sizing: border-box;
         }
+
         .btn-primary { 
             background: white; color: #44403c; padding: 14px 36px;
-            border-radius: 9999px; border: none; font-weight: 500;
-            cursor: pointer; width: 100%; transition: 0.3s;
+            border-radius: 9999px; border: none; font-weight: 600;
+            cursor: pointer; width: 100%; transition: all 0.3s;
+            font-size: 1rem;
         }
-        .btn-primary:hover:not(:disabled) { background: #f5f5f4; }
+
+        .btn-primary:hover:not(:disabled) { background: #f5f5f4; transform: translateY(-2px); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
     </style>
 </head>
 <body>
 
     <header class="hero-bg">
         <div class="upload-card">
-            <h2 style="font-family: 'Playfair Display'; margin-top: 0;">Share Your Photos</h2>
+            <div class="header-section">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+                <h2>Share Your Memories</h2>
+            </div>
+            
             <form id="uploadForm">
-                <div style="text-align: left;">
-                    <label>Your Name:</label>
-                    <input type="text" id="guestName" required style="width: 100%; padding: 12px; margin-top: 5px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); color: white; box-sizing: border-box;">
+                <div style="text-align: left; margin-bottom: 1rem;">
+                    <label style="font-size: 0.9rem;">Your Name:</label>
+                    <input type="text" id="guestName" required placeholder="Enter your name"
+                           style="width: 100%; padding: 12px; margin-top: 5px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.2); color: white; box-sizing: border-box;">
                 </div>
+                
                 <input type="file" id="photoFile" accept="image/*" class="file-input" multiple required>
                 <button type="submit" id="submitBtn" class="btn-primary">Upload Photos</button>
             </form>
-            <div id="uploadStatus" style="margin-top: 1rem; font-weight: 500;"></div>
+            
+            <div id="uploadStatus" style="margin-top: 1.5rem; font-weight: 500; font-size: 0.95rem;"></div>
         </div>
     </header>
 
@@ -75,16 +104,21 @@
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
             const files = document.getElementById("photoFile").files;
-            const url = "https://script.google.com/macros/s/AKfycbzLKz47CDuVz74X3hsRSUGCc68yQg5-uP0TPeab1tiCfqLLJcgEqUyJb3lDKk1xDx3b/exec"; // <--- REPLACE THIS
+            const url = "https://script.google.com/macros/s/AKfycbzLKz47CDuVz74X3hsRSUGCc68yQg5-uP0TPeab1tiCfqLLJcgEqUyJb3lDKk1xDx3b/exec"; // <--- PASTE YOUR DEPLOYED URL HERE
             
             submitBtn.disabled = true;
+            statusText.innerText = "Processing...";
+            
             for (let i = 0; i < files.length; i++) {
                 submitBtn.innerText = `Uploading ${i + 1} of ${files.length}...`;
                 await uploadSingleFile(files[i], url).catch(() => console.error("Failed"));
             }
-            statusText.innerText = "Thank you! Your memories have been successfully added to our collection.";
+            
+            statusText.innerText = "Success! Thank you for sharing your memories.";
+            statusText.style.color = "#a7f3d0";
             submitBtn.innerText = "Upload More";
             submitBtn.disabled = false;
+            form.reset();
         });
     </script>
 </body>
