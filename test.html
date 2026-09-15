@@ -15,8 +15,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RSVP for Katie and Stu's wedding, September 17 and 18, 2027 in Hohenschwangau, Germany.">
-    <title>RSVP | Katie &amp; Stu</title>
+    <meta name="description" content="Schedule for Katie and Stu's wedding weekend, September 17 and 18, 2027 at the AMERON Neuschwanstein Alpsee Resort.">
+    <title>Schedule | Katie &amp; Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* =========================================
@@ -37,23 +37,25 @@
         /* =========================================
            TYPOGRAPHY
            ========================================= */
-        h1, h2 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             text-align: center;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-        }
+        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.1rem; margin: 2.6rem 0 1.2rem 0; }
+        h3 { font-size: 1.5rem; margin: 2rem 0 0.8rem 0; text-align: left; }
 
-        h2 {
-            font-size: 2.1rem;
-            margin: 0 0 1.2rem 0;
-        }
-
+        ul { text-align: left; padding-left: 1.5rem; }
+        li { margin-bottom: 0.9rem; }
         a { color: #5c6e4c; }
+
+        .divider {
+            border: 0;
+            border-top: 1px solid rgba(42,39,36,0.25);
+            margin: 2.5rem 0 0 0;
+        }
 
         /* =========================================
            LAYOUT & BACKGROUND
@@ -79,13 +81,68 @@
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
             box-sizing: border-box;
         }
 
-        /* Intro text above the password box */
-        .intro {
+        /* =========================================
+           SCHEDULE COMPONENTS
+           ========================================= */
+        /* One card per day of the wedding weekend */
+        .day {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-top: 4px solid var(--gold-deep);
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            margin: 1.8rem 0;
+            text-align: left;
+        }
+
+        .day-date {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6b655e;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .day-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin: 0 0 0.6rem 0;
+        }
+
+        .day-time {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0 0 1rem 0;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(42,39,36,0.12);
+        }
+
+        .day p { margin: 0.8rem 0; }
+        .day p:last-child { margin-bottom: 0; }
+
+        /* Small labelled facts inside a day card */
+        .detail {
+            display: flex;
+            gap: 0.6rem;
+            padding: 0.3rem 0;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            min-width: 105px;
+            flex-shrink: 0;
+        }
+
+        .closing-note {
             text-align: center;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 3rem;
         }
 
         /* =========================================
@@ -107,7 +164,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: nowrap;
         }
 
         .logo {
@@ -120,18 +176,13 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
-        /* Pure styling for the hamburger, kept free of the form button rules below */
         .hamburger {
             display: none;
-            font-size: 2.2rem;
-            background: transparent !important;
-            border: none !important;
+            font-size: 2rem;
+            background: none;
+            border: none;
             color: white;
             cursor: pointer;
-            padding: 0 !important;
-            margin: 0 !important;
-            width: auto !important;
-            flex-shrink: 0;
             text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
@@ -148,110 +199,12 @@
             transition: all 0.3s;
         }
 
-        .nav-links a:hover {
-            background: white;
-            color: #2a2724;
-            text-shadow: none;
-        }
-
-        /* =========================================
-           FORM ELEMENTS (scoped to .content only, so the
-           hamburger button is never caught by these rules)
-           ========================================= */
-        .content input,
-        .content select,
-        .content button {
-            width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            border: 1px solid rgba(42,39,36,0.2);
-            border-radius: 8px;
-            font-size: 1.05rem;
-            box-sizing: border-box;
-            font-family: inherit;
-            color: #2a2724;
-            background: rgba(255,255,255,0.75);
-        }
-
-        .content input::placeholder { color: #6b655e; }
-
-        .content input:focus,
-        .content select:focus {
-            outline: none;
-            border-color: var(--gold-deep);
-            background: rgba(255,255,255,0.95);
-        }
-
-        /* Masks the password without triggering browser save-password prompts */
-        .masked-password-input {
-            -webkit-text-security: disc !important;
-            text-security: disc !important;
-        }
-
-        .content button {
-            background: #9CAF88;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: background 0.25s;
-        }
-
-        .content button:hover { background: #7F8F6F; }
-
-        .choice-btn {
-            margin: 12px 0;
-            padding: 16px;
-            font-size: 1.1rem;
-        }
-
-        label {
-            display: block;
-            text-align: left;
-            margin: 1.2rem 0 0.5rem 0;
-            font-weight: 500;
-        }
-
-        /* Explanatory text sitting above a field */
-        .field-note {
-            margin: 0 0 0.25rem 0;
-            font-size: 0.92rem;
-            color: #4a4540;
-            line-height: 1.5;
-        }
-
-        /* Side-by-side first and last name inputs */
-        .name-row { display: flex; gap: 12px; }
-        .name-row input { flex: 1; }
-
-        /* Panel used for the "check my RSVP" result */
-        .result-panel {
-            background: rgba(255,255,255,0.55);
-            border: 1px solid rgba(42,39,36,0.15);
-            border-radius: 12px;
-            padding: 1.2rem 1.4rem;
-            margin-top: 1.5rem;
-            text-align: left;
-        }
-
-        .success-message {
-            display: none;
-            margin-top: 2rem;
-            color: #2f5d3a;
-            font-size: 1.3rem;
-            text-align: center;
-        }
+        .nav-links a:hover { background: white; color: #2a2724; text-shadow: none; }
 
         /* =========================================
            MOBILE RESPONSIVE (< 768px)
            ========================================= */
         @media (max-width: 768px) {
-            .nav-container {
-                padding: 1.2rem 1.5rem;
-                align-items: center;
-            }
-            .logo { font-size: 2rem; }
-            .hamburger { display: block; font-size: 2rem; }
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -270,11 +223,16 @@
                 border: none;
                 text-shadow: none;
             }
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
 
             .content { padding: 2rem 1.25rem; }
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
-            .name-row { flex-direction: column; gap: 0; }
+            .day { padding: 1.3rem 1.2rem; }
+            .day-name { font-size: 1.45rem; }
+            .detail { flex-direction: column; gap: 0; }
+            .detail-label { min-width: 0; }
         }
     </style>
 </head>
@@ -297,213 +255,53 @@
         </div>
     </nav>
 
+    <!-- Schedule Content -->
     <div class="hero-bg">
         <div class="content">
 
-            <h1>RSVP</h1>
+            <h1>Schedule</h1>
 
-            <!-- Screen 1: password gate -->
-            <div id="passwordSection">
-                <p class="intro">Please enter the password below</p>
-                <input type="text" id="password" class="masked-password-input" placeholder="Enter password" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
-                <button onclick="checkPassword()">Continue</button>
-            </div>
+            <div class="story" style="text-align: left;">
 
-            <!-- Screen 2: check or submit -->
-            <div id="choiceSection" style="display: none; margin-top: 2rem;">
-                <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
-                <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
-            </div>
+                <p>Here is the shape of our wedding weekend. Everything takes place at the AMERON Neuschwanstein Alpsee Resort.</p>
 
-            <!-- Screen 3: look up an existing RSVP -->
-            <div id="checkForm" style="display: none; margin-top: 2rem;">
-                <h2>Check My RSVP</h2>
-                <input type="email" id="checkEmail" placeholder="Enter your email">
-                <button onclick="checkPreviousRSVP()">Check My RSVP</button>
-                <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
-            </div>
+                <div class="day">
+                    <p class="day-date">Friday, September 17, 2027</p>
+                    <p class="day-name">Welcome Party</p>
+                    <p class="day-time">5:00 p.m. to 10:00 p.m.</p>
 
-            <!-- Screen 4: the RSVP form -->
-            <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
-                <h2>New RSVP</h2>
+                    <p>An Oktoberfest-themed evening to kick off the weekend and get everyone in the same room before the big day.</p>
 
-                <div class="name-row">
-                    <input type="text" placeholder="Your First Name" id="firstName" oninput="updateMealLabels()" required>
-                    <input type="text" placeholder="Your Last Name" id="lastName" required>
+                    <div class="detail"><span class="detail-label">Attire</span><span>Casual, or Oktoberfest themed if you want to have fun with it.</span></div>
+                    <div class="detail"><span class="detail-label">Kids</span><span>Warmly invited. We would love to see them there.</span></div>
                 </div>
 
-                <input type="email" placeholder="Your Email Address" id="email" required>
+                <div class="day">
+                    <p class="day-date">Saturday, September 18, 2027</p>
+                    <p class="day-name">Wedding Day</p>
+                    <p class="day-time">3:30 p.m. to midnight</p>
 
-                <label>Will you be attending?</label>
-                <select id="attendance" onchange="toggleGuestFields()" required>
-                    <option value="">Please select...</option>
-                    <option value="I won't be able to attend">I won't be able to attend</option>
-                    <option value="Just myself">Just myself</option>
-                    <option value="Myself plus one">Myself plus one</option>
-                </select>
+                    <p>Ceremony and cocktails outdoors with the lake and mountains behind us, then dinner and dancing inside.</p>
 
-                <div id="guestNameField" style="display: none;">
-                    <div class="name-row">
-                        <input type="text" placeholder="Guest First Name" id="guestFirstName" oninput="updateMealLabels()">
-                        <input type="text" placeholder="Guest Last Name" id="guestLastName">
-                    </div>
+                    <div class="detail"><span class="detail-label">Attire</span><span>Formal evening attire. Bring a wrap or overcoat for the outdoor portion.</span></div>
+                    <div class="detail"><span class="detail-label">Kids</span><span>Adults only. See <a href="guest-information.html#kids">Guest Information</a> for childcare.</span></div>
                 </div>
 
-                <div id="mealSection" style="display: none;">
-                    <label id="mainMealLabel">Your Meal Preference</label>
-                    <select id="meal1">
-                        <option>Standard Meal</option>
-                        <option>Vegetarian</option>
-                        <option>Vegan</option>
-                        <option>Gluten-Free</option>
-                    </select>
+                <p>We are still working out the timings within each day, the ceremony start, when dinner is served, and so on. We will post those here once they are locked in.</p>
 
-                    <div id="guestMealField" style="display: none;">
-                        <label id="guestMealLabel">Guest's Meal Preference</label>
-                        <select id="meal2">
-                            <option>Standard Meal</option>
-                            <option>Vegetarian</option>
-                            <option>Vegan</option>
-                            <option>Gluten-Free</option>
-                        </select>
-                    </div>
-                </div>
+                <p class="closing-note">Keep the whole weekend free if you can. The best parts are usually the unscheduled ones.</p>
 
-                                <div id="allergiesField" style="display: none;">
-                    <input type="text" placeholder="Any allergies or special requests?" id="notes">
-                </div>
-
-                <div id="hotelField" style="display: none;">
-                    <p class="field-note">We're working on arranging a shuttle, so knowing roughly where everyone is staying helps us plan.</p>
-                    <input type="text" placeholder="What hotel do you expect to stay at?" id="hotel">
-                </div>
-
-                <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
-
-            <!-- Screen 5: confirmation -->
-            <div id="successMessage" class="success-message">
-                Thank you! Your RSVP has been received.<br>We can't wait to celebrate with you!
-            </div>
-
         </div>
     </div>
 
     <script>
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
-
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwC9OxKHDM-CIf2ucxWtKT1t9f67UGjLx-g-JRUxHCYI--BmPPamkDCb3h7yaSWX-_4-Q/exec";
-
-        function checkPassword() {
-            const pwd = document.getElementById('password').value.trim();
-            if (!pwd) return;
-            fetch(SCRIPT_URL + "?password=" + encodeURIComponent(pwd))
-                .then(r => r.text())
-                .then(text => {
-                    if (text === "valid") {
-                        document.getElementById('passwordSection').style.display = 'none';
-                        document.getElementById('choiceSection').style.display = 'block';
-                    } else {
-                        alert("Incorrect password. Please try again.");
-                    }
-                }).catch(() => alert("Network error."));
-        }
-
-        function showCheckForm() {
-            document.getElementById('choiceSection').style.display = 'none';
-            document.getElementById('checkForm').style.display = 'block';
-        }
-
-        function showSubmitForm() {
-            document.getElementById('choiceSection').style.display = 'none';
-            document.getElementById('rsvpForm').style.display = 'block';
-        }
-
-        function toggleGuestFields() {
-            const attendance = document.getElementById('attendance').value;
-            const attending = attendance !== "I won't be able to attend";
-            const plusOne = attendance === "Myself plus one";
-            document.getElementById('guestNameField').style.display = plusOne ? 'block' : 'none';
-            document.getElementById('guestMealField').style.display = plusOne ? 'block' : 'none';
-            document.getElementById('mealSection').style.display = attending ? 'block' : 'none';
-            document.getElementById('allergiesField').style.display = attending ? 'block' : 'none';
-            document.getElementById('hotelField').style.display = attending ? 'block' : 'none';
-            updateMealLabels();
-        }
-
-        function updateMealLabels() {
-            const primaryFirst = document.getElementById('firstName').value.trim();
-            const guestFirst = document.getElementById('guestFirstName').value.trim();
-            document.getElementById('mainMealLabel').textContent = primaryFirst ? primaryFirst + "'s Meal Preference" : "Your Meal Preference";
-            document.getElementById('guestMealLabel').textContent = guestFirst ? guestFirst + "'s Meal Preference" : "Guest's Meal Preference";
-        }
-
-        function submitRSVP() {
-            const attendance = document.getElementById('attendance').value;
-            const attending = attendance !== "I won't be able to attend";
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                attendance: attendance,
-                guestFirstName: document.getElementById('guestFirstName').value || "",
-                guestLastName: document.getElementById('guestLastName').value || "",
-                notes: document.getElementById('notes').value || "",
-                hotel: attending ? (document.getElementById('hotel').value || "") : ""
-            };
-            if (attending) {
-                formData.meal1 = document.getElementById('meal1').value || "";
-                if (attendance === "Myself plus one") {
-                    formData.meal2 = document.getElementById('meal2').value || "";
-                }
-            }
-            fetch(SCRIPT_URL, { method: 'POST', body: new URLSearchParams(formData) })
-                .then(r => r.text())
-                .then(text => {
-                    if (text.startsWith("success")) {
-                        document.getElementById('rsvpForm').style.display = 'none';
-                        document.getElementById('successMessage').style.display = 'block';
-                    } else {
-                        alert("Error saving RSVP.");
-                    }
-                }).catch(() => alert("Network error."));
-        }
-
-        function checkPreviousRSVP() {
-            const email = document.getElementById('checkEmail').value.trim();
-            const resultDiv = document.getElementById('checkResult');
-            if (!email) {
-                resultDiv.innerHTML = '<span style="color:#9b2c2c;">Please enter your email</span>';
-                return;
-            }
-            resultDiv.innerHTML = 'Searching...';
-            fetch(SCRIPT_URL + '?email=' + encodeURIComponent(email))
-                .then(r => r.text())
-                .then(text => {
-                    const data = JSON.parse(text);
-                    if (data.found) {
-                        const guest = [data.guestFirstName, data.guestLastName].filter(Boolean).join(' ');
-                        resultDiv.innerHTML =
-                            '<div class="result-panel">' +
-                            '<strong>Found your RSVP!</strong><br>' +
-                            'Name: ' + (data.firstName || '') + ' ' + (data.lastName || '') + '<br>' +
-                            'Attendance: ' + (data.attendance || '') + '<br>' +
-                            (guest ? 'Guest: ' + guest + '<br>' : '') +
-                            (data.yourMeal ? 'Meal: ' + data.yourMeal + '<br>' : '') +
-                            (data.guestMeal ? 'Guest Meal: ' + data.guestMeal + '<br>' : '') +
-                            (data.hotel ? 'Hotel: ' + data.hotel + '<br>' : '') +
-                            (data.notes ? 'Notes: ' + data.notes + '<br>' : '') +
-                            '<br><strong>If you need to change something, please contact Katie or Stu.</strong>' +
-                            '</div>';
-                    } else {
-                        resultDiv.innerHTML = '<div class="result-panel"><strong>No RSVP found for this email.</strong></div>';
-                    }
-                }).catch(() => {
-                    resultDiv.innerHTML = '<span style="color:#9b2c2c;">Error checking. Try again.</span>';
-                });
-        }
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
     </script>
+
 </body>
 </html>
