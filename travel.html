@@ -90,8 +90,10 @@
             font-weight: 500;
         }
 
-        /* Stops jump targets from landing underneath the two fixed bars */
-        .anchor { scroll-margin-top: calc(var(--nav-h, 84px) + var(--jump-h, 55px) + 24px); }
+        /* Stops jump targets from landing underneath the two fixed bars.
+           .subanchor is for in-page links that have no matching jump-bar chip. */
+        .anchor,
+        .subanchor { scroll-margin-top: calc(var(--nav-h, 84px) + var(--jump-h, 55px) + 24px); }
 
         /* =========================================
            TYPOGRAPHY
@@ -236,7 +238,21 @@
         .rate-label { color: #4a4540; }
         .rate-price { font-weight: 500; white-space: nowrap; }
 
-        /* Hotel reservations contact block */
+        /* Neutral information panel, shares styling with the booking block */
+        .panel {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.8rem 0;
+            text-align: left;
+        }
+
+        .panel p { margin: 0.7rem 0; }
+        .panel p:first-child { margin-top: 0; }
+        .panel p:last-child { margin-bottom: 0; }
+
+        /* Booking contact block */
         .booking {
             background: rgba(255,255,255,0.55);
             border: 1px solid rgba(42,39,36,0.15);
@@ -348,7 +364,7 @@
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
             h3 { font-size: 1.35rem; }
-            .callout, .deadline, .booking { padding: 1.2rem 1.1rem; }
+            .callout, .deadline, .booking, .panel { padding: 1.2rem 1.1rem; }
             .rooms { grid-template-columns: 1fr; }
         }
     </style>
@@ -397,7 +413,11 @@
 
                 <h2 id="stay" class="anchor">Where to Stay</h2>
 
-                <p>We've reserved a block of rooms at the AMERON, which is where the wedding itself is happening. Everything for the weekend is within walking distance of your room, so staying here means no transportation to sort out and no reason to leave the party early. You can see the rooms and the property at <a href="https://www.ameroncollection.com/en/neuschwanstein-alpsee-resort-spa" target="_blank" rel="noopener">ameroncollection.com</a>.</p>
+                <p>There are two good ways to do this. You can stay with us at the AMERON, where the wedding itself is happening, or you can find something more affordable in Füssen, ten minutes away. Below we cover the resort first, then <a href="#budget">staying elsewhere</a>.</p>
+
+                <h3>Staying at the AMERON</h3>
+
+                <p>We've reserved a block of rooms at the resort. Everything for the weekend is within walking distance of your room, so staying here means no transportation to sort out and no reason to leave the party early. You can see the rooms and the property at <a href="https://www.ameroncollection.com/en/neuschwanstein-alpsee-resort-spa" target="_blank" rel="noopener">ameroncollection.com</a>.</p>
 
                 <div class="deadline">
                     <p><strong>Please book by May 30, 2027.</strong> Our block is held only until then. After that date any unclaimed rooms go back to the hotel's general inventory, and Hohenschwangau fills up well in advance.</p>
@@ -455,6 +475,19 @@
                 </div>
 
                 <p>Our block covers <strong>Friday, September 17</strong> and <strong>Saturday, September 18</strong>. If you'd like to come in early or stay on a few extra days, the hotel has been wonderfully accommodating, so just ask when you book. Rates for the extra nights may be different since they fall outside our block.</p>
+
+                <hr class="divider">
+
+                <h3 id="budget" class="subanchor">Staying somewhere other than the resort</h3>
+
+                <p>That covers the resort. If those rates are more than you want to spend, there are good alternatives close by, and nobody should feel obligated to book the AMERON.</p>
+
+                <p><strong>Füssen</strong>, about ten minutes away, has a much wider range of guesthouses, small hotels, and apartments at friendlier prices, and it is a lovely little town in its own right. Nearby Schwangau has options too.</p>
+
+                <div class="panel">
+                    <p><strong>The one thing to think through first:</strong> how you are getting back at the end of the night. The local buses stop running well before our reception will, so plan on a taxi, roughly €15 to €20 back to Füssen, and it is worth arranging the ride in advance rather than hoping one is waiting.</p>
+                    <p>If you do stay off-site, <strong>please tell us where in your RSVP</strong>. We are working on arranging a shuttle, and knowing how many people are staying where is what makes that possible.</p>
+                </div>
 
                 <hr class="divider">
 
