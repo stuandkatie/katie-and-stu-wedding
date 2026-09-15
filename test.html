@@ -15,8 +15,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Travel and lodging information for Katie and Stu's wedding at AMERON Neuschwanstein Alpsee Resort in Hohenschwangau, Germany.">
-    <title>Travel | Katie &amp; Stu</title>
+    <meta name="description" content="Guest information for Katie and Stu's wedding in Hohenschwangau, Germany. Travel documents, dress code, packing, and what to expect.">
+    <title>Guest Information | Katie &amp; Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* =========================================
@@ -24,7 +24,7 @@
            ========================================= */
         :root {
             --gold: #d4af37;        /* Light gold, used by the callout borders */
-            --gold-deep: #8a6a16;   /* Darker gold, used for leg and room markers */
+            --gold-deep: #8a6a16;   /* Darker gold, used for card top borders */
         }
 
         html {
@@ -144,24 +144,15 @@
         }
 
         /* =========================================
-           TRAVEL COMPONENTS
+           SHARED COMPONENTS
            ========================================= */
-        /* Train leg blocks */
-        .leg {
-            margin: 1.4rem 0;
-            padding-left: 1.1rem;
-            border-left: 5px solid var(--gold-deep);
-        }
-
-        .leg-title { font-weight: 500; display: block; margin-bottom: 0.2rem; }
-
-        /* Rental car warning box */
+        /* Attention box, same treatment as the Travel page */
         .callout {
             background: rgba(255, 251, 235, 0.95);
             border: 1px solid var(--gold);
             border-left: 6px solid var(--gold);
             border-radius: 12px;
-            padding: 1.5rem 1.8rem;
+            padding: 1.4rem 1.6rem;
             margin: 1.8rem 0;
             text-align: left;
         }
@@ -169,75 +160,16 @@
         .callout h4 {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
-            margin: 0 0 1rem 0;
+            margin: 0 0 0.8rem 0;
             text-align: left;
         }
 
-        .callout p { margin: 0.9rem 0; }
+        .callout p { margin: 0.8rem 0; }
+        .callout p:first-child { margin-top: 0; }
         .callout p:last-child { margin-bottom: 0; }
 
-        .closing-note {
-            text-align: center;
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-top: 3rem;
-        }
-
-        /* =========================================
-           ROOM BLOCK COMPONENTS
-           ========================================= */
-        /* Booking deadline banner */
-        .deadline {
-            background: rgba(255, 251, 235, 0.95);
-            border: 1px solid var(--gold);
-            border-left: 6px solid var(--gold);
-            border-radius: 12px;
-            padding: 1.3rem 1.6rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .deadline p { margin: 0.6rem 0; }
-        .deadline p:first-child { margin-top: 0; }
-        .deadline p:last-child { margin-bottom: 0; }
-
-        /* Room rate cards: two columns on desktop, stacked on mobile */
-        .rooms {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .room {
-            background: rgba(255,255,255,0.55);
-            border: 1px solid rgba(42,39,36,0.15);
-            border-top: 4px solid var(--gold-deep);
-            border-radius: 12px;
-            padding: 1.2rem 1.3rem;
-        }
-
-        .room-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0 0 0.8rem 0;
-        }
-
-        .rate {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 0.35rem 0;
-            border-top: 1px solid rgba(42,39,36,0.12);
-        }
-
-        .rate-label { color: #4a4540; }
-        .rate-price { font-weight: 500; white-space: nowrap; }
-
-        /* Hotel reservations contact block */
-        .booking {
+        /* Neutral information panel */
+        .panel {
             background: rgba(255,255,255,0.55);
             border: 1px solid rgba(42,39,36,0.15);
             border-radius: 12px;
@@ -246,17 +178,48 @@
             text-align: left;
         }
 
-        .booking p { margin: 0.6rem 0; }
-        .booking p:first-child { margin-top: 0; }
-        .booking p:last-child { margin-bottom: 0; }
+        .panel p { margin: 0.7rem 0; }
+        .panel p:first-child { margin-top: 0; }
+        .panel p:last-child { margin-bottom: 0; }
 
-        /* Highlights the phrase guests must quote to get the rate */
-        .reference {
-            display: inline-block;
-            background: rgba(212,175,55,0.22);
-            border-radius: 6px;
-            padding: 0.1rem 0.5rem;
-            font-weight: 500;
+        /* Two-column card grid for dress code and packing */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.8rem 0;
+            text-align: left;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-top: 4px solid var(--gold-deep);
+            border-radius: 12px;
+            padding: 1.2rem 1.3rem;
+        }
+
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card p { margin: 0.5rem 0 0 0; }
+        .card ul { margin: 0.5rem 0 0 0; padding-left: 1.2rem; }
+        .card li { margin-bottom: 0.5rem; }
+
+        .contact-line {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .closing-note {
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 3rem;
         }
 
         /* =========================================
@@ -348,8 +311,8 @@
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
             h3 { font-size: 1.35rem; }
-            .callout, .deadline, .booking { padding: 1.2rem 1.1rem; }
-            .rooms { grid-template-columns: 1fr; }
+            .callout, .panel { padding: 1.2rem 1.1rem; }
+            .cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -375,153 +338,137 @@
     <!-- Section jump bar -->
     <div class="jump-bar">
         <div class="jump-inner">
-            <a href="#stay">Where to Stay</a>
-            <a href="#flights">Flights</a>
-            <a href="#train">By Train</a>
-            <a href="#car">By Car</a>
-            <a href="#transfer">Private Transfer</a>
+            <a href="#documents">Documents</a>
+            <a href="#dress">Dress Code</a>
+            <a href="#packing">What to Pack</a>
+            <a href="#kids">Kids</a>
+            <a href="#here">Once You're Here</a>
+            <a href="#weather">Weather</a>
+            <a href="#questions">Questions</a>
         </div>
     </div>
 
-    <!-- Travel Content -->
+    <!-- Guest Information Content -->
     <div class="hero-bg">
         <div class="content">
 
-            <h1>Getting Here</h1>
+            <h1>Guest Information</h1>
 
             <div class="story" style="text-align: left;">
 
-                <p>We're getting married at the <strong>AMERON Neuschwanstein Alpsee Resort &amp; Spa</strong>, Alpseestraße 21, 87645 Schwangau, Germany, in the tiny village of Hohenschwangau below the Neuschwanstein and Hohenschwangau castles.</p>
+                <p>We're so excited to celebrate with you in Bavaria. Below is everything you need to know to make your trip smooth and enjoyable. For flights, trains, and where to stay, head over to the <a href="travel.html">Travel</a> page.</p>
 
                 <hr class="divider">
 
-                <h2 id="stay" class="anchor">Where to Stay</h2>
+                <h2 id="documents" class="anchor">Travel Documents</h2>
 
-                <p>We've reserved a block of rooms at the AMERON, which is where the wedding itself is happening. Everything for the weekend is within walking distance of your room, so staying here means no transportation to sort out and no reason to leave the party early. You can see the rooms and the property at <a href="https://www.ameroncollection.com/en/neuschwanstein-alpsee-resort-spa" target="_blank" rel="noopener">ameroncollection.com</a>.</p>
+                <h3>Passports</h3>
 
-                <div class="deadline">
-                    <p><strong>Please book by May 30, 2027.</strong> Our block is held only until then. After that date any unclaimed rooms go back to the hotel's general inventory, and Hohenschwangau fills up well in advance.</p>
-                    <p>The good news: each reservation can be cancelled free of charge up to 7 days before arrival.</p>
-                </div>
-
-                <h3>Rooms and rates</h3>
-
-                <p>Rates are per room, per night, and include an extensive breakfast buffet, free use of the 4 Elements spa and fitness area (the indoor pool looks out at Hohenschwangau Castle, so pack a swimsuit), a bathrobe, WiFi, bottled water, an in-room coffee machine, and a room safe. <em>Single use</em> means one person in the room and <em>double use</em> means two. The room itself is the same either way.</p>
-
-                <div class="rooms">
-
-                    <div class="room">
-                        <p class="room-name">Standard Room</p>
-                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€250</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€280</span></div>
-                    </div>
-
-                    <div class="room">
-                        <p class="room-name">Comfort Room</p>
-                        <div class="rate"><span class="rate-label">Single use, Friday</span><span class="rate-price">€290</span></div>
-                        <div class="rate"><span class="rate-label">Single use, Saturday</span><span class="rate-price">€320</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€320</span></div>
-                    </div>
-
-                    <div class="room">
-                        <p class="room-name">Jägerhaus Double Room</p>
-                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€250</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€280</span></div>
-                    </div>
-
-                    <div class="room">
-                        <p class="room-name">Jägerhaus Junior Suite</p>
-                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€350</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€380</span></div>
-                    </div>
-
-                </div>
-
-                <p>Schwangau charges a small visitor's tax on top of the room rate, €1.90 per adult and €0.95 per child aged 6 to 15, per night, collected when you check out. Children under 6 are exempt. All rooms are non-smoking.</p>
-
-                <h3>A note on the Jägerhaus</h3>
-
-                <p>The resort was built around three historic houses, and the Jägerhaus is one of them. It sits directly across from the main lobby, so it's a walk across the courtyard rather than a hike, and you'll still use the main buildings for breakfast, the spa, and the restaurants.</p>
-
-                <p>It's the charming option: antique furnishings, canopied beds, old-fashioned room keys instead of key cards. It's also the older option, so the rooms are more characterful than sleek, and there's no air conditioning in that building. September nights in the Alps are cool, so it's unlikely to matter, but we'd rather you know before you book than after you arrive.</p>
-
-                <h3>How to book</h3>
-
-                <div class="booking">
-                    <p>Contact the hotel's reservations department directly and mention the <span class="reference">Stu and Katie wedding</span> so they pull from our block and give you our rate.</p>
-                    <p><strong>Email:</strong> <a href="mailto:reservierung@ameron-neuschwanstein.de">reservierung@ameron-neuschwanstein.de</a><br>
-                    <strong>Phone:</strong> <a href="tel:+4983627030705">+49 8362 70 30 705</a></p>
-                    <p>Email is easiest from the States given the time difference. Expect a reply the following day rather than right away.</p>
-                </div>
-
-                <p>Our block covers <strong>Friday, September 17</strong> and <strong>Saturday, September 18</strong>. If you'd like to come in early or stay on a few extra days, the hotel has been wonderfully accommodating, so just ask when you book. Rates for the extra nights may be different since they fall outside our block.</p>
-
-                <hr class="divider">
-
-                <h2 id="flights" class="anchor">Step 1: Fly to Munich</h2>
-
-                <p><strong>Munich Airport (MUC)</strong> is the gateway, about two hours from us. There are no nonstops from most U.S. cities, so plan on one connection, usually through Atlanta, Newark, Chicago, or a European hub like Amsterdam, Frankfurt, or Paris.</p>
-
-                <p>A few alternates worth pricing out:</p>
                 <ul>
-                    <li><strong>Memmingen (FMM):</strong> closer to us (about 85 km) but served mostly by budget European carriers. Only useful if you're already in Europe.</li>
-                    <li><strong>Innsbruck (INN)</strong> and <strong>Zurich (ZRH):</strong> both roughly two to two and a half hours away by car.</li>
+                    <li>A valid passport is required for entry into Germany. If you don't have one, allow at least two months, and ideally three, to apply.</li>
+                    <li>Your passport needs to be valid for at least three months beyond your return date and issued within the last ten years. If yours expires anywhere near the wedding, renew it now rather than cutting it close.</li>
                 </ul>
 
-                <p>Give yourself a buffer. Jet lag plus a two-hour transfer is a lot on arrival day, and we'd love for you to come in a day early.</p>
-
-                <hr class="divider">
-
-                <h2>Step 2: Munich Airport to Hohenschwangau</h2>
-
-                <h3 id="train" class="anchor">By train (our recommendation)</h3>
-
-                <p>About three to three and a half hours, three legs, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home. It handles tickets, platforms, and live updates in English.</p>
-
-                <div class="leg">
-                    <span class="leg-title">Leg 1: Airport to Munich Hauptbahnhof (main station)</span>
-                    Take the <strong>S1</strong> or <strong>S8</strong> commuter train from directly beneath the terminal. About 45 minutes, departing every 20 minutes or so.
-                </div>
-
-                <div class="leg">
-                    <span class="leg-title">Leg 2: Munich Hauptbahnhof to Füssen</span>
-                    Regional train, about two hours, running roughly hourly. Some departures are direct; others involve a simple cross-platform change at Buchloe. The Füssen trains leave from tracks 27 to 36, which are a long walk from the main concourse, so give yourself 20 minutes to find your platform.
-                </div>
-
-                <div class="leg">
-                    <span class="leg-title">Leg 3: Füssen station to the AMERON</span>
-                    Two ways to cover the last two and a half miles:
-                    <ul>
-                        <li><strong>By bus.</strong> Step outside the station and catch <strong>bus 73</strong> (toward Steingaden / Garmisch-Partenkirchen) or <strong>bus 78</strong> (toward Schwangau). Get off at <strong>Hohenschwangau / Alpseestraße</strong>, sometimes announced as the Neuschwanstein Castles stop. A 10 to 15 minute ride, then about a five-minute walk to the hotel. Departures are timed to follow the train arrivals, so you shouldn't wait long.</li>
-                        <li><strong>By taxi.</strong> Taxis queue outside the station's main entrance. About five minutes to the hotel door for roughly €15 to €20, worth it if you're arriving late, hauling luggage, or the bus is packed. If none are waiting, the hotel front desk can send a car.</li>
-                    </ul>
-                </div>
-
-                <p><strong>Tickets.</strong> Two good options:</p>
-                <ul>
-                    <li><strong>Deutschland-Ticket:</strong> a monthly pass valid on all regional trains and local buses nationwide, at any hour. Best if you're traveling around Germany.</li>
-                    <li><strong>Bayern-Ticket:</strong> covers up to five people on regional trains and buses throughout Bavaria for one flat fare. The catch: on weekdays it's only valid from 9:00 a.m. onward. Great value if you're arriving as a group.</li>
-                </ul>
-
-                <p><strong>Two things to know.</strong> The 73 and 78 buses get very crowded in the summer months, so leave a little buffer if you're connecting tightly. And Deutsche Bahn runs frequent track maintenance on the Munich to Buchloe stretch, so check <a href="https://www.bahn.de" target="_blank" rel="noopener">bahn.de</a> the morning you travel and you won't be surprised by a replacement bus.</p>
-
-                <h3 id="car" class="anchor">By car</h3>
-
-                <p>About two hours from the airport. Take the <strong>A96</strong> toward the Steingaden/Füssen exit, then the <strong>B17</strong> into Füssen, then follow signs for <em>Zu den Königsschlössern</em> (to the royal castles). Roughly five minutes later you're in Hohenschwangau, on Alpseestraße.</p>
+                <h3>ETIAS travel authorization</h3>
 
                 <div class="callout">
-                    <h4>⚠️ Please read this before you rent a car</h4>
-                    <p><strong>Parking at the AMERON is limited and it is not free.</strong> The hotel's guest lot sits across the road from the resort, next to the public lot P4, and runs about €14 per 24 hours. There are only so many spaces, and they are not guaranteed with your room.</p>
-                    <p>Hohenschwangau is one of the most visited villages in Germany. The public lots fill with castle day-trippers by mid-morning, every single day, and there is no overflow to fall back on.</p>
-                    <p>If you do drive: pull up to the hotel entrance first to unload your bags, then collect your parking ticket at check-in and move the car. And please let us know in advance so we can flag it with the hotel.</p>
-                    <p><strong>Honestly, unless you're building a longer Bavaria road trip around the wedding, take the train.</strong> You won't need a car once you're here.</p>
+                    <h4>This one is new, and it matters</h4>
+                    <p>Europe is rolling out <strong>ETIAS</strong>, an online travel authorization for Americans and other visa-exempt travelers. It is not a visa, just a quick online form linked to your passport. It costs €20, lasts three years, and is usually approved within minutes. Travelers under 18 or over 70 pay no fee.</p>
+                    <p>Based on the current rollout schedule, it is expected to be required by the time of our wedding. <strong>Airlines check it before you board</strong>, so without one you may not be allowed on the plane.</p>
+                    <p>Nothing to do yet. Apply only through the official EU site at <a href="https://travel-europe.europa.eu/etias_en" target="_blank" rel="noopener">travel-europe.europa.eu</a>, and be wary of third-party sites charging extra.</p>
                 </div>
 
-                <h3 id="transfer" class="anchor">By private transfer</h3>
+                <hr class="divider">
 
-                <p>Around two hours door to door, and expect a few hundred euros. The hotel's front desk can arrange a car if you contact them ahead of your stay. This is the easy button if you're arriving jet-lagged with a lot of luggage, traveling with kids, or have mobility considerations.</p>
+                <h2 id="dress" class="anchor">Dress Code</h2>
 
-                <p class="closing-note">Questions about any of this? Just ask us. We've made this trip and we're happy to talk you through it.</p>
+                <div class="cards">
+
+                    <div class="card">
+                        <p class="card-name">Welcome Party</p>
+                        <p>Casual, or Oktoberfest themed if you want to have fun with it. Dirndls and lederhosen are very much encouraged.</p>
+                    </div>
+
+                    <div class="card">
+                        <p class="card-name">Ceremony &amp; Reception</p>
+                        <p><strong>Formal evening attire.</strong> We are planning to be outside for the ceremony and cocktails, with dinner and dancing indoors.</p>
+                    </div>
+
+                </div>
+
+                <p>Two practical notes for the ceremony. We will be on grass and gravel, so stiletto heels are going to have a hard time; block heels, wedges, or flats will serve you much better. And September evenings in the Alps turn cold quickly, so bring a wrap or overcoat you are happy to be photographed in.</p>
+
+                <p>If you would like to wear traditional Bavarian dress to the Welcome Party, <strong>buy it before you arrive</strong> rather than planning to pick something up here. Füssen is a small town with a limited selection, mid-September is peak Oktoberfest season across Bavaria so stock thins out and prices climb, and you will not have time for alterations the day before. Ordering online from home gives you the widest choice and time to get the fit right. If you are coming through Munich a few days early, the shops there carry a deep range at every budget.</p>
+
+                <hr class="divider">
+
+                <h2 id="packing" class="anchor">What to Pack</h2>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <p class="card-name">Don't forget</p>
+                        <ul>
+                            <li>Comfortable walking shoes. There are cobblestones and more walking than you expect.</li>
+                            <li>Layers. September evenings in the Alps get cool quickly once the sun drops.</li>
+                            <li>A swimsuit. The hotel spa and pool are included with your room.</li>
+                            <li>A light rain jacket or compact umbrella.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <p class="card-name">Practical bits</p>
+                        <ul>
+                            <li>Plug adapters, and check the rating on them. Not all adapters are built to carry much current, and a cheap one can overheat under something like a hair dryer or curling iron even when the appliance itself is fine. Make sure the adapter is rated for the wattage of whatever you are plugging into it.</li>
+                            <li>While you are at it, check the appliance too. Europe runs 230 volts to our 120, and an adapter only changes the plug shape. Phone and laptop chargers handle both automatically, but hair tools often do not. Look for "100 to 240V" printed on the device; if it is not there, leave it home or bring a proper voltage converter.</li>
+                            <li>Any prescriptions in their original containers, with enough for the whole trip.</li>
+                            <li>Some euros in cash. Germany is more cash-friendly than the U.S., and small shops and buses may not take cards.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <hr class="divider">
+
+                <h2 id="kids" class="anchor">Kids &amp; Family</h2>
+
+                <p>Our wedding ceremony and reception will be adults only. That said, kids are warmly invited to the Welcome Party the day before, and we would love to see them there.</p>
+
+                <p>If you need childcare during the wedding day events, our wedding planner Sandra can help you arrange it. <strong>Please reach out to her before February 2027</strong> so there is time to line something up properly. Her contact details are at the bottom of this page.</p>
+
+                <hr class="divider">
+
+                <h2 id="here" class="anchor">Once You're Here</h2>
+
+                <p>Everything for our weekend is within walking distance of the hotel, so there is no transportation to sort out between events.</p>
+
+                <p><strong>Füssen</strong> is the nearest proper town, about ten minutes away by bus or taxi, with restaurants, shops, a pharmacy, and an ATM.</p>
+
+                <div class="callout">
+                    <h4>Castle tickets sell out weeks in advance</h4>
+                    <p>If you want to tour Neuschwanstein or Hohenschwangau while you are here, book online at <a href="https://www.hohenschwangau.de" target="_blank" rel="noopener">hohenschwangau.de</a> as early as you can. Tours are timed and guided, and the walk uphill from the ticket center takes 30 to 40 minutes.</p>
+                    <p>Do not plan a castle tour for the wedding day itself. Between the uphill walk and the fixed tour time, it is more of a squeeze than it sounds.</p>
+                </div>
+
+                <hr class="divider">
+
+                <h2 id="weather" class="anchor">Weather in September</h2>
+
+                <p>Expect mild days, roughly 60 to 70°F (15 to 21°C), and cooler evenings that can dip into the 40s. Rain is always possible in the mountains, so a light jacket or compact umbrella is smart. The short version: pack layers and assume the evening will be colder than the afternoon suggested.</p>
+
+                <hr class="divider">
+
+                <h2 id="questions" class="anchor">Questions?</h2>
+
+                <p>Our wedding planner, <strong>Sandra Wimmer</strong>, is the best first stop for questions about the weekend, the venue, or logistics once you arrive. She knows every detail and can usually answer faster than we can.</p>
+
+                <div class="panel">
+                    <p class="contact-line"><strong>Email:</strong> <a href="mailto:hello@sandra-wimmer.com">hello@sandra-wimmer.com</a></p>
+                    <p class="contact-line"><strong>WhatsApp, emergencies only:</strong> <a href="https://wa.me/4369917206917" target="_blank" rel="noopener">+43 699 17206917</a></p>
+                    <p>Sandra is based in Europe, so her number is an international one. <strong>WhatsApp is the best way to reach her</strong> in an emergency, since it works over WiFi and avoids international calling charges on both ends. For anything that is not urgent, please email instead and she will get back to you.</p>
+                </div>
+
+                <p class="closing-note">And of course, you can always just ask us. We're happy to help.</p>
 
             </div>
         </div>
