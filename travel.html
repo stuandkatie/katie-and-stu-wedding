@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Travel information for Katie and Stu's wedding at AMERON Neuschwanstein Alpsee Resort in Hohenschwangau, Germany. Flights, trains, and transfers from Munich.">
+    <meta name="description" content="Travel and lodging information for Katie and Stu's wedding at AMERON Neuschwanstein Alpsee Resort in Hohenschwangau, Germany.">
     <title>Travel | Katie &amp; Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -23,8 +23,12 @@
            GLOBAL VARIABLES & BASE STYLES
            ========================================= */
         :root {
-            --gold: #d4af37;        /* Light gold, used by the callout border */
-            --gold-deep: #8a6a16;   /* Darker gold, used for the leg markers */
+            --gold: #d4af37;        /* Light gold, used by the callout borders */
+            --gold-deep: #8a6a16;   /* Darker gold, used for leg and room markers */
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -35,6 +39,61 @@
         }
 
         /* =========================================
+           JUMP BAR
+           ========================================= */
+        /* Sits directly beneath the fixed nav and stays put while scrolling.
+           Its top offset comes from --nav-h, measured by script at the bottom. */
+        .jump-bar {
+            position: fixed;
+            top: var(--nav-h, 84px);
+            left: 0; right: 0;
+            z-index: 99;
+            background: rgba(38, 35, 32, 0.45);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 0.6rem 1rem;
+        }
+
+        .jump-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .jump-inner a {
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.92rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.55);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+            white-space: nowrap;
+            transition: all 0.25s;
+        }
+
+        .jump-inner a:hover {
+            background: white;
+            color: #2a2724;
+            text-shadow: none;
+        }
+
+        /* Highlights whichever section is currently on screen */
+        .jump-inner a.active {
+            background: rgba(255,255,255,0.92);
+            color: #2a2724;
+            border-color: transparent;
+            text-shadow: none;
+            font-weight: 500;
+        }
+
+        /* Stops jump targets from landing underneath the two fixed bars */
+        .anchor { scroll-margin-top: calc(var(--nav-h, 84px) + var(--jump-h, 55px) + 24px); }
+
+        /* =========================================
            TYPOGRAPHY
            ========================================= */
         h1, h2, h3 {
@@ -43,36 +102,14 @@
             text-align: center;
         }
 
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-        }
+        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.1rem; margin: 2.6rem 0 1.2rem 0; }
+        h3 { font-size: 1.5rem; margin: 2rem 0 0.8rem 0; text-align: left; }
 
-        h2 {
-            font-size: 2.1rem;
-            margin: 2.6rem 0 1.2rem 0;
-        }
+        ul { text-align: left; padding-left: 1.5rem; }
+        li { margin-bottom: 0.9rem; }
+        a { color: #5c6e4c; }
 
-        h3 {
-            font-size: 1.5rem;
-            margin: 2rem 0 0.8rem 0;
-            text-align: left;
-        }
-
-        ul {
-            text-align: left;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.9rem;
-        }
-
-        a {
-            color: #5c6e4c;
-        }
-
-        /* Thin divider between major sections */
         .divider {
             border: 0;
             border-top: 1px solid rgba(42,39,36,0.25);
@@ -91,7 +128,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 110px;
+            padding-top: calc(var(--nav-h, 84px) + var(--jump-h, 55px) + 30px);
             padding-bottom: 60px;
         }
 
@@ -107,22 +144,18 @@
         }
 
         /* =========================================
-           TRAVEL-SPECIFIC COMPONENTS
+           TRAVEL COMPONENTS
            ========================================= */
-        /* Individual train leg blocks */
+        /* Train leg blocks */
         .leg {
             margin: 1.4rem 0;
             padding-left: 1.1rem;
             border-left: 5px solid var(--gold-deep);
         }
 
-        .leg-title {
-            font-weight: 500;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
+        .leg-title { font-weight: 500; display: block; margin-bottom: 0.2rem; }
 
-        /* Highlighted warning box for the rental car section */
+        /* Rental car warning box */
         .callout {
             background: rgba(255, 251, 235, 0.95);
             border: 1px solid var(--gold);
@@ -140,13 +173,8 @@
             text-align: left;
         }
 
-        .callout p {
-            margin: 0.9rem 0;
-        }
-
-        .callout p:last-child {
-            margin-bottom: 0;
-        }
+        .callout p { margin: 0.9rem 0; }
+        .callout p:last-child { margin-bottom: 0; }
 
         .closing-note {
             text-align: center;
@@ -156,13 +184,87 @@
         }
 
         /* =========================================
+           ROOM BLOCK COMPONENTS
+           ========================================= */
+        /* Booking deadline banner */
+        .deadline {
+            background: rgba(255, 251, 235, 0.95);
+            border: 1px solid var(--gold);
+            border-left: 6px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.8rem 0;
+            text-align: left;
+        }
+
+        .deadline p { margin: 0.6rem 0; }
+        .deadline p:first-child { margin-top: 0; }
+        .deadline p:last-child { margin-bottom: 0; }
+
+        /* Room rate cards: two columns on desktop, stacked on mobile */
+        .rooms {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.8rem 0;
+            text-align: left;
+        }
+
+        .room {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-top: 4px solid var(--gold-deep);
+            border-radius: 12px;
+            padding: 1.2rem 1.3rem;
+        }
+
+        .room-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0 0 0.8rem 0;
+        }
+
+        .rate {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.35rem 0;
+            border-top: 1px solid rgba(42,39,36,0.12);
+        }
+
+        .rate-label { color: #4a4540; }
+        .rate-price { font-weight: 500; white-space: nowrap; }
+
+        /* Hotel reservations contact block */
+        .booking {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.8rem 0;
+            text-align: left;
+        }
+
+        .booking p { margin: 0.6rem 0; }
+        .booking p:first-child { margin-top: 0; }
+        .booking p:last-child { margin-bottom: 0; }
+
+        /* Highlights the phrase guests must quote to get the rate */
+        .reference {
+            display: inline-block;
+            background: rgba(212,175,55,0.22);
+            border-radius: 6px;
+            padding: 0.1rem 0.5rem;
+            font-weight: 500;
+        }
+
+        /* =========================================
            DESKTOP NAVIGATION
            ========================================= */
         .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
             background: rgba(38, 35, 32, 0.55);
             backdrop-filter: blur(10px);
@@ -198,10 +300,7 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
+        .nav-links { display: flex; gap: 10px; }
 
         .nav-links a {
             padding: 10px 20px;
@@ -214,11 +313,7 @@
             transition: all 0.3s;
         }
 
-        .nav-links a:hover {
-            background: white;
-            color: #2a2724;
-            text-shadow: none;
-        }
+        .nav-links a:hover { background: white; color: #2a2724; text-shadow: none; }
 
         /* =========================================
            MOBILE RESPONSIVE (< 768px)
@@ -228,9 +323,7 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
+                top: 100%; left: 0; right: 0;
                 background: rgba(255,255,255,0.98);
                 padding: 1.5rem;
                 gap: 10px;
@@ -247,11 +340,16 @@
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
 
+            .jump-bar { padding: 0.5rem 0.6rem; }
+            .jump-inner { gap: 6px; }
+            .jump-inner a { padding: 5px 12px; font-size: 0.84rem; }
+
             .content { padding: 2rem 1.25rem; }
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
             h3 { font-size: 1.35rem; }
-            .callout { padding: 1.2rem 1.1rem; }
+            .callout, .deadline, .booking { padding: 1.2rem 1.1rem; }
+            .rooms { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -261,7 +359,6 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
-
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
@@ -271,10 +368,20 @@
                 <a href="registry.html">Registry</a>
                 <a href="rsvp.html">RSVP</a>
             </div>
-
             <button class="hamburger" id="hamburger">☰</button>
         </div>
     </nav>
+
+    <!-- Section jump bar -->
+    <div class="jump-bar">
+        <div class="jump-inner">
+            <a href="#stay">Where to Stay</a>
+            <a href="#flights">Flights</a>
+            <a href="#train">By Train</a>
+            <a href="#car">By Car</a>
+            <a href="#transfer">Private Transfer</a>
+        </div>
+    </div>
 
     <!-- Travel Content -->
     <div class="hero-bg">
@@ -284,11 +391,74 @@
 
             <div class="story" style="text-align: left;">
 
-                <p>We're getting married at the <strong>AMERON Neuschwanstein Alpsee Resort &amp; Spa</strong>, Alpseestraße 21, 87645 Schwangau, Germany, in the tiny village of Hohenschwangau, right at the foot of Neuschwanstein and Hohenschwangau castles.</p>
+                <p>We're getting married at the <strong>AMERON Neuschwanstein Alpsee Resort &amp; Spa</strong>, Alpseestraße 21, 87645 Schwangau, Germany, in the tiny village of Hohenschwangau below the Neuschwanstein and Hohenschwangau castles.</p>
 
                 <hr class="divider">
 
-                <h2>Step 1: Fly to Munich</h2>
+                <h2 id="stay" class="anchor">Where to Stay</h2>
+
+                <p>We've reserved a block of rooms at the AMERON, which is where the wedding itself is happening. Everything for the weekend is within walking distance of your room, so staying here means no transportation to sort out and no reason to leave the party early. You can see the rooms and the property at <a href="https://www.ameroncollection.com/en/neuschwanstein-alpsee-resort-spa" target="_blank" rel="noopener">ameroncollection.com</a>.</p>
+
+                <div class="deadline">
+                    <p><strong>Please book by May 30, 2027.</strong> Our block is held only until then. After that date any unclaimed rooms go back to the hotel's general inventory, and Hohenschwangau fills up well in advance.</p>
+                    <p>The good news: each reservation can be cancelled free of charge up to 7 days before arrival.</p>
+                </div>
+
+                <h3>Rooms and rates</h3>
+
+                <p>Rates are per room, per night, and include an extensive breakfast buffet, free use of the 4 Elements spa and fitness area (the indoor pool looks out at Hohenschwangau Castle, so pack a swimsuit), a bathrobe, WiFi, bottled water, an in-room coffee machine, and a room safe. <em>Single use</em> means one person in the room and <em>double use</em> means two. The room itself is the same either way.</p>
+
+                <div class="rooms">
+
+                    <div class="room">
+                        <p class="room-name">Standard Room</p>
+                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€250</span></div>
+                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€280</span></div>
+                    </div>
+
+                    <div class="room">
+                        <p class="room-name">Comfort Room</p>
+                        <div class="rate"><span class="rate-label">Single use, Friday</span><span class="rate-price">€290</span></div>
+                        <div class="rate"><span class="rate-label">Single use, Saturday</span><span class="rate-price">€320</span></div>
+                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€320</span></div>
+                    </div>
+
+                    <div class="room">
+                        <p class="room-name">Jägerhaus Double Room</p>
+                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€250</span></div>
+                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€280</span></div>
+                    </div>
+
+                    <div class="room">
+                        <p class="room-name">Jägerhaus Junior Suite</p>
+                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€350</span></div>
+                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€380</span></div>
+                    </div>
+
+                </div>
+
+                <p>Schwangau charges a small visitor's tax on top of the room rate, €1.90 per adult and €0.95 per child aged 6 to 15, per night, collected when you check out. Children under 6 are exempt. All rooms are non-smoking.</p>
+
+                <h3>A note on the Jägerhaus</h3>
+
+                <p>The resort was built around three historic houses, and the Jägerhaus is one of them. It sits directly across from the main lobby, so it's a walk across the courtyard rather than a hike, and you'll still use the main buildings for breakfast, the spa, and the restaurants.</p>
+
+                <p>It's the charming option: antique furnishings, canopied beds, old-fashioned room keys instead of key cards. It's also the older option, so the rooms are more characterful than sleek, and there's no air conditioning in that building. September nights in the Alps are cool, so it's unlikely to matter, but we'd rather you know before you book than after you arrive.</p>
+
+                <h3>How to book</h3>
+
+                <div class="booking">
+                    <p>Contact the hotel's reservations department directly and mention the <span class="reference">Stu and Katie wedding</span> so they pull from our block and give you our rate.</p>
+                    <p><strong>Email:</strong> <a href="mailto:reservierung@ameron-neuschwanstein.de">reservierung@ameron-neuschwanstein.de</a><br>
+                    <strong>Phone:</strong> <a href="tel:+4983627030705">+49 8362 70 30 705</a></p>
+                    <p>Email is easiest from the States given the time difference. Expect a reply the following day rather than right away.</p>
+                </div>
+
+                <p>Our block covers <strong>Friday, September 17</strong> and <strong>Saturday, September 18</strong>. If you'd like to come in early or stay on a few extra days, the hotel has been wonderfully accommodating, so just ask when you book. Rates for the extra nights may be different since they fall outside our block.</p>
+
+                <hr class="divider">
+
+                <h2 id="flights" class="anchor">Step 1: Fly to Munich</h2>
 
                 <p><strong>Munich Airport (MUC)</strong> is the gateway, about two hours from us. There are no nonstops from most U.S. cities, so plan on one connection, usually through Atlanta, Newark, Chicago, or a European hub like Amsterdam, Frankfurt, or Paris.</p>
 
@@ -304,7 +474,7 @@
 
                 <h2>Step 2: Munich Airport to Hohenschwangau</h2>
 
-                <h3>By train (our recommendation)</h3>
+                <h3 id="train" class="anchor">By train (our recommendation)</h3>
 
                 <p>About three to three and a half hours, three legs, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home. It handles tickets, platforms, and live updates in English.</p>
 
@@ -335,7 +505,7 @@
 
                 <p><strong>Two things to know.</strong> The 73 and 78 buses get very crowded in the summer months, so leave a little buffer if you're connecting tightly. And Deutsche Bahn runs frequent track maintenance on the Munich to Buchloe stretch, so check <a href="https://www.bahn.de" target="_blank" rel="noopener">bahn.de</a> the morning you travel and you won't be surprised by a replacement bus.</p>
 
-                <h3>By car</h3>
+                <h3 id="car" class="anchor">By car</h3>
 
                 <p>About two hours from the airport. Take the <strong>A96</strong> toward the Steingaden/Füssen exit, then the <strong>B17</strong> into Füssen, then follow signs for <em>Zu den Königsschlössern</em> (to the royal castles). Roughly five minutes later you're in Hohenschwangau, on Alpseestraße.</p>
 
@@ -347,19 +517,9 @@
                     <p><strong>Honestly, unless you're building a longer Bavaria road trip around the wedding, take the train.</strong> You won't need a car once you're here.</p>
                 </div>
 
-                <h3>By private transfer</h3>
+                <h3 id="transfer" class="anchor">By private transfer</h3>
 
                 <p>Around two hours door to door, and expect a few hundred euros. The hotel's front desk can arrange a car if you contact them ahead of your stay. This is the easy button if you're arriving jet-lagged with a lot of luggage, traveling with kids, or have mobility considerations.</p>
-
-                <hr class="divider">
-
-                <h2>Once You're Here</h2>
-
-                <p>Everything for our weekend is within walking distance of the hotel, so no transportation is needed between events.</p>
-
-                <p><strong>Füssen</strong> is the nearest real town, about 10 minutes away by bus or taxi, with restaurants, shops, a pharmacy, and an ATM.</p>
-
-                <p><strong>Castle tickets sell out weeks in advance.</strong> If you want to tour Neuschwanstein or Hohenschwangau while you're here, book online at <a href="https://www.hohenschwangau.de" target="_blank" rel="noopener">hohenschwangau.de</a> as early as you can. Tours are timed and guided, and the walk uphill from the ticket center takes 30 to 40 minutes.</p>
 
                 <p class="closing-note">Questions about any of this? Just ask us. We've made this trip and we're happy to talk you through it.</p>
 
@@ -373,6 +533,44 @@
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
         });
+
+        // Measure the real height of the two fixed bars and publish them as CSS
+        // variables, so nothing overlaps regardless of font rendering or screen size
+        const navBar = document.querySelector('.nav');
+        const jumpBar = document.querySelector('.jump-bar');
+
+        function measureBars() {
+            const root = document.documentElement;
+            root.style.setProperty('--nav-h', navBar.offsetHeight + 'px');
+            root.style.setProperty('--jump-h', jumpBar.offsetHeight + 'px');
+        }
+
+        measureBars();
+        window.addEventListener('resize', measureBars);
+        window.addEventListener('load', measureBars);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(measureBars);
+        }
+
+        // Highlight the jump-bar chip matching whichever section is on screen
+        const sections = Array.from(document.querySelectorAll('.anchor'));
+        const chips = Array.from(document.querySelectorAll('.jump-inner a'));
+
+        function updateActiveChip() {
+            let currentId = sections[0].id;
+            for (const section of sections) {
+                const threshold = navBar.offsetHeight + jumpBar.offsetHeight + 40;
+                if (section.getBoundingClientRect().top <= threshold) {
+                    currentId = section.id;
+                }
+            }
+            chips.forEach(chip => {
+                chip.classList.toggle('active', chip.getAttribute('href') === '#' + currentId);
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveChip, { passive: true });
+        updateActiveChip();
     </script>
 
 </body>
