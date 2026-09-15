@@ -79,6 +79,7 @@
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-sizing: border-box;
         }
 
         /* Intro text above the password box */
@@ -211,7 +212,7 @@
             font-weight: 500;
         }
 
-        /* Explanatory text under a field label */
+        /* Explanatory text sitting above a field */
         .field-note {
             margin: 0 0 0.25rem 0;
             font-size: 0.92rem;
@@ -301,17 +302,20 @@
 
             <h1>RSVP</h1>
 
+            <!-- Screen 1: password gate -->
             <div id="passwordSection">
                 <p class="intro">Please enter the password below</p>
                 <input type="text" id="password" class="masked-password-input" placeholder="Enter password" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
                 <button onclick="checkPassword()">Continue</button>
             </div>
 
+            <!-- Screen 2: check or submit -->
             <div id="choiceSection" style="display: none; margin-top: 2rem;">
                 <button class="choice-btn" onclick="showCheckForm()">Check My RSVP</button>
                 <button class="choice-btn" onclick="showSubmitForm()">Submit New RSVP</button>
             </div>
 
+            <!-- Screen 3: look up an existing RSVP -->
             <div id="checkForm" style="display: none; margin-top: 2rem;">
                 <h2>Check My RSVP</h2>
                 <input type="email" id="checkEmail" placeholder="Enter your email">
@@ -319,6 +323,7 @@
                 <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
             </div>
 
+            <!-- Screen 4: the RSVP form -->
             <div id="rsvpForm" style="display: none; margin-top: 2rem; text-align: left;">
                 <h2>New RSVP</h2>
 
@@ -369,14 +374,14 @@
                 </div>
 
                 <div id="hotelField" style="display: none;">
-                    <label for="hotel">Where do you expect to stay?</label>
-                    <p class="field-note">We're working on arranging a shuttle, so knowing roughly where everyone is staying helps us plan. A best guess is fine, and you can let us know later if it changes.</p>
-                    <input type="text" placeholder="Hotel or town" id="hotel">
+                    <p class="field-note">We're working on arranging a shuttle, so knowing roughly where everyone is staying helps us plan.</p>
+                    <input type="text" placeholder="What hotel do you expect to stay at?" id="hotel">
                 </div>
 
                 <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
+            <!-- Screen 5: confirmation -->
             <div id="successMessage" class="success-message">
                 Thank you! Your RSVP has been received.<br>We can't wait to celebrate with you!
             </div>
