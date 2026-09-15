@@ -22,12 +22,15 @@
         /* =========================================
            GLOBAL VARIABLES & BASE STYLES
            ========================================= */
-        :root { --gold: #d4af37; }
+        :root {
+            --gold: #d4af37;        /* Light gold, used by the callout border */
+            --gold-deep: #8a6a16;   /* Darker gold, used for the leg markers */
+        }
 
         body {
             margin: 0;
             font-family: 'Inter', system-ui, sans-serif;
-            color: #44403c;
+            color: #2a2724;
             line-height: 1.7;
         }
 
@@ -66,13 +69,13 @@
         }
 
         a {
-            color: #6b7f5a;
+            color: #5c6e4c;
         }
 
         /* Thin divider between major sections */
         .divider {
             border: 0;
-            border-top: 1px solid rgba(68,64,60,0.25);
+            border-top: 1px solid rgba(42,39,36,0.25);
             margin: 2.5rem 0 0 0;
         }
 
@@ -109,8 +112,8 @@
         /* Individual train leg blocks */
         .leg {
             margin: 1.4rem 0;
-            padding-left: 1rem;
-            border-left: 3px solid var(--gold);
+            padding-left: 1.1rem;
+            border-left: 5px solid var(--gold-deep);
         }
 
         .leg-title {
@@ -121,7 +124,7 @@
 
         /* Highlighted warning box for the rental car section */
         .callout {
-            background: rgba(255, 251, 235, 0.75);
+            background: rgba(255, 251, 235, 0.95);
             border: 1px solid var(--gold);
             border-left: 6px solid var(--gold);
             border-radius: 12px;
@@ -161,8 +164,9 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.15);
+            background: rgba(38, 35, 32, 0.55);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.18);
         }
 
         .nav-container {
@@ -181,6 +185,7 @@
             color: white;
             text-decoration: none;
             white-space: nowrap;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
         .hamburger {
@@ -190,6 +195,7 @@
             border: none;
             color: white;
             cursor: pointer;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
         .nav-links {
@@ -203,13 +209,15 @@
             font-size: 1.05rem;
             color: white;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.7);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
             transition: all 0.3s;
         }
 
         .nav-links a:hover {
             background: white;
-            color: #44403c;
+            color: #2a2724;
+            text-shadow: none;
         }
 
         /* =========================================
@@ -230,10 +238,11 @@
             }
             .nav-links.show { display: flex; }
             .nav-links a {
-                color: #44403c;
+                color: #2a2724;
                 text-align: center;
                 font-size: 1.1rem;
                 border: none;
+                text-shadow: none;
             }
             .hamburger { display: block; }
             .logo { font-size: 2rem; }
@@ -275,18 +284,18 @@
 
             <div class="story" style="text-align: left;">
 
-                <p>We're getting married at the <strong>AMERON Neuschwanstein Alpsee Resort &amp; Spa</strong>, Alpseestraße 21, 87645 Schwangau, Germany — in the tiny village of Hohenschwangau, right at the foot of Neuschwanstein and Hohenschwangau castles.</p>
+                <p>We're getting married at the <strong>AMERON Neuschwanstein Alpsee Resort &amp; Spa</strong>, Alpseestraße 21, 87645 Schwangau, Germany, in the tiny village of Hohenschwangau, right at the foot of Neuschwanstein and Hohenschwangau castles.</p>
 
                 <hr class="divider">
 
                 <h2>Step 1: Fly to Munich</h2>
 
-                <p><strong>Munich Airport (MUC)</strong> is the gateway, about two hours from us. There are no nonstops from most U.S. cities, so plan on one connection — usually through Atlanta, Newark, Chicago, or a European hub like Amsterdam, Frankfurt, or Paris.</p>
+                <p><strong>Munich Airport (MUC)</strong> is the gateway, about two hours from us. There are no nonstops from most U.S. cities, so plan on one connection, usually through Atlanta, Newark, Chicago, or a European hub like Amsterdam, Frankfurt, or Paris.</p>
 
                 <p>A few alternates worth pricing out:</p>
                 <ul>
-                    <li><strong>Memmingen (FMM)</strong> — closer to us (about 85 km) but served mostly by budget European carriers. Only useful if you're already in Europe.</li>
-                    <li><strong>Innsbruck (INN)</strong> and <strong>Zurich (ZRH)</strong> — both roughly two to two and a half hours away by car.</li>
+                    <li><strong>Memmingen (FMM):</strong> closer to us (about 85 km) but served mostly by budget European carriers. Only useful if you're already in Europe.</li>
+                    <li><strong>Innsbruck (INN)</strong> and <strong>Zurich (ZRH):</strong> both roughly two to two and a half hours away by car.</li>
                 </ul>
 
                 <p>Give yourself a buffer. Jet lag plus a two-hour transfer is a lot on arrival day, and we'd love for you to come in a day early.</p>
@@ -295,36 +304,36 @@
 
                 <h2>Step 2: Munich Airport to Hohenschwangau</h2>
 
-                <h3>By train — our recommendation</h3>
+                <h3>By train (our recommendation)</h3>
 
-                <p>About three to three and a half hours, three legs, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home — it handles tickets, platforms, and live updates in English.</p>
+                <p>About three to three and a half hours, three legs, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home. It handles tickets, platforms, and live updates in English.</p>
 
                 <div class="leg">
-                    <span class="leg-title">Leg 1 — Airport to Munich Hauptbahnhof (main station)</span>
+                    <span class="leg-title">Leg 1: Airport to Munich Hauptbahnhof (main station)</span>
                     Take the <strong>S1</strong> or <strong>S8</strong> commuter train from directly beneath the terminal. About 45 minutes, departing every 20 minutes or so.
                 </div>
 
                 <div class="leg">
-                    <span class="leg-title">Leg 2 — Munich Hauptbahnhof to Füssen</span>
-                    Regional train, about two hours, running roughly hourly. Some departures are direct; others involve a simple cross-platform change at Buchloe. The Füssen trains leave from tracks 27–36, which are a long walk from the main concourse — give yourself 20 minutes to find your platform.
+                    <span class="leg-title">Leg 2: Munich Hauptbahnhof to Füssen</span>
+                    Regional train, about two hours, running roughly hourly. Some departures are direct; others involve a simple cross-platform change at Buchloe. The Füssen trains leave from tracks 27 to 36, which are a long walk from the main concourse, so give yourself 20 minutes to find your platform.
                 </div>
 
                 <div class="leg">
-                    <span class="leg-title">Leg 3 — Füssen station to the AMERON</span>
+                    <span class="leg-title">Leg 3: Füssen station to the AMERON</span>
                     Two ways to cover the last two and a half miles:
                     <ul>
-                        <li><strong>By bus.</strong> Step outside the station and catch <strong>bus 73</strong> (toward Steingaden / Garmisch-Partenkirchen) or <strong>bus 78</strong> (toward Schwangau). Get off at <strong>Hohenschwangau / Alpseestraße</strong>, sometimes announced as the Neuschwanstein Castles stop. A 10–15 minute ride, then about a five-minute walk to the hotel. Departures are timed to follow the train arrivals, so you shouldn't wait long.</li>
-                        <li><strong>By taxi.</strong> Taxis queue outside the station's main entrance. About five minutes to the hotel door for roughly €15–20 — worth it if you're arriving late, hauling luggage, or the bus is packed. If none are waiting, the hotel front desk can send a car.</li>
+                        <li><strong>By bus.</strong> Step outside the station and catch <strong>bus 73</strong> (toward Steingaden / Garmisch-Partenkirchen) or <strong>bus 78</strong> (toward Schwangau). Get off at <strong>Hohenschwangau / Alpseestraße</strong>, sometimes announced as the Neuschwanstein Castles stop. A 10 to 15 minute ride, then about a five-minute walk to the hotel. Departures are timed to follow the train arrivals, so you shouldn't wait long.</li>
+                        <li><strong>By taxi.</strong> Taxis queue outside the station's main entrance. About five minutes to the hotel door for roughly €15 to €20, worth it if you're arriving late, hauling luggage, or the bus is packed. If none are waiting, the hotel front desk can send a car.</li>
                     </ul>
                 </div>
 
                 <p><strong>Tickets.</strong> Two good options:</p>
                 <ul>
-                    <li><strong>Deutschland-Ticket</strong> — a monthly pass valid on all regional trains and local buses nationwide, at any hour. Best if you're traveling around Germany.</li>
-                    <li><strong>Bayern-Ticket</strong> — covers up to five people on regional trains and buses throughout Bavaria for one flat fare. The catch: on weekdays it's only valid from 9:00 a.m. onward. Great value if you're arriving as a group.</li>
+                    <li><strong>Deutschland-Ticket:</strong> a monthly pass valid on all regional trains and local buses nationwide, at any hour. Best if you're traveling around Germany.</li>
+                    <li><strong>Bayern-Ticket:</strong> covers up to five people on regional trains and buses throughout Bavaria for one flat fare. The catch: on weekdays it's only valid from 9:00 a.m. onward. Great value if you're arriving as a group.</li>
                 </ul>
 
-                <p><strong>Two things to know.</strong> The 73 and 78 buses get very crowded in the summer months, so leave a little buffer if you're connecting tightly. And Deutsche Bahn runs frequent track maintenance on the Munich–Buchloe stretch — check <a href="https://www.bahn.de" target="_blank" rel="noopener">bahn.de</a> the morning you travel so you're not surprised by a replacement bus.</p>
+                <p><strong>Two things to know.</strong> The 73 and 78 buses get very crowded in the summer months, so leave a little buffer if you're connecting tightly. And Deutsche Bahn runs frequent track maintenance on the Munich to Buchloe stretch, so check <a href="https://www.bahn.de" target="_blank" rel="noopener">bahn.de</a> the morning you travel and you won't be surprised by a replacement bus.</p>
 
                 <h3>By car</h3>
 
@@ -335,7 +344,7 @@
                     <p><strong>Parking at the AMERON is limited and it is not free.</strong> The hotel's guest lot sits across the road from the resort, next to the public lot P4, and runs about €14 per 24 hours. There are only so many spaces, and they are not guaranteed with your room.</p>
                     <p>Hohenschwangau is one of the most visited villages in Germany. The public lots fill with castle day-trippers by mid-morning, every single day, and there is no overflow to fall back on.</p>
                     <p>If you do drive: pull up to the hotel entrance first to unload your bags, then collect your parking ticket at check-in and move the car. And please let us know in advance so we can flag it with the hotel.</p>
-                    <p><strong>Honestly — unless you're building a longer Bavaria road trip around the wedding, take the train.</strong> You won't need a car once you're here.</p>
+                    <p><strong>Honestly, unless you're building a longer Bavaria road trip around the wedding, take the train.</strong> You won't need a car once you're here.</p>
                 </div>
 
                 <h3>By private transfer</h3>
@@ -346,11 +355,11 @@
 
                 <h2>Once You're Here</h2>
 
-                <p>Everything for our weekend is within walking distance of the hotel — no transportation needed between events.</p>
+                <p>Everything for our weekend is within walking distance of the hotel, so no transportation is needed between events.</p>
 
                 <p><strong>Füssen</strong> is the nearest real town, about 10 minutes away by bus or taxi, with restaurants, shops, a pharmacy, and an ATM.</p>
 
-                <p><strong>Castle tickets sell out weeks in advance.</strong> If you want to tour Neuschwanstein or Hohenschwangau while you're here, book online at <a href="https://www.hohenschwangau.de" target="_blank" rel="noopener">hohenschwangau.de</a> as early as you can. Tours are timed and guided, and the walk uphill from the ticket center takes 30–40 minutes.</p>
+                <p><strong>Castle tickets sell out weeks in advance.</strong> If you want to tour Neuschwanstein or Hohenschwangau while you're here, book online at <a href="https://www.hohenschwangau.de" target="_blank" rel="noopener">hohenschwangau.de</a> as early as you can. Tours are timed and guided, and the walk uphill from the ticket center takes 30 to 40 minutes.</p>
 
                 <p class="closing-note">Questions about any of this? Just ask us. We've made this trip and we're happy to talk you through it.</p>
 
