@@ -11,37 +11,39 @@
 
   gtag('config', 'G-YY6S41V04B');
 </script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story | Katie & Stu</title>
-    
+    <meta name="description" content="How Katie Lawless and Stu Turner met, and the road trips that led to a proposal in Sedona.">
+    <title>Our Story | Katie &amp; Stu</title>
+
     <link rel="icon" type="image/png" href="favicon.png">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
+
     <style>
         /* =========================================
            GLOBAL VARIABLES & BASE STYLES
            ========================================= */
-        :root { 
-            --gold: #d4af37; /* Theme accent color */
+        :root {
+            --gold: #d4af37;
+            --gold-deep: #8a6a16;
         }
-        
-        body { 
-            margin: 0; 
-            font-family: 'Inter', system-ui, sans-serif; 
-            color: #44403c;
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #2a2724;
             line-height: 1.7;
-        } /* Note: Added missing closing bracket here */
+        }
 
         /* =========================================
            TYPOGRAPHY
            ========================================= */
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700; 
-            text-align: center; 
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-align: center;
         }
 
         h1 {
@@ -54,10 +56,11 @@
             margin: 2.2rem 0 1.2rem 0;
         }
 
+        a { color: #5c6e4c; }
+
         /* =========================================
            LAYOUT & BACKGROUND
            ========================================= */
-        /* Full-screen background with a gradient overlay to enhance text contrast */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
@@ -67,36 +70,43 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 110px; /* Accounts for the fixed navigation bar */
+            padding-top: 110px;
+            padding-bottom: 60px;
         }
 
-        /* Central content container with glass-morphism effect */
+        /* Central content container, wider than the other pages */
         .content {
-            background: rgba(248, 245, 240, 0.55);
-            padding: 2.2rem 2rem;        
-            max-width: 1150px;           /* Wider layout specific to the About page */
+            background: rgba(250, 248, 244, 0.75);
+            padding: 2.2rem 2rem;
+            max-width: 1150px;
             width: 100%;
             margin: 0 20px;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Closing line beneath the story */
+        .closing-note {
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 3rem;
         }
 
         /* =========================================
            DESKTOP NAVIGATION
            ========================================= */
-        /* Fixed top bar with blur filter */
         .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 100;
-            background: rgba(255,255,255,0.15);
+            background: rgba(38, 35, 32, 0.55);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.18);
         }
 
-        /* Alignment container for logo and links */
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -106,17 +116,16 @@
             align-items: center;
         }
 
-        /* Branding text */
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; /* Enforces text to stay on a single line */
+            white-space: nowrap;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
-        /* Hidden on desktop, shown on mobile */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -124,71 +133,56 @@
             border: none;
             color: white;
             cursor: pointer;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
-        /* Horizontal link container */
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
+        .nav-links { display: flex; gap: 10px; }
 
-        /* Pill-shaped desktop links */
         .nav-links a {
             padding: 10px 20px;
             border-radius: 9999px;
             font-size: 1.05rem;
             color: white;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.7);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
             transition: all 0.3s;
         }
 
-        /* Desktop hover effects */
         .nav-links a:hover {
             background: white;
-            color: #44403c;
+            color: #2a2724;
+            text-shadow: none;
         }
 
         /* =========================================
            MOBILE RESPONSIVE NAVIGATION (< 768px)
            ========================================= */
         @media (max-width: 768px) {
-            /* Transform row into a vertical dropdown menu */
-            .nav-links { 
-                display: none; /* Hidden until toggled */
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: rgba(255,255,255,0.98); 
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
                 padding: 1.5rem;
                 gap: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            
-            /* Toggled class via JavaScript */
-            .nav-links.show { 
-                display: flex; 
-            }
-            
-            /* Mobile link styling */
-            .nav-links a { 
-                color: #44403c; 
+            .nav-links.show { display: flex; }
+            .nav-links a {
+                color: #2a2724;
                 text-align: center;
                 font-size: 1.1rem;
-                border: none; /* Removes the white ghost borders */
+                border: none;
+                text-shadow: none;
             }
-            
-            /* Reveal hamburger icon */
-            .hamburger { 
-                display: block; 
-            }
-            
-            /* Scale down logo slightly */
-            .logo { 
-                font-size: 2rem; 
-            }
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
+
+            .content { padding: 2rem 1.25rem; margin: 0 1rem; }
+            h1 { font-size: 2.2rem; }
+            h2, h3 { font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -197,7 +191,7 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
-            
+
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
@@ -214,21 +208,23 @@
 
     <div class="hero-bg">
         <div class="content">
-            
-            <h1 class="text-5xl mb-10">Our Story</h1>
-            
-            <div class="story text-left text-lg leading-relaxed">
-                <p>Katie and Stu met on Bumble in early 2023. The connection was instant—two adventure lovers swapping stories of travels near and far. After many dates filled with laughter and great conversation, we decided to put the relationship to the test with a road trip to Asheville for Katie’s 32nd birthday, just a few months after meeting. We laughed the whole way, no arguments. We both thought, “Okay… we might actually have a shot at this.”</p>
-                
-                <p>So naturally, we decided to stress-test it again with an international trip. Just after our one-year anniversary, we flew to Norway to chase the Northern Lights. Another success. After two big trips with zero relationship meltdowns, Stu finally started to think that Katie might be the one.</p>
-                
-                <p>One more stress test was in order: a road trip to Sedona, Arizona. That’s where it happened. Stu had secretly booked a private engagement tour at a beautiful vineyard. Under a stunning pergola, he dropped to one knee and got as far as “Will you mar—” before Katie excitedly shouted “YES!”</p>
-                
-                <p>Since we first met, we’ve been on many adventures together traveling through 14 U.S. states and 10 countries, with Stu happily chauffeuring Katie through two of those international countries. And we’re just getting started!</p>
-                
-                <p class="text-center text-xl mt-12 italic">We’d love for you to join us as we celebrate our next big adventure with the people we love!</p>
+
+            <h1>Our Story</h1>
+
+            <div class="story" style="text-align: left;">
+
+                <p>We met on Bumble in early 2023. The connection was instant, two adventure lovers swapping stories of travels near and far. After a lot of dates filled with laughter and good conversation, we decided to put the relationship to the test with a road trip to Asheville for Katie's 32nd birthday, just a few months after we met. We laughed the whole way and never argued once. We both thought, okay, we might actually have a shot at this.</p>
+
+                <p>So naturally we decided to stress-test it again, this time internationally. Just after our one-year anniversary we flew to Norway to chase the Northern Lights. Another success. Two big trips, zero meltdowns, and Stu started to think Katie might be the one.</p>
+
+                <p>One more stress test was in order: a road trip to Sedona. Stu had secretly booked a private engagement tour at a vineyard, and under a beautiful pergola he dropped to one knee and got as far as "Will you mar" before Katie shouted "YES!"</p>
+
+                <p>Since we met we've traveled through 14 states and 10 countries together, two of which Stu drove across himself. And we're just getting started.</p>
+
+                <p class="closing-note">We'd love for you to join us as we celebrate our next big adventure with the people we love.</p>
+
             </div>
-            
+
         </div>
     </div>
 
@@ -236,7 +232,7 @@
         // Target the hamburger button and navigation links container
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        
+
         // Listen for click events to open/close the mobile menu
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
