@@ -11,92 +11,120 @@
 
   gtag('config', 'G-YY6S41V04B');
 </script>
-    
+
+   <link rel="icon" type="image/png" href="favicon.png">
+
+          <!-- =========================================
+             Section for what is displayed when sharing website via text
+             ========================================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://katieandstuwedding.com/">
+    <meta property="og:title" content="Katie &amp; Stu's Wedding in the Alps">
+    <meta property="og:description" content="Join us September 17–18, 2027 at Ameron Neuschwanstein to celebrate!">
+    <meta property="og:image" content="https://katieandstuwedding.com/Website%20pics/Ashville%20trip%201.jpg"> <!-- Location of picture when sharing website via text the "%20" is needed whenever there is a space in the link -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registry | Katie & Stu</title>
-    
-    <link rel="icon" type="image/png" href="favicon.png">
-    
+    <meta name="description" content="Katie Lawless and Stu Turner are getting married on September 18, 2027 at Ameron Neuschwanstein in Germany. New Orleans and Tampa couple celebrating with family and friends.">
+    <meta name="keywords" content="Katie Lawless, Stu Turner, Katie and Stu wedding, New Orleans wedding, Tampa wedding, Germany wedding, Neuschwanstein wedding">
+    <title>Katie &amp; Stu | September 17–18, 2027</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
+
     <style>
         /* =========================================
            GLOBAL VARIABLES & BASE STYLES
            ========================================= */
-        :root { 
-            --gold: #d4af37; /* Theme accent color */
+        :root {
+            --gold: #d4af37;
+            --gold-deep: #8a6a16;
         }
-        
-        body { 
-            margin: 0; 
-            font-family: 'Inter', system-ui, sans-serif; 
-            color: #44403c;
-            line-height: 1.7;
-        } /* Added missing closing bracket here */
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
 
         /* =========================================
            TYPOGRAPHY
            ========================================= */
-        h1, h2, h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700; 
-            text-align: center; 
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h2, h3 {
-            font-size: 2.1rem;
-            margin: 2.2rem 0 1.2rem 0;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
         }
 
         /* =========================================
            LAYOUT & BACKGROUND
            ========================================= */
-        /* Full-screen background with a gradient overlay to enhance text contrast */
+        /* Full-screen hero background with a dark gradient overlay.
+           The overlay is deliberately strong: the photo is brightest
+           right where the text sits. */
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url('Background.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
             justify-content: center;
-            padding-top: 110px; /* Accounts for the fixed navigation bar */
+            text-align: center;
+            color: white;
+            position: relative; /* Acts as anchor for the absolute nav bar */
+            padding: 120px 1.5rem 60px 1.5rem;
+            box-sizing: border-box;
+            overflow: hidden; /* Contains the scrim overhang so it can't create scrollbars */
         }
 
-        /* Central content container with glass-morphism effect */
-        .content {
-            background: rgba(248, 245, 240, 0.55);
-            padding: 3rem 2rem;
-            max-width: 950px;
-            width: 100%;
-            margin: 0 1rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            text-align: center;
+        .hero-content {
+            position: relative;
+            padding: 2.5rem 2rem;
+        }
+
+        /* Soft dark pool behind the hero text, fading out at the edges so
+           the outer parts of the photo stay bright */
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            inset: -10% -5%;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0) 75%);
+            z-index: -1;
+        }
+
+        /* Main hero header text sizing */
+        .hero-content h1 {
+            font-size: 4.8rem;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+        }
+
+        /* Wedding date, the largest line after the names */
+        .hero-date {
+            font-size: 2.1rem;
+            margin: 0 0 1rem 0;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Welcome party line, secondary to the wedding date */
+        .hero-welcome {
+            font-size: 1.3rem;
+            margin: 0 0 3rem 0;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.5);
         }
 
         /* =========================================
            DESKTOP NAVIGATION
            ========================================= */
-        /* Fixed top bar with blur filter */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.15);
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            background: rgba(38, 35, 32, 0.55);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.18);
         }
 
-        /* Alignment container for logo and links */
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -106,17 +134,16 @@
             align-items: center;
         }
 
-        /* Branding text */
         .logo {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 2.3rem;
             color: white;
             text-decoration: none;
-            white-space: nowrap; /* Enforces text to stay on a single line */
+            white-space: nowrap;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
-        /* Hidden on desktop, shown on mobile */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -124,70 +151,127 @@
             border: none;
             color: white;
             cursor: pointer;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
         }
 
-        /* Horizontal link container */
-        .nav-links {
-            display: flex;
-            gap: 10px;
-        }
+        .nav-links { display: flex; gap: 10px; }
 
-        /* Pill-shaped desktop links */
         .nav-links a {
             padding: 10px 20px;
             border-radius: 9999px;
             font-size: 1.05rem;
             color: white;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.7);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
             transition: all 0.3s;
         }
 
-        /* Desktop hover effects */
         .nav-links a:hover {
             background: white;
-            color: #44403c;
+            color: #2a2724;
+            text-shadow: none;
         }
 
         /* =========================================
-           MOBILE RESPONSIVE NAVIGATION (< 768px)
+           BUTTON COMPONENTS
+           ========================================= */
+        /* Row holding the two call-to-action buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 9999px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2a2724;
+        }
+
+        .btn-primary:hover {
+            background: #f5f5f4;
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+           LOCATION TEXT STYLING
+           ========================================= */
+        .location-castle,
+        .location-country {
+            letter-spacing: 0.125em;
+            font-size: 1rem;
+            color: #fde9c8;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+        }
+
+        .location-castle { margin-bottom: 0.25rem; }
+        .location-country { margin-bottom: 1rem; }
+
+        /* Desktop-only location formatting */
+        @media (min-width: 769px) {
+            .location-castle,
+            .location-country {
+                display: inline;
+                margin: 0;
+            }
+
+            /* Inserts a bullet point between the two locations on larger screens */
+            .location-country::before {
+                content: " • ";
+            }
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE STYLES (< 768px)
            ========================================= */
         @media (max-width: 768px) {
-            /* Transform row into a vertical dropdown menu */
-            .nav-links { 
-                display: none; /* Hidden until toggled */
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                right: 0; 
-                background: rgba(255,255,255,0.98); 
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
                 padding: 1.5rem;
                 gap: 10px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            
-            /* Toggled class via JavaScript */
-            .nav-links.show { 
-                display: flex; 
-            }
-            
-            /* Mobile link styling */
-            .nav-links a { 
-                color: #44403c; 
+            .nav-links.show { display: flex; }
+            .nav-links a {
+                color: #2a2724;
                 text-align: center;
                 font-size: 1.1rem;
-                border: none; /* Removes the white ghost borders */
+                border: none;
+                text-shadow: none;
             }
-            
-            /* Reveal hamburger icon */
-            .hamburger { 
-                display: block; 
-            }
-            
-            /* Scale down logo slightly */
-            .logo { 
-                font-size: 2rem; 
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
+
+            /* Scale down the hero for small screens */
+            .hero-content { padding: 2rem 0.5rem; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-date { font-size: 1.6rem; }
+            .hero-welcome { font-size: 1.1rem; margin-bottom: 2.5rem; }
+
+            /* Stack the buttons full width */
+            .hero-buttons { flex-direction: column; align-items: stretch; }
+            .btn { padding: 14px 24px; }
+
+            /* Stack location tags vertically on small screens */
+            .location-castle,
+            .location-country {
+                display: block;
+                text-align: center;
             }
         }
     </style>
@@ -197,7 +281,7 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">Katie &amp; Stu</a>
-            
+
             <div class="nav-links" id="navLinks">
                 <a href="about.html">Our Story</a>
                 <a href="gallery.html">Gallery</a>
@@ -212,27 +296,27 @@
         </div>
     </nav>
 
-    <div class="hero-bg">
-        <div class="content">
-            <h1 class="text-5xl mb-10">Registry</h1>
-            
-            <div class="story text-left text-lg leading-relaxed">
-                <p>We’re currently working on pulling together our registry!</p>
-                
-                <p>We plan to have it fully updated and ready before the end of the year. In the meantime, your presence at our wedding in Germany is the greatest gift of all.</p>
-                
-                <p>If you’d like to contribute toward our honeymoon/travel fund as we continue exploring the world together, we’ll have that option available here soon as well.</p>
-                
-                <p class="text-center text-xl mt-12 italic">Thank you for celebrating with us!</p>
+    <header class="hero-bg">
+        <div class="hero-content">
+            <p class="location-castle">AMERON NEUSCHWANSTEIN</p>
+            <p class="location-country">BAVARIA, GERMANY</p>
+
+            <h1>Katie &amp; Stu</h1>
+            <p class="hero-date">Wedding &bull; September 18, 2027</p>
+            <p class="hero-welcome">Welcome Party &bull; September 17, 2027</p>
+
+            <div class="hero-buttons">
+                <a href="about.html" class="btn btn-primary">Our Story</a>
+                <a href="rsvp.html" class="btn btn-primary">RSVP</a>
             </div>
         </div>
-    </div>
+    </header>
 
     <script>
         // Target the hamburger button and navigation links container
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        
+
         // Listen for click events to open/close the mobile menu
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');
