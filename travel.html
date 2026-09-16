@@ -24,7 +24,7 @@
            ========================================= */
         :root {
             --gold: #d4af37;        /* Light gold, used by the callout borders */
-            --gold-deep: #8a6a16;   /* Darker gold, used for leg and room markers */
+            --gold-deep: #8a6a16;   /* Darker gold, used for room card borders */
         }
 
         html {
@@ -148,15 +148,6 @@
         /* =========================================
            TRAVEL COMPONENTS
            ========================================= */
-        /* Train leg blocks */
-        .leg {
-            margin: 1.4rem 0;
-            padding-left: 1.1rem;
-            border-left: 5px solid var(--gold-deep);
-        }
-
-        .leg-title { font-weight: 500; display: block; margin-bottom: 0.2rem; }
-
         /* Rental car warning box */
         .callout {
             background: rgba(255, 251, 235, 0.95);
@@ -238,7 +229,7 @@
         .rate-label { color: #4a4540; }
         .rate-price { font-weight: 500; white-space: nowrap; }
 
-        /* Neutral information panel, shares styling with the booking block */
+        /* Neutral information panel */
         .panel {
             background: rgba(255,255,255,0.55);
             border: 1px solid rgba(42,39,36,0.15);
@@ -265,15 +256,6 @@
         .booking p { margin: 0.6rem 0; }
         .booking p:first-child { margin-top: 0; }
         .booking p:last-child { margin-bottom: 0; }
-
-        /* Highlights the phrase guests must quote to get the rate */
-        .reference {
-            display: inline-block;
-            background: rgba(212,175,55,0.22);
-            border-radius: 6px;
-            padding: 0.1rem 0.5rem;
-            font-weight: 500;
-        }
 
         /* =========================================
            DESKTOP NAVIGATION
@@ -468,7 +450,7 @@
                 <h3>How to book</h3>
 
                 <div class="booking">
-                    <p>Contact the hotel's reservations department directly and mention the <span class="reference">Stu and Katie wedding</span> so they pull from our block and give you our rate.</p>
+                    <p>Contact the hotel's reservations department directly and mention the <strong>"Stu and Katie wedding"</strong> so they pull from our block and give you our rate.</p>
                     <p><strong>Email:</strong> <a href="mailto:reservierung@ameron-neuschwanstein.de">reservierung@ameron-neuschwanstein.de</a><br>
                     <strong>Phone:</strong> <a href="tel:+4983627030705">+49 8362 70 30 705</a></p>
                     <p>Email is easiest from the States given the time difference. Expect a reply the following day rather than right away.</p>
@@ -509,26 +491,7 @@
 
                 <h3 id="train" class="anchor">By train (our recommendation)</h3>
 
-                <p>About three to three and a half hours, three legs, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home. It handles tickets, platforms, and live updates in English.</p>
-
-                <div class="leg">
-                    <span class="leg-title">Leg 1: Airport to Munich Hauptbahnhof (main station)</span>
-                    Take the <strong>S1</strong> or <strong>S8</strong> commuter train from directly beneath the terminal. About 45 minutes, departing every 20 minutes or so.
-                </div>
-
-                <div class="leg">
-                    <span class="leg-title">Leg 2: Munich Hauptbahnhof to Füssen</span>
-                    Regional train, about two hours, running roughly hourly. Some departures are direct; others involve a simple cross-platform change at Buchloe. The Füssen trains leave from tracks 27 to 36, which are a long walk from the main concourse, so give yourself 20 minutes to find your platform.
-                </div>
-
-                <div class="leg">
-                    <span class="leg-title">Leg 3: Füssen station to the AMERON</span>
-                    Two ways to cover the last two and a half miles:
-                    <ul>
-                        <li><strong>By bus.</strong> Step outside the station and catch <strong>bus 73</strong> (toward Steingaden / Garmisch-Partenkirchen) or <strong>bus 78</strong> (toward Schwangau). Get off at <strong>Hohenschwangau / Alpseestraße</strong>, sometimes announced as the Neuschwanstein Castles stop. A 10 to 15 minute ride, then about a five-minute walk to the hotel. Departures are timed to follow the train arrivals, so you shouldn't wait long.</li>
-                        <li><strong>By taxi.</strong> Taxis queue outside the station's main entrance. About five minutes to the hotel door for roughly €15 to €20, worth it if you're arriving late, hauling luggage, or the bus is packed. If none are waiting, the hotel front desk can send a car.</li>
-                    </ul>
-                </div>
+                <p>About three to three and a half hours with a couple of changes along the way, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home. It handles tickets, platforms, and live updates in English.</p>
 
                 <p><strong>Tickets.</strong> Two good options:</p>
                 <ul>
@@ -536,7 +499,7 @@
                     <li><strong>Bayern-Ticket:</strong> covers up to five people on regional trains and buses throughout Bavaria for one flat fare. The catch: on weekdays it's only valid from 9:00 a.m. onward. Great value if you're arriving as a group.</li>
                 </ul>
 
-                <p><strong>Two things to know.</strong> The 73 and 78 buses get very crowded in the summer months, so leave a little buffer if you're connecting tightly. And Deutsche Bahn runs frequent track maintenance on the Munich to Buchloe stretch, so check <a href="https://www.bahn.de" target="_blank" rel="noopener">bahn.de</a> the morning you travel and you won't be surprised by a replacement bus.</p>
+                <p>The train takes you as far as <strong>Füssen station</strong>, about two and a half miles from the hotel. Taxis queue outside the station's main entrance. About five minutes to the hotel door for roughly €15 to €20. There are also local buses toward Schwangau if you'd rather, running about every half hour and timed to follow the train arrivals.</p>
 
                 <h3 id="car" class="anchor">By car</h3>
 
