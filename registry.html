@@ -45,10 +45,7 @@
 
         h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
         h2 { font-size: 2.1rem; margin: 2.6rem 0 1.2rem 0; }
-        h3 { font-size: 1.5rem; margin: 2rem 0 0.8rem 0; text-align: left; }
 
-        ul { text-align: left; padding-left: 1.5rem; }
-        li { margin-bottom: 0.9rem; }
         a { color: #5c6e4c; }
 
         .divider {
@@ -85,19 +82,55 @@
             box-sizing: border-box;
         }
 
-        /* Neutral information panel, matching the other pages */
-        .panel {
-            background: rgba(255,255,255,0.55);
-            border: 1px solid rgba(42,39,36,0.15);
-            border-radius: 12px;
-            padding: 1.4rem 1.6rem;
-            margin: 1.8rem 0;
+        /* =========================================
+           REGISTRY CARDS
+           ========================================= */
+        /* Two cards side by side on desktop, stacked on mobile */
+        .registries {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0;
             text-align: left;
         }
 
-        .panel p { margin: 0.7rem 0; }
-        .panel p:first-child { margin-top: 0; }
-        .panel p:last-child { margin-bottom: 0; }
+        .registry {
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-top: 4px solid var(--gold-deep);
+            border-radius: 12px;
+            padding: 1.6rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .registry-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        /* flex-grow keeps both buttons aligned even if the blurbs differ in length */
+        .registry p {
+            margin: 0 0 1.4rem 0;
+            flex-grow: 1;
+        }
+
+        /* Button linking out to each registry */
+        .registry-btn {
+            display: block;
+            text-align: center;
+            background: #9CAF88;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            transition: background 0.25s;
+        }
+
+        .registry-btn:hover { background: #7F8F6F; }
 
         .closing-note {
             text-align: center;
@@ -190,7 +223,7 @@
             .content { padding: 2rem 1.25rem; }
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
-            .panel { padding: 1.2rem 1.1rem; }
+            .registries { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -223,13 +256,27 @@
 
                 <p>Your presence at our wedding is the greatest gift we could ask for. Getting to Bavaria is no small trip, and the fact that you would travel that far to celebrate with us means more than anything we could put on a list.</p>
 
-                <p>That said, for anyone who has asked, we are putting a registry together along with a honeymoon fund.</p>
+                <p>For anyone who has asked, we have registries at Crate &amp; Barrel and Amazon.</p>
 
-                <div class="panel">
-                    <p>This page is still in the works. Check back and we will have everything posted here.</p>
+                <div class="registries">
+
+                    <div class="registry">
+                        <p class="registry-name">Crate &amp; Barrel</p>
+                        <p>Things for the home we are building together.</p>
+                        <a class="registry-btn" href="https://www.crateandbarrel.com/gift-registry/catherine-lawless-and-steuart-turner/r7577235" target="_blank" rel="noopener">View registry</a>
+                    </div>
+
+                    <div class="registry">
+                        <p class="registry-name">Amazon</p>
+                        <p>A mix of everyday essentials and a few fun extras.</p>
+                        <a class="registry-btn" href="https://www.amazon.com/wedding/share/katieandstuwedding" target="_blank" rel="noopener">View registry</a>
+                    </div>
+
                 </div>
 
-                <p class="closing-note">Stay tuned, we will update this page as soon as it is ready!</p>
+                <p>Gifts sent to our home in Louisiana are much easier than anything carried across the Atlantic, please do not feel like you need to bring anything with you.</p>
+
+                <p class="closing-note">Thank you for being part of this with us.</p>
 
             </div>
         </div>
