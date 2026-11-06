@@ -1,399 +1,327 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YY6S41V04B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YY6S41V04B');
+</script>
+
+   <link rel="icon" type="image/png" href="favicon.png">
+
+          <!-- =========================================
+             Section for what is displayed when sharing website via text
+             ========================================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://katieandstuwedding.com/">
+    <meta property="og:title" content="Katie &amp; Stu's Wedding in the Alps">
+    <meta property="og:description" content="Join us September 17–18, 2027 at Ameron Neuschwanstein to celebrate!">
+    <meta property="og:image" content="https://katieandstuwedding.com/Website%20pics/Ashville%20trip%201.jpg"> <!-- Location of picture when sharing website via text the "%20" is needed whenever there is a space in the link -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>RSVP Test | Katie & Stu</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Katie Lawless and Stu Turner are getting married on September 18, 2027 at Ameron Neuschwanstein in Germany. New Orleans and Tampa couple celebrating with family and friends.">
+    <meta name="keywords" content="Katie Lawless, Stu Turner, Katie and Stu wedding, New Orleans wedding, Tampa wedding, Germany wedding, Neuschwanstein wedding">
+    <title>Katie &amp; Stu | September 17–18, 2027</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
+        /* =========================================
+           GLOBAL VARIABLES & BASE STYLES
+           ========================================= */
+        :root {
+            --gold: #d4af37;
+            --gold-deep: #8a6a16;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', system-ui, sans-serif;
-            color: #44403c;
-            line-height: 1.7;
         }
 
-        h1, h2 {
+        /* =========================================
+           TYPOGRAPHY
+           ========================================= */
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            text-align: center;
+            font-weight: 400;
         }
 
-        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
-
+        /* =========================================
+           LAYOUT & BACKGROUND
+           ========================================= */
+        /* Full-screen hero background with a dark gradient overlay.
+           The overlay is deliberately strong: the photo is brightest
+           right where the text sits. */
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url('Background.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
             justify-content: center;
-            padding: 40px 0;
-        }
-
-        .content {
-            background: rgba(248, 245, 240, 0.85);
-            padding: 3rem 2rem;
-            max-width: 950px;
-            width: 100%;
-            margin: 0 1rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .content input, .content select, .content button {
-            width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            box-sizing: border-box;
-        }
-
-        .content button {
-            background: #9CAF88;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-        }
-
-        .content button:hover { background: #7F8F6F; }
-
-        label {
-            display: block;
-            text-align: left;
-            margin: 1.2rem 0 0.5rem 0;
-            font-weight: 500;
-        }
-
-        .test-banner {
-            background: #fff3cd;
-            border: 1px solid #e0c36a;
-            border-radius: 8px;
-            padding: 10px 14px;
             text-align: center;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            color: white;
+            position: relative; /* Acts as anchor for the absolute nav bar */
+            padding: 120px 1.5rem 60px 1.5rem;
+            box-sizing: border-box;
+            overflow: hidden; /* Contains the scrim overhang so it can't create scrollbars */
         }
 
-        .dryrun-row {
+        .hero-content {
+            position: relative;
+            padding: 2.5rem 2rem;
+        }
+
+        /* Soft dark pool behind the hero text, fading out at the edges so
+           the outer parts of the photo stay bright */
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            inset: -10% -5%;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0) 75%);
+            z-index: -1;
+        }
+
+        /* Main hero header text sizing */
+        .hero-content h1 {
+            font-size: 4.8rem;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+        }
+
+        /* Wedding date, the largest line after the names */
+        .hero-date {
+            font-size: 2.1rem;
+            margin: 0 0 1rem 0;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Welcome party line, secondary to the wedding date */
+        .hero-welcome {
+            font-size: 1.3rem;
+            margin: 0 0 3rem 0;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* =========================================
+           DESKTOP NAVIGATION
+           ========================================= */
+        .nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            background: rgba(38, 35, 32, 0.55);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            margin: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        .nav-links { display: flex; gap: 10px; }
+
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.7);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #2a2724;
+            text-shadow: none;
+        }
+
+        /* =========================================
+           BUTTON COMPONENTS
+           ========================================= */
+        /* Row holding the two call-to-action buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 9999px;
+            font-size: 1.1rem;
             font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .content .dryrun-row input[type="checkbox"] {
-            width: auto;
-            margin: 0;
+        .btn-primary {
+            background: white;
+            color: #2a2724;
         }
 
-        .debug-panel {
-            margin-top: 2rem;
-            background: #1e1e1e;
-            color: #d4d4d4;
-            border-radius: 8px;
-            padding: 14px;
-            font-family: ui-monospace, Menlo, Consolas, monospace;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            text-align: left;
-            white-space: pre-wrap;
-            word-break: break-word;
-            max-height: 320px;
-            overflow-y: auto;
+        .btn-primary:hover {
+            background: #f5f5f4;
+            transform: translateY(-2px);
         }
 
-        .content .clear-btn {
-            background: #78716c;
-            width: auto;
-            padding: 8px 16px;
-            font-size: 0.9rem;
+        /* =========================================
+           LOCATION TEXT STYLING
+           ========================================= */
+        .location-castle,
+        .location-country {
+            letter-spacing: 0.125em;
+            font-size: 1rem;
+            color: #fde9c8;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+        }
+
+        .location-castle { margin-bottom: 0.25rem; }
+        .location-country { margin-bottom: 1rem; }
+
+        /* Desktop-only location formatting */
+        @media (min-width: 769px) {
+            .location-castle,
+            .location-country {
+                display: inline;
+                margin: 0;
+            }
+
+            /* Inserts a bullet point between the two locations on larger screens */
+            .location-country::before {
+                content: " • ";
+            }
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVE STYLES (< 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
+                padding: 1.5rem;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a {
+                color: #2a2724;
+                text-align: center;
+                font-size: 1.1rem;
+                border: none;
+                text-shadow: none;
+            }
+            .hamburger { display: block; }
+            .logo { font-size: 2rem; }
+
+            /* Scale down the hero for small screens */
+            .hero-content { padding: 2rem 0.5rem; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-date { font-size: 1.6rem; }
+            .hero-welcome { font-size: 1.1rem; margin-bottom: 2.5rem; }
+
+            /* Stack the buttons full width */
+            .hero-buttons { flex-direction: column; align-items: stretch; }
+            .btn { padding: 14px 24px; }
+
+            /* Stack location tags vertically on small screens */
+            .location-castle,
+            .location-country {
+                display: block;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="hero-bg">
-    <div class="content">
-        <h1>RSVP Test</h1>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
 
-        <div class="test-banner">
-            Test page. Password check is removed. Dry run is on by default, so nothing is saved unless you uncheck it.
-        </div>
-
-        <div class="dryrun-row">
-            <input type="checkbox" id="dryRun" checked>
-            <label for="dryRun" style="margin: 0;">Dry run (show the data but do not send it)</label>
-        </div>
-
-        <!-- Check an existing RSVP -->
-        <div id="checkForm" style="margin-top: 2rem;">
-            <h2>Check an RSVP</h2>
-            <input type="email" id="checkEmail" placeholder="Enter an email to look up">
-            <button onclick="checkPreviousRSVP()">Check RSVP</button>
-            <div id="checkResult" style="margin-top: 1rem; min-height: 2em;"></div>
-        </div>
-
-        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ccc;">
-
-        <!-- New RSVP -->
-        <div id="rsvpForm" style="text-align: left;">
-            <h2>New RSVP</h2>
-
-            <input type="text" placeholder="Your Full Name" id="name" oninput="updateMealLabels()">
-            <input type="email" placeholder="Your Email Address" id="email">
-
-            <label>Will you be attending?</label>
-            <select id="attendance" onchange="toggleGuestFields()">
-                <option value="">Please select...</option>
-                <option value="I won't be able to attend">I won't be able to attend</option>
-                <option value="Just myself">Just myself</option>
-                <option value="Myself plus one">Myself plus one</option>
-            </select>
-
-            <div id="guestNameField" style="display: none;">
-                <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateMealLabels()">
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
             </div>
 
-            <div id="mealSection" style="display: none;">
-                <label id="mainMealLabel">Your Meal Preference</label>
-                <select id="meal1">
-                    <option>Standard Meal</option>
-                    <option>Vegetarian</option>
-                    <option>Vegan</option>
-                    <option>Gluten-Free</option>
-                </select>
-
-                <div id="guestMealField" style="display: none;">
-                    <label id="guestMealLabel">Guest's Meal Preference</label>
-                    <select id="meal2">
-                        <option>Standard Meal</option>
-                        <option>Vegetarian</option>
-                        <option>Vegan</option>
-                        <option>Gluten-Free</option>
-                    </select>
-                </div>
-            </div>
-
-            <div id="kidsSection" style="display: none;">
-                <div style="background: rgba(255,255,255,0.6); border-radius: 8px; padding: 14px 16px; margin: 1.2rem 0 0.5rem 0; font-size: 0.95rem; text-align: center;">
-                    We would love for little ones to join the fun at our Welcome Party on September 17. Our ceremony and reception on September 18 are adults only. Thank you so much for understanding!
-                </div>
-
-                <label>Will any children be joining you at the Welcome Party?</label>
-                <select id="kidsAttending" onchange="toggleKidsFields()">
-                    <option value="">Please select...</option>
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-
-                <div id="kidsCountField" style="display: none;">
-                    <input type="number" id="kidsCount" min="1" max="10" step="1" placeholder="How many children?">
-                </div>
-            </div>
-
-            <div id="allergiesField" style="display: none;">
-                <input type="text" placeholder="Any allergies or special requests?" id="notes">
-            </div>
-
-            <button onclick="submitRSVP()">Submit RSVP</button>
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
+    </nav>
 
-        <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
-            Thank you! Your RSVP has been received.<br>
-            We can't wait to celebrate with you!
-            <button class="clear-btn" onclick="location.reload()" style="display:block; margin: 1rem auto 0;">Reset test form</button>
+    <header class="hero-bg">
+        <div class="hero-content">
+            <p class="location-castle">AMERON NEUSCHWANSTEIN</p>
+            <p class="location-country">BAVARIA, GERMANY</p>
+
+            <h1>Katie &amp; Stu</h1>
+            <p class="hero-date">Wedding &bull; September 18, 2027</p>
+            <p class="hero-welcome">Welcome Party &bull; September 17, 2027</p>
+
+            <div class="hero-buttons">
+                <a href="about.html" class="btn btn-primary">Our Story</a>
+                <a href="rsvp.html" class="btn btn-primary">RSVP</a>
+            </div>
         </div>
+    </header>
 
-        <!-- Debug panel -->
-        <h2 style="font-size: 1.4rem; margin-top: 2.5rem;">Debug Output</h2>
-        <button class="clear-btn" onclick="clearLog()">Clear log</button>
-        <div class="debug-panel" id="debugLog">Waiting for activity...</div>
-    </div>
-</div>
+    <script>
+        // Target the hamburger button and navigation links container
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
 
-<script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
-
-    // ---------- Debug helpers ----------
-    function log(label, data) {
-        const panel = document.getElementById('debugLog');
-        if (panel.textContent === "Waiting for activity...") panel.textContent = "";
-        const time = new Date().toLocaleTimeString();
-        let body = (typeof data === "string") ? data : JSON.stringify(data, null, 2);
-        panel.textContent += "[" + time + "] " + label + "\n" + body + "\n\n";
-        panel.scrollTop = panel.scrollHeight;
-    }
-
-    function clearLog() {
-        document.getElementById('debugLog').textContent = "Waiting for activity...";
-    }
-
-    // ---------- Form behavior ----------
-    function toggleGuestFields() {
-        const attendance = document.getElementById('attendance').value;
-        const attending = attendance === "Just myself" || attendance === "Myself plus one";
-
-        document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
-        document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
-
-        document.getElementById('mealSection').style.display = attending ? 'block' : 'none';
-        document.getElementById('kidsSection').style.display = attending ? 'block' : 'none';
-        document.getElementById('allergiesField').style.display = attending ? 'block' : 'none';
-
-        if (!attending) {
-            document.getElementById('kidsAttending').value = "";
-            document.getElementById('kidsCount').value = "";
-            document.getElementById('kidsCountField').style.display = 'none';
-        }
-    }
-
-    function toggleKidsFields() {
-        const answer = document.getElementById('kidsAttending').value;
-        document.getElementById('kidsCountField').style.display = (answer === "Yes") ? 'block' : 'none';
-        if (answer !== "Yes") document.getElementById('kidsCount').value = "";
-    }
-
-    function updateMealLabels() {
-        const fullName = document.getElementById('name').value.trim();
-        const mainLabel = document.getElementById('mainMealLabel');
-        mainLabel.textContent = fullName ? fullName.split(' ')[0] + "'s Meal Preference" : "Your Meal Preference";
-
-        const guestName = document.getElementById('guestName').value.trim();
-        const guestLabel = document.getElementById('guestMealLabel');
-        guestLabel.textContent = guestName ? guestName.split(' ')[0] + "'s Meal Preference" : "Guest's Meal Preference";
-    }
-
-    function submitRSVP() {
-        const attendance = document.getElementById('attendance').value;
-        const isAttending = attendance === "Just myself" || attendance === "Myself plus one";
-
-        if (!attendance) {
-            alert("Please select your attendance.");
-            return;
-        }
-
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            attendance: attendance,
-            guestName: document.getElementById('guestName').value || "",
-            notes: document.getElementById('notes').value || "",
-            kidsCount: "0"
-        };
-
-        if (isAttending) {
-            const kidsAnswer = document.getElementById('kidsAttending').value;
-            if (!kidsAnswer) {
-                alert("Please let us know if any children will be joining you at the Welcome Party.");
-                return;
-            }
-
-            if (kidsAnswer === "Yes") {
-                const count = parseInt(document.getElementById('kidsCount').value, 10);
-                if (!count || count < 1) {
-                    alert("Please enter how many children will be joining you.");
-                    return;
-                }
-                formData.kidsCount = String(count);
-            }
-
-            formData.meal1 = document.getElementById('meal1').value || "";
-            if (attendance === "Myself plus one") {
-                formData.meal2 = document.getElementById('meal2').value || "";
-            }
-        }
-
-        log("Payload", formData);
-
-        if (document.getElementById('dryRun').checked) {
-            log("DRY RUN", "Nothing was sent. Uncheck 'Dry run' to submit for real.");
-            return;
-        }
-
-        log("Sending POST to", SCRIPT_URL);
-
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: new URLSearchParams(formData)
-        })
-        .then(r => {
-            log("HTTP status", r.status + " " + r.statusText);
-            return r.text();
-        })
-        .then(text => {
-            log("Raw response", text);
-            if (text.startsWith("success")) {
-                document.getElementById('rsvpForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            } else {
-                alert("Error saving RSVP. See the debug panel.");
-            }
-        })
-        .catch(err => {
-            log("Network error", String(err));
-            alert("Network error. See the debug panel.");
+        // Listen for click events to open/close the mobile menu
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
         });
-    }
-
-    function checkPreviousRSVP() {
-        const email = document.getElementById('checkEmail').value.trim();
-        const resultDiv = document.getElementById('checkResult');
-
-        if (!email) {
-            resultDiv.textContent = "Please enter an email";
-            return;
-        }
-
-        resultDiv.textContent = "Searching...";
-        const url = SCRIPT_URL + '?email=' + encodeURIComponent(email);
-        log("GET", url);
-
-        fetch(url)
-            .then(r => {
-                log("HTTP status", r.status + " " + r.statusText);
-                return r.text();
-            })
-            .then(text => {
-                log("Raw response", text);
-                const data = JSON.parse(text);
-
-                if (data.error) {
-                    resultDiv.textContent = "Script error: " + data.error;
-                    return;
-                }
-
-                if (data.found) {
-                    const lines = [
-                        "Found your RSVP!",
-                        "Name: " + data.name,
-                        "Attendance: " + data.attendance
-                    ];
-                    if (data.guestName) lines.push("Guest: " + data.guestName);
-                    if (data.yourMeal) lines.push("Meal: " + data.yourMeal);
-                    if (data.guestMeal) lines.push("Guest Meal: " + data.guestMeal);
-                    if (data.kidsCount && Number(data.kidsCount) > 0) lines.push("Children at Welcome Party: " + data.kidsCount);
-                    if (data.notes) lines.push("Allergies or special requests: " + data.notes);
-                    resultDiv.innerText = lines.join("\n");
-                } else {
-                    resultDiv.textContent = "No RSVP found for this email.";
-                }
-            })
-            .catch(err => {
-                log("Error", String(err));
-                resultDiv.textContent = "Error checking. See the debug panel.";
-            });
-    }
-</script>
+    </script>
 
 </body>
 </html>
