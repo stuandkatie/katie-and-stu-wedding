@@ -1,126 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YY6S41V04B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YY6S41V04B');
-</script>
-
-    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Travel and lodging information for Katie and Stu's wedding at AMERON Neuschwanstein Alpsee Resort in Hohenschwangau, Germany.">
-    <title>Travel | Katie &amp; Stu</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>RSVP Test | Katie & Stu</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
-        /* =========================================
-           GLOBAL VARIABLES & BASE STYLES
-           ========================================= */
-        :root {
-            --gold: #d4af37;        /* Light gold, used by the callout borders */
-            --gold-deep: #8a6a16;   /* Darker gold, used for room card borders */
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             margin: 0;
             font-family: 'Inter', system-ui, sans-serif;
-            color: #2a2724;
+            color: #44403c;
             line-height: 1.7;
         }
 
-        /* =========================================
-           JUMP BAR
-           ========================================= */
-        /* Sits directly beneath the fixed nav and stays put while scrolling.
-           Its top offset comes from --nav-h, measured by script at the bottom. */
-        .jump-bar {
-            position: fixed;
-            top: var(--nav-h, 84px);
-            left: 0; right: 0;
-            z-index: 99;
-            background: rgba(38, 35, 32, 0.45);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-            padding: 0.6rem 1rem;
-        }
-
-        .jump-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .jump-inner a {
-            padding: 6px 16px;
-            border-radius: 9999px;
-            font-size: 0.92rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.55);
-            text-shadow: 0 1px 3px rgba(0,0,0,0.45);
-            white-space: nowrap;
-            transition: all 0.25s;
-        }
-
-        .jump-inner a:hover {
-            background: white;
-            color: #2a2724;
-            text-shadow: none;
-        }
-
-        /* Highlights whichever section is currently on screen */
-        .jump-inner a.active {
-            background: rgba(255,255,255,0.92);
-            color: #2a2724;
-            border-color: transparent;
-            text-shadow: none;
-            font-weight: 500;
-        }
-
-        /* Stops jump targets from landing underneath the two fixed bars.
-           .subanchor is for in-page links that have no matching jump-bar chip. */
-        .anchor,
-        .subanchor { scroll-margin-top: calc(var(--nav-h, 84px) + var(--jump-h, 55px) + 24px); }
-
-        /* =========================================
-           TYPOGRAPHY
-           ========================================= */
-        h1, h2, h3 {
+        h1, h2 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             text-align: center;
         }
 
         h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
-        h2 { font-size: 2.1rem; margin: 2.6rem 0 1.2rem 0; }
-        h3 { font-size: 1.5rem; margin: 2rem 0 0.8rem 0; text-align: left; }
 
-        ul { text-align: left; padding-left: 1.5rem; }
-        li { margin-bottom: 0.9rem; }
-        a { color: #5c6e4c; }
-
-        .divider {
-            border: 0;
-            border-top: 1px solid rgba(42,39,36,0.25);
-            margin: 2.5rem 0 0 0;
-        }
-
-        /* =========================================
-           LAYOUT & BACKGROUND
-           ========================================= */
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
             background-size: cover;
@@ -130,444 +33,367 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: calc(var(--nav-h, 84px) + var(--jump-h, 55px) + 30px);
-            padding-bottom: 60px;
+            padding: 40px 0;
         }
 
         .content {
-            background: rgba(250, 248, 244, 0.75);
+            background: rgba(248, 245, 240, 0.85);
             padding: 3rem 2rem;
             max-width: 950px;
             width: 100%;
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            text-align: center;
         }
 
-        /* =========================================
-           TRAVEL COMPONENTS
-           ========================================= */
-        /* Rental car warning box */
-        .callout {
-            background: rgba(255, 251, 235, 0.95);
-            border: 1px solid var(--gold);
-            border-left: 6px solid var(--gold);
-            border-radius: 12px;
-            padding: 1.5rem 1.8rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .callout h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin: 0 0 1rem 0;
-            text-align: left;
-        }
-
-        .callout p { margin: 0.9rem 0; }
-        .callout p:last-child { margin-bottom: 0; }
-
-        .closing-note {
-            text-align: center;
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-top: 3rem;
-        }
-
-        /* =========================================
-           ROOM BLOCK COMPONENTS
-           ========================================= */
-        /* Booking deadline banner */
-        .deadline {
-            background: rgba(255, 251, 235, 0.95);
-            border: 1px solid var(--gold);
-            border-left: 6px solid var(--gold);
-            border-radius: 12px;
-            padding: 1.3rem 1.6rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .deadline p { margin: 0.6rem 0; }
-        .deadline p:first-child { margin-top: 0; }
-        .deadline p:last-child { margin-bottom: 0; }
-
-        /* Room rate cards: two columns on desktop, stacked on mobile */
-        .rooms {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .room {
-            background: rgba(255,255,255,0.55);
-            border: 1px solid rgba(42,39,36,0.15);
-            border-top: 4px solid var(--gold-deep);
-            border-radius: 12px;
-            padding: 1.2rem 1.3rem;
-        }
-
-        .room-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0 0 0.8rem 0;
-        }
-
-        .rate {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 0.35rem 0;
-            border-top: 1px solid rgba(42,39,36,0.12);
-        }
-
-        .rate-label { color: #4a4540; }
-        .rate-price { font-weight: 500; white-space: nowrap; }
-
-        /* Neutral information panel */
-        .panel {
-            background: rgba(255,255,255,0.55);
-            border: 1px solid rgba(42,39,36,0.15);
-            border-radius: 12px;
-            padding: 1.4rem 1.6rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .panel p { margin: 0.7rem 0; }
-        .panel p:first-child { margin-top: 0; }
-        .panel p:last-child { margin-bottom: 0; }
-
-        /* Booking contact block */
-        .booking {
-            background: rgba(255,255,255,0.55);
-            border: 1px solid rgba(42,39,36,0.15);
-            border-radius: 12px;
-            padding: 1.4rem 1.6rem;
-            margin: 1.8rem 0;
-            text-align: left;
-        }
-
-        .booking p { margin: 0.6rem 0; }
-        .booking p:first-child { margin-top: 0; }
-        .booking p:last-child { margin-bottom: 0; }
-
-        /* =========================================
-           DESKTOP NAVIGATION
-           ========================================= */
-        .nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: rgba(38, 35, 32, 0.55);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.18);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 2.3rem;
-            color: white;
-            text-decoration: none;
-            white-space: nowrap;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
-        }
-
-        .nav-links { display: flex; gap: 10px; }
-
-        .nav-links a {
-            padding: 10px 20px;
-            border-radius: 9999px;
+        .content input, .content select, .content button {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             font-size: 1.05rem;
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.7);
-            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
-            transition: all 0.3s;
+            box-sizing: border-box;
         }
 
-        .nav-links a:hover { background: white; color: #2a2724; text-shadow: none; }
+        .content button {
+            background: #9CAF88;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
 
-        /* =========================================
-           MOBILE RESPONSIVE (< 768px)
-           ========================================= */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: rgba(255,255,255,0.98);
-                padding: 1.5rem;
-                gap: 10px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            }
-            .nav-links.show { display: flex; }
-            .nav-links a {
-                color: #2a2724;
-                text-align: center;
-                font-size: 1.1rem;
-                border: none;
-                text-shadow: none;
-            }
-            .hamburger { display: block; }
-            .logo { font-size: 2rem; }
+        .content button:hover { background: #7F8F6F; }
 
-            .jump-bar { padding: 0.5rem 0.6rem; }
-            .jump-inner { gap: 6px; }
-            .jump-inner a { padding: 5px 12px; font-size: 0.84rem; }
+        label {
+            display: block;
+            text-align: left;
+            margin: 1.2rem 0 0.5rem 0;
+            font-weight: 500;
+        }
 
-            .content { padding: 2rem 1.25rem; }
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.7rem; }
-            h3 { font-size: 1.35rem; }
-            .callout, .deadline, .booking, .panel { padding: 1.2rem 1.1rem; }
-            .rooms { grid-template-columns: 1fr; }
+        .test-banner {
+            background: #fff3cd;
+            border: 1px solid #e0c36a;
+            border-radius: 8px;
+            padding: 10px 14px;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dryrun-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        .content .dryrun-row input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .debug-panel {
+            margin-top: 2rem;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 14px;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            text-align: left;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        .content .clear-btn {
+            background: #78716c;
+            width: auto;
+            padding: 8px 16px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Katie &amp; Stu</a>
-            <div class="nav-links" id="navLinks">
-                <a href="about.html">Our Story</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="schedule.html">Schedule</a>
-                <a href="travel.html">Travel</a>
-                <a href="guest-information.html">Guest Information</a>
-                <a href="registry.html">Registry</a>
-                <a href="rsvp.html">RSVP</a>
+<div class="hero-bg">
+    <div class="content">
+        <h1>RSVP Test</h1>
+
+        <div class="test-banner">
+            Test page. Password check is removed. Dry run is on by default, so nothing is saved unless you uncheck it.
+        </div>
+
+        <div class="dryrun-row">
+            <input type="checkbox" id="dryRun" checked>
+            <label for="dryRun" style="margin: 0;">Dry run (show the data but do not send it)</label>
+        </div>
+
+        <!-- Check an existing RSVP -->
+        <div id="checkForm" style="margin-top: 2rem;">
+            <h2>Check an RSVP</h2>
+            <input type="email" id="checkEmail" placeholder="Enter an email to look up">
+            <button onclick="checkPreviousRSVP()">Check RSVP</button>
+            <div id="checkResult" style="margin-top: 1rem; min-height: 2em;"></div>
+        </div>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ccc;">
+
+        <!-- New RSVP -->
+        <div id="rsvpForm" style="text-align: left;">
+            <h2>New RSVP</h2>
+
+            <input type="text" placeholder="Your Full Name" id="name" oninput="updateMealLabels()">
+            <input type="email" placeholder="Your Email Address" id="email">
+
+            <label>Will you be attending?</label>
+            <select id="attendance" onchange="toggleGuestFields()">
+                <option value="">Please select...</option>
+                <option value="I won't be able to attend">I won't be able to attend</option>
+                <option value="Just myself">Just myself</option>
+                <option value="Myself plus one">Myself plus one</option>
+            </select>
+
+            <div id="guestNameField" style="display: none;">
+                <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateMealLabels()">
             </div>
-            <button class="hamburger" id="hamburger">☰</button>
-        </div>
-    </nav>
 
-    <!-- Section jump bar -->
-    <div class="jump-bar">
-        <div class="jump-inner">
-            <a href="#stay">Where to Stay</a>
-            <a href="#flights">Flights</a>
-            <a href="#train">By Train</a>
-            <a href="#car">By Car</a>
-            <a href="#transfer">Private Transfer</a>
-        </div>
-    </div>
+            <div id="mealSection" style="display: none;">
+                <label id="mainMealLabel">Your Meal Preference</label>
+                <select id="meal1">
+                    <option>Standard Meal</option>
+                    <option>Vegetarian</option>
+                    <option>Vegan</option>
+                    <option>Gluten-Free</option>
+                </select>
 
-    <!-- Travel Content -->
-    <div class="hero-bg">
-        <div class="content">
-
-            <h1>Getting Here</h1>
-
-            <div class="story" style="text-align: left;">
-
-                <p>We're getting married at the <strong>AMERON Neuschwanstein Alpsee Resort &amp; Spa</strong>, Alpseestraße 21, 87645 Schwangau, Germany, in the tiny village of Hohenschwangau below the Neuschwanstein and Hohenschwangau castles.</p>
-
-                <hr class="divider">
-
-                <h2 id="stay" class="anchor">Where to Stay</h2>
-
-                <p>There are two good ways to do this. You can stay with us at the AMERON, where the wedding itself is happening, or you can find something more affordable in Füssen, ten minutes away. Below we cover the resort first, then <a href="#budget">staying elsewhere</a>.</p>
-
-                <h3>Staying at the AMERON</h3>
-
-                <p>We've reserved a block of rooms at the resort. Everything for the weekend is within walking distance of your room, so staying here means no transportation to sort out and no reason to leave the party early. You can see the rooms and the property at <a href="https://www.ameroncollection.com/en/neuschwanstein-alpsee-resort-spa" target="_blank" rel="noopener">ameroncollection.com</a>.</p>
-
-                <div class="deadline">
-                    <p><strong>Please book by May 30, 2027.</strong> Our block is held only until then. After that date any unclaimed rooms go back to the hotel's general inventory, and Hohenschwangau fills up well in advance.</p>
-                    <p>The good news: each reservation can be cancelled free of charge up to 7 days before arrival.</p>
+                <div id="guestMealField" style="display: none;">
+                    <label id="guestMealLabel">Guest's Meal Preference</label>
+                    <select id="meal2">
+                        <option>Standard Meal</option>
+                        <option>Vegetarian</option>
+                        <option>Vegan</option>
+                        <option>Gluten-Free</option>
+                    </select>
                 </div>
-
-                <h3>Rooms and rates</h3>
-
-                <p>Rates are per room, per night, and include an extensive breakfast buffet, free use of the 4 Elements spa and fitness area (the indoor pool looks out at Hohenschwangau Castle, so pack a swimsuit), a bathrobe, WiFi, bottled water, an in-room coffee machine, and a room safe. <em>Single use</em> means one person in the room and <em>double use</em> means two. The room itself is the same either way.</p>
-
-                <div class="rooms">
-
-                    <div class="room">
-                        <p class="room-name">Standard Room</p>
-                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€250</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€280</span></div>
-                    </div>
-
-                    <div class="room">
-                        <p class="room-name">Comfort Room</p>
-                        <div class="rate"><span class="rate-label">Single use, Friday</span><span class="rate-price">€290</span></div>
-                        <div class="rate"><span class="rate-label">Single use, Saturday</span><span class="rate-price">€320</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€320</span></div>
-                    </div>
-
-                    <div class="room">
-                        <p class="room-name">Jägerhaus Double Room</p>
-                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€250</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€280</span></div>
-                    </div>
-
-                    <div class="room">
-                        <p class="room-name">Jägerhaus Junior Suite</p>
-                        <div class="rate"><span class="rate-label">Single use</span><span class="rate-price">€350</span></div>
-                        <div class="rate"><span class="rate-label">Double use</span><span class="rate-price">€380</span></div>
-                    </div>
-
-                </div>
-
-                <p>Schwangau charges a small visitor's tax on top of the room rate, €1.90 per adult and €0.95 per child aged 6 to 15, per night, collected when you check out. Children under 6 are exempt. All rooms are non-smoking.</p>
-
-                <h3>A note on the Jägerhaus</h3>
-
-                <p>The resort was built around three historic houses, and the Jägerhaus is one of them. It sits directly across from the main lobby, so it's a walk across the courtyard rather than a hike, and you'll still use the main buildings for breakfast, the spa, and the restaurants.</p>
-
-                <p>It's the charming option: antique furnishings, canopied beds, old-fashioned room keys instead of key cards. It's also the older option, so the rooms are more characterful than sleek, and there's no air conditioning in that building. September nights in the Alps are cool, so it's unlikely to matter, but we'd rather you know before you book than after you arrive.</p>
-
-                <h3>How to book</h3>
-
-                <div class="booking">
-                    <p>Contact the hotel's reservations department directly and mention the <strong>"Stu and Katie wedding"</strong> so they pull from our block and give you our rate.</p>
-                    <p><strong>Email:</strong> <a href="mailto:reservierung@ameron-neuschwanstein.de">reservierung@ameron-neuschwanstein.de</a><br>
-                    <strong>Phone:</strong> <a href="tel:+4983627030705">+49 8362 70 30 705</a></p>
-                    <p>Email is easiest from the States given the time difference. Expect a reply the following day rather than right away.</p>
-                </div>
-
-                <p>Our block covers <strong>Friday, September 17</strong> and <strong>Saturday, September 18</strong>. If you'd like to come in early or stay on a few extra days, the hotel has been wonderfully accommodating, so just ask when you book. Rates for the extra nights may be different since they fall outside our block.</p>
-
-                <hr class="divider">
-
-                <h3 id="budget" class="subanchor">Staying somewhere other than the resort</h3>
-
-                <p>That covers the resort. If those rates are more than you want to spend, there are good alternatives close by, and nobody should feel obligated to book the AMERON.</p>
-
-                <p><strong>Füssen</strong>, about ten minutes away, has a much wider range of guesthouses, small hotels, and apartments at friendlier prices, and it is a lovely little town in its own right. Nearby Schwangau has options too.</p>
-
-                <div class="panel">
-                    <p><strong>The one thing to think through first:</strong> how you are getting back at the end of the night. The local buses stop running well before our reception will, so plan on a taxi, roughly €15 to €20 back to Füssen, and it is worth arranging the ride in advance rather than hoping one is waiting.</p>
-                    <p>If you do stay off-site, <strong>please tell us where in your RSVP</strong>. We are working on arranging a shuttle, and knowing how many people are staying where is what makes that possible.</p>
-                </div>
-
-                <hr class="divider">
-
-                <h2 id="flights" class="anchor">Step 1: Fly to Munich</h2>
-
-                <p><strong>Munich Airport (MUC)</strong> is the gateway, about two hours from us. There are no nonstops from most U.S. cities, so plan on one connection, usually through Atlanta, Newark, Chicago, or a European hub like Amsterdam, Frankfurt, or Paris.</p>
-
-                <p>A few alternates worth pricing out:</p>
-                <ul>
-                    <li><strong>Memmingen (FMM):</strong> closer to us (about 85 km) but served mostly by budget European carriers. Only useful if you're already in Europe.</li>
-                    <li><strong>Innsbruck (INN)</strong> and <strong>Zurich (ZRH):</strong> both roughly two to two and a half hours away by car.</li>
-                </ul>
-
-                <p>Give yourself a buffer. Jet lag plus a two-hour transfer is a lot on arrival day, and we'd love for you to come in a day early.</p>
-
-                <hr class="divider">
-
-                <h2>Step 2: Munich Airport to Hohenschwangau</h2>
-
-                <h3 id="train" class="anchor">By train (our recommendation)</h3>
-
-                <p>About three to three and a half hours with a couple of changes along the way, and it costs around €30 or less. German trains are clean, comfortable, and run on time. Download the <strong>DB Navigator</strong> app before you leave home. It handles tickets, platforms, and live updates in English.</p>
-
-                <p><strong>Tickets.</strong> Two good options:</p>
-                <ul>
-                    <li><strong>Deutschland-Ticket:</strong> a monthly pass valid on all regional trains and local buses nationwide, at any hour. Best if you're traveling around Germany.</li>
-                    <li><strong>Bayern-Ticket:</strong> covers up to five people on regional trains and buses throughout Bavaria for one flat fare. The catch: on weekdays it's only valid from 9:00 a.m. onward. Great value if you're arriving as a group.</li>
-                </ul>
-
-                <p>The train takes you as far as <strong>Füssen station</strong>, about two and a half miles from the hotel. Taxis queue outside the station's main entrance. About five minutes to the hotel door for roughly €15 to €20. There are also local buses toward Schwangau if you'd rather, running about every half hour and timed to follow the train arrivals.</p>
-
-                <h3 id="car" class="anchor">By car</h3>
-
-                <p>About two hours from the airport. Take the <strong>A96</strong> toward the Steingaden/Füssen exit, then the <strong>B17</strong> into Füssen, then follow signs for <em>Zu den Königsschlössern</em> (to the royal castles). Roughly five minutes later you're in Hohenschwangau, on Alpseestraße.</p>
-
-                <div class="callout">
-                    <h4>⚠️ Please read this before you rent a car</h4>
-                    <p><strong>Parking at the AMERON is limited and it is not free.</strong> The hotel's guest lot sits across the road from the resort, next to the public lot P4, and runs about €14 per 24 hours. There are only so many spaces, and they are not guaranteed with your room.</p>
-                    <p>Hohenschwangau is one of the most visited villages in Germany. The public lots fill with castle day-trippers by mid-morning, every single day, and there is no overflow to fall back on.</p>
-                    <p>If you do drive: pull up to the hotel entrance first to unload your bags, then collect your parking ticket at check-in and move the car. And please let us know in advance so we can flag it with the hotel.</p>
-                    <p><strong>Honestly, unless you're building a longer Bavaria road trip around the wedding, take the train.</strong> You won't need a car once you're here.</p>
-                </div>
-
-                <h3 id="transfer" class="anchor">By private transfer</h3>
-
-                <p>Around two hours door to door, and expect a few hundred euros. The hotel's front desk can arrange a car if you contact them ahead of your stay. This is the easy button if you're arriving jet-lagged with a lot of luggage, traveling with kids, or have mobility considerations.</p>
-
-                <p class="closing-note">Questions about any of this? Just ask us. We've made this trip and we're happy to talk you through it.</p>
-
             </div>
+
+            <div id="kidsSection" style="display: none;">
+                <div style="background: rgba(255,255,255,0.6); border-radius: 8px; padding: 14px 16px; margin: 1.2rem 0 0.5rem 0; font-size: 0.95rem; text-align: center;">
+                    We would love for little ones to join the fun at our Welcome Party on September 17. Our ceremony and reception on September 18 are adults only. Thank you so much for understanding!
+                </div>
+
+                <label>Will any children be joining you at the Welcome Party?</label>
+                <select id="kidsAttending" onchange="toggleKidsFields()">
+                    <option value="">Please select...</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+
+                <div id="kidsCountField" style="display: none;">
+                    <input type="number" id="kidsCount" min="1" max="10" step="1" placeholder="How many children?">
+                </div>
+            </div>
+
+            <div id="allergiesField" style="display: none;">
+                <input type="text" placeholder="Any allergies or special requests?" id="notes">
+            </div>
+
+            <button onclick="submitRSVP()">Submit RSVP</button>
         </div>
+
+        <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
+            Thank you! Your RSVP has been received.<br>
+            We can't wait to celebrate with you!
+            <button class="clear-btn" onclick="location.reload()" style="display:block; margin: 1rem auto 0;">Reset test form</button>
+        </div>
+
+        <!-- Debug panel -->
+        <h2 style="font-size: 1.4rem; margin-top: 2.5rem;">Debug Output</h2>
+        <button class="clear-btn" onclick="clearLog()">Clear log</button>
+        <div class="debug-panel" id="debugLog">Waiting for activity...</div>
     </div>
+</div>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
 
-        // Measure the real height of the two fixed bars and publish them as CSS
-        // variables, so nothing overlaps regardless of font rendering or screen size
-        const navBar = document.querySelector('.nav');
-        const jumpBar = document.querySelector('.jump-bar');
+    // ---------- Debug helpers ----------
+    function log(label, data) {
+        const panel = document.getElementById('debugLog');
+        if (panel.textContent === "Waiting for activity...") panel.textContent = "";
+        const time = new Date().toLocaleTimeString();
+        let body = (typeof data === "string") ? data : JSON.stringify(data, null, 2);
+        panel.textContent += "[" + time + "] " + label + "\n" + body + "\n\n";
+        panel.scrollTop = panel.scrollHeight;
+    }
 
-        function measureBars() {
-            const root = document.documentElement;
-            root.style.setProperty('--nav-h', navBar.offsetHeight + 'px');
-            root.style.setProperty('--jump-h', jumpBar.offsetHeight + 'px');
+    function clearLog() {
+        document.getElementById('debugLog').textContent = "Waiting for activity...";
+    }
+
+    // ---------- Form behavior ----------
+    function toggleGuestFields() {
+        const attendance = document.getElementById('attendance').value;
+        const attending = attendance === "Just myself" || attendance === "Myself plus one";
+
+        document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
+        document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
+
+        document.getElementById('mealSection').style.display = attending ? 'block' : 'none';
+        document.getElementById('kidsSection').style.display = attending ? 'block' : 'none';
+        document.getElementById('allergiesField').style.display = attending ? 'block' : 'none';
+
+        if (!attending) {
+            document.getElementById('kidsAttending').value = "";
+            document.getElementById('kidsCount').value = "";
+            document.getElementById('kidsCountField').style.display = 'none';
+        }
+    }
+
+    function toggleKidsFields() {
+        const answer = document.getElementById('kidsAttending').value;
+        document.getElementById('kidsCountField').style.display = (answer === "Yes") ? 'block' : 'none';
+        if (answer !== "Yes") document.getElementById('kidsCount').value = "";
+    }
+
+    function updateMealLabels() {
+        const fullName = document.getElementById('name').value.trim();
+        const mainLabel = document.getElementById('mainMealLabel');
+        mainLabel.textContent = fullName ? fullName.split(' ')[0] + "'s Meal Preference" : "Your Meal Preference";
+
+        const guestName = document.getElementById('guestName').value.trim();
+        const guestLabel = document.getElementById('guestMealLabel');
+        guestLabel.textContent = guestName ? guestName.split(' ')[0] + "'s Meal Preference" : "Guest's Meal Preference";
+    }
+
+    function submitRSVP() {
+        const attendance = document.getElementById('attendance').value;
+        const isAttending = attendance === "Just myself" || attendance === "Myself plus one";
+
+        if (!attendance) {
+            alert("Please select your attendance.");
+            return;
         }
 
-        measureBars();
-        window.addEventListener('resize', measureBars);
-        window.addEventListener('load', measureBars);
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(measureBars);
-        }
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            attendance: attendance,
+            guestName: document.getElementById('guestName').value || "",
+            notes: document.getElementById('notes').value || "",
+            kidsCount: "0"
+        };
 
-        // Highlight the jump-bar chip matching whichever section is on screen
-        const sections = Array.from(document.querySelectorAll('.anchor'));
-        const chips = Array.from(document.querySelectorAll('.jump-inner a'));
-
-        function updateActiveChip() {
-            let currentId = sections[0].id;
-            for (const section of sections) {
-                const threshold = navBar.offsetHeight + jumpBar.offsetHeight + 40;
-                if (section.getBoundingClientRect().top <= threshold) {
-                    currentId = section.id;
-                }
+        if (isAttending) {
+            const kidsAnswer = document.getElementById('kidsAttending').value;
+            if (!kidsAnswer) {
+                alert("Please let us know if any children will be joining you at the Welcome Party.");
+                return;
             }
-            chips.forEach(chip => {
-                chip.classList.toggle('active', chip.getAttribute('href') === '#' + currentId);
-            });
+
+            if (kidsAnswer === "Yes") {
+                const count = parseInt(document.getElementById('kidsCount').value, 10);
+                if (!count || count < 1) {
+                    alert("Please enter how many children will be joining you.");
+                    return;
+                }
+                formData.kidsCount = String(count);
+            }
+
+            formData.meal1 = document.getElementById('meal1').value || "";
+            if (attendance === "Myself plus one") {
+                formData.meal2 = document.getElementById('meal2').value || "";
+            }
         }
 
-        window.addEventListener('scroll', updateActiveChip, { passive: true });
-        updateActiveChip();
-    </script>
+        log("Payload", formData);
+
+        if (document.getElementById('dryRun').checked) {
+            log("DRY RUN", "Nothing was sent. Uncheck 'Dry run' to submit for real.");
+            return;
+        }
+
+        log("Sending POST to", SCRIPT_URL);
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: new URLSearchParams(formData)
+        })
+        .then(r => {
+            log("HTTP status", r.status + " " + r.statusText);
+            return r.text();
+        })
+        .then(text => {
+            log("Raw response", text);
+            if (text.startsWith("success")) {
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } else {
+                alert("Error saving RSVP. See the debug panel.");
+            }
+        })
+        .catch(err => {
+            log("Network error", String(err));
+            alert("Network error. See the debug panel.");
+        });
+    }
+
+    function checkPreviousRSVP() {
+        const email = document.getElementById('checkEmail').value.trim();
+        const resultDiv = document.getElementById('checkResult');
+
+        if (!email) {
+            resultDiv.textContent = "Please enter an email";
+            return;
+        }
+
+        resultDiv.textContent = "Searching...";
+        const url = SCRIPT_URL + '?email=' + encodeURIComponent(email);
+        log("GET", url);
+
+        fetch(url)
+            .then(r => {
+                log("HTTP status", r.status + " " + r.statusText);
+                return r.text();
+            })
+            .then(text => {
+                log("Raw response", text);
+                const data = JSON.parse(text);
+
+                if (data.error) {
+                    resultDiv.textContent = "Script error: " + data.error;
+                    return;
+                }
+
+                if (data.found) {
+                    const lines = [
+                        "Found your RSVP!",
+                        "Name: " + data.name,
+                        "Attendance: " + data.attendance
+                    ];
+                    if (data.guestName) lines.push("Guest: " + data.guestName);
+                    if (data.yourMeal) lines.push("Meal: " + data.yourMeal);
+                    if (data.guestMeal) lines.push("Guest Meal: " + data.guestMeal);
+                    if (data.kidsCount && Number(data.kidsCount) > 0) lines.push("Children at Welcome Party: " + data.kidsCount);
+                    if (data.notes) lines.push("Allergies or special requests: " + data.notes);
+                    resultDiv.innerText = lines.join("\n");
+                } else {
+                    resultDiv.textContent = "No RSVP found for this email.";
+                }
+            })
+            .catch(err => {
+                log("Error", String(err));
+                resultDiv.textContent = "Error checking. See the debug panel.";
+            });
+    }
+</script>
 
 </body>
 </html>
