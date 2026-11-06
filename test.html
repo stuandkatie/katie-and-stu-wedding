@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>RSVP Test | Katie & Stu</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>RSVP Test | Katie &amp; Stu</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
     <style>
+        :root {
+            --gold: #d4af37;
+            --gold-deep: #8a6a16;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', system-ui, sans-serif;
-            color: #44403c;
+            color: #2a2724;
             line-height: 1.7;
         }
 
@@ -23,6 +27,9 @@
         }
 
         h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.1rem; margin: 0 0 1.2rem 0; }
+
+        a { color: #5c6e4c; }
 
         .hero-bg {
             background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('Background.jpg');
@@ -33,27 +40,105 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding: 40px 0;
+            padding-top: 110px;
+            padding-bottom: 60px;
         }
 
         .content {
-            background: rgba(248, 245, 240, 0.85);
+            background: rgba(250, 248, 244, 0.75);
             padding: 3rem 2rem;
             max-width: 950px;
             width: 100%;
             margin: 0 1rem;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-sizing: border-box;
         }
 
-        .content input, .content select, .content button {
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(38, 35, 32, 0.55);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.3rem;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2.2rem;
+            background: transparent !important;
+            border: none !important;
+            color: white;
+            cursor: pointer;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: auto !important;
+            flex-shrink: 0;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        .nav-links { display: flex; gap: 10px; }
+
+        .nav-links a {
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 1.05rem;
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.7);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #2a2724;
+            text-shadow: none;
+        }
+
+        .content input,
+        .content select,
+        .content button {
             width: 100%;
             padding: 14px;
             margin: 12px 0;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(42,39,36,0.2);
             border-radius: 8px;
             font-size: 1.05rem;
             box-sizing: border-box;
+            font-family: inherit;
+            color: #2a2724;
+            background: rgba(255,255,255,0.75);
+        }
+
+        .content input::placeholder { color: #6b655e; }
+
+        .content input:focus,
+        .content select:focus {
+            outline: none;
+            border-color: var(--gold-deep);
+            background: rgba(255,255,255,0.95);
         }
 
         .content button {
@@ -62,6 +147,7 @@
             font-weight: 600;
             cursor: pointer;
             border: none;
+            transition: background 0.25s;
         }
 
         .content button:hover { background: #7F8F6F; }
@@ -73,6 +159,46 @@
             font-weight: 500;
         }
 
+        .field-note {
+            margin: 0 0 0.25rem 0;
+            font-size: 0.92rem;
+            color: #4a4540;
+            line-height: 1.5;
+        }
+
+        .name-row { display: flex; gap: 12px; }
+        .name-row input { flex: 1; }
+
+        .result-panel {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        /* Polite reminder shown above the children question */
+        .kids-note {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(42,39,36,0.15);
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            margin: 1.2rem 0 0.25rem 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 2rem;
+            color: #2f5d3a;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        /* Test-only styles */
         .test-banner {
             background: #fff3cd;
             border: 1px solid #e0c36a;
@@ -88,7 +214,6 @@
             align-items: center;
             gap: 10px;
             margin: 1rem 0;
-            font-weight: 500;
         }
 
         .content .dryrun-row input[type="checkbox"] {
@@ -97,7 +222,7 @@
         }
 
         .debug-panel {
-            margin-top: 2rem;
+            margin-top: 1rem;
             background: #1e1e1e;
             color: #d4d4d4;
             border-radius: 8px;
@@ -118,282 +243,350 @@
             padding: 8px 16px;
             font-size: 0.9rem;
         }
+
+        @media (max-width: 768px) {
+            .nav-container { padding: 1.2rem 1.5rem; align-items: center; }
+            .logo { font-size: 2rem; }
+            .hamburger { display: block; font-size: 2rem; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
+                padding: 1.5rem;
+                gap: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a {
+                color: #2a2724;
+                text-align: center;
+                font-size: 1.1rem;
+                border: none;
+                text-shadow: none;
+            }
+
+            .content { padding: 2rem 1.25rem; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.7rem; }
+            .name-row { flex-direction: column; gap: 0; }
+        }
     </style>
 </head>
 <body>
 
-<div class="hero-bg">
-    <div class="content">
-        <h1>RSVP Test</h1>
-
-        <div class="test-banner">
-            Test page. Password check is removed. Dry run is on by default, so nothing is saved unless you uncheck it.
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Katie &amp; Stu</a>
+            <div class="nav-links" id="navLinks">
+                <a href="about.html">Our Story</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="travel.html">Travel</a>
+                <a href="guest-information.html">Guest Information</a>
+                <a href="registry.html">Registry</a>
+                <a href="rsvp.html">RSVP</a>
+            </div>
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
+    </nav>
 
-        <div class="dryrun-row">
-            <input type="checkbox" id="dryRun" checked>
-            <label for="dryRun" style="margin: 0;">Dry run (show the data but do not send it)</label>
-        </div>
+    <div class="hero-bg">
+        <div class="content">
 
-        <!-- Check an existing RSVP -->
-        <div id="checkForm" style="margin-top: 2rem;">
-            <h2>Check an RSVP</h2>
-            <input type="email" id="checkEmail" placeholder="Enter an email to look up">
-            <button onclick="checkPreviousRSVP()">Check RSVP</button>
-            <div id="checkResult" style="margin-top: 1rem; min-height: 2em;"></div>
-        </div>
+            <h1>RSVP Test</h1>
 
-        <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ccc;">
-
-        <!-- New RSVP -->
-        <div id="rsvpForm" style="text-align: left;">
-            <h2>New RSVP</h2>
-
-            <input type="text" placeholder="Your Full Name" id="name" oninput="updateMealLabels()">
-            <input type="email" placeholder="Your Email Address" id="email">
-
-            <label>Will you be attending?</label>
-            <select id="attendance" onchange="toggleGuestFields()">
-                <option value="">Please select...</option>
-                <option value="I won't be able to attend">I won't be able to attend</option>
-                <option value="Just myself">Just myself</option>
-                <option value="Myself plus one">Myself plus one</option>
-            </select>
-
-            <div id="guestNameField" style="display: none;">
-                <input type="text" placeholder="Guest's Full Name" id="guestName" oninput="updateMealLabels()">
+            <div class="test-banner">
+                Test page. The password step is removed. Dry run is on by default, so nothing is saved unless you uncheck it.
             </div>
 
-            <div id="mealSection" style="display: none;">
-                <label id="mainMealLabel">Your Meal Preference</label>
-                <select id="meal1">
-                    <option>Standard Meal</option>
-                    <option>Vegetarian</option>
-                    <option>Vegan</option>
-                    <option>Gluten-Free</option>
+            <div class="dryrun-row">
+                <input type="checkbox" id="dryRun" checked>
+                <label for="dryRun" style="margin: 0;">Dry run (show the data but do not send it)</label>
+            </div>
+
+            <!-- Look up an existing RSVP -->
+            <div id="checkForm" style="margin-top: 2rem;">
+                <h2>Check My RSVP</h2>
+                <input type="email" id="checkEmail" placeholder="Enter your email">
+                <button onclick="checkPreviousRSVP()">Check My RSVP</button>
+                <div id="checkResult" style="margin-top: 1.5rem; min-height: 2em;"></div>
+            </div>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid rgba(42,39,36,0.2);">
+
+            <!-- The RSVP form -->
+            <div id="rsvpForm" style="text-align: left;">
+                <h2>New RSVP</h2>
+
+                <div class="name-row">
+                    <input type="text" placeholder="Your First Name" id="firstName" oninput="updateMealLabels()" required>
+                    <input type="text" placeholder="Your Last Name" id="lastName" required>
+                </div>
+
+                <input type="email" placeholder="Your Email Address" id="email" required>
+
+                <label>Will you be attending?</label>
+                <select id="attendance" onchange="toggleGuestFields()" required>
+                    <option value="">Please select...</option>
+                    <option value="I won't be able to attend">I won't be able to attend</option>
+                    <option value="Just myself">Just myself</option>
+                    <option value="Myself plus one">Myself plus one</option>
                 </select>
 
-                <div id="guestMealField" style="display: none;">
-                    <label id="guestMealLabel">Guest's Meal Preference</label>
-                    <select id="meal2">
+                <div id="guestNameField" style="display: none;">
+                    <div class="name-row">
+                        <input type="text" placeholder="Guest First Name" id="guestFirstName" oninput="updateMealLabels()">
+                        <input type="text" placeholder="Guest Last Name" id="guestLastName">
+                    </div>
+                </div>
+
+                <div id="mealSection" style="display: none;">
+                    <label id="mainMealLabel">Your Meal Preference</label>
+                    <select id="meal1">
                         <option>Standard Meal</option>
                         <option>Vegetarian</option>
                         <option>Vegan</option>
                         <option>Gluten-Free</option>
                     </select>
+
+                    <div id="guestMealField" style="display: none;">
+                        <label id="guestMealLabel">Guest's Meal Preference</label>
+                        <select id="meal2">
+                            <option>Standard Meal</option>
+                            <option>Vegetarian</option>
+                            <option>Vegan</option>
+                            <option>Gluten-Free</option>
+                        </select>
+                    </div>
                 </div>
+
+                <div id="allergiesField" style="display: none;">
+                    <input type="text" placeholder="Any allergies or special requests?" id="notes">
+                </div>
+
+                <!-- Children at the Welcome Party (after allergies) -->
+                <div id="kidsSection" style="display: none;">
+                    <div class="kids-note">
+                        We would love for little ones to join the fun at our Welcome Party on September 17. Our ceremony and reception on September 18 are adults only. Thank you so much for understanding!
+                    </div>
+
+                    <label>Will any children be joining you at the Welcome Party?</label>
+                    <select id="kidsAttending" onchange="toggleKidsFields()">
+                        <option value="">Please select...</option>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+
+                    <div id="kidsCountField" style="display: none;">
+                        <input type="number" id="kidsCount" min="1" max="10" step="1" placeholder="How many children?">
+                    </div>
+                </div>
+
+                <div id="hotelField" style="display: none;">
+                    <p class="field-note">We're working on arranging a shuttle, so knowing roughly where everyone is staying helps us plan.</p>
+                    <input type="text" placeholder="What hotel do you expect to stay at?" id="hotel">
+                </div>
+
+                <button onclick="submitRSVP()">Submit RSVP</button>
             </div>
 
-            <div id="kidsSection" style="display: none;">
-                <div style="background: rgba(255,255,255,0.6); border-radius: 8px; padding: 14px 16px; margin: 1.2rem 0 0.5rem 0; font-size: 0.95rem; text-align: center;">
-                    We would love for little ones to join the fun at our Welcome Party on September 17. Our ceremony and reception on September 18 are adults only. Thank you so much for understanding!
-                </div>
-
-                <label>Will any children be joining you at the Welcome Party?</label>
-                <select id="kidsAttending" onchange="toggleKidsFields()">
-                    <option value="">Please select...</option>
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-
-                <div id="kidsCountField" style="display: none;">
-                    <input type="number" id="kidsCount" min="1" max="10" step="1" placeholder="How many children?">
-                </div>
+            <div id="successMessage" class="success-message">
+                Thank you! Your RSVP has been received.<br>We can't wait to celebrate with you!
+                <button class="clear-btn" onclick="location.reload()" style="display:block; margin: 1rem auto 0;">Reset test form</button>
             </div>
 
-            <div id="allergiesField" style="display: none;">
-                <input type="text" placeholder="Any allergies or special requests?" id="notes">
-            </div>
+            <!-- Debug panel -->
+            <h2 style="font-size: 1.5rem; margin-top: 2.5rem;">Debug Output</h2>
+            <button class="clear-btn" onclick="clearLog()">Clear log</button>
+            <div class="debug-panel" id="debugLog">Waiting for activity...</div>
 
-            <button onclick="submitRSVP()">Submit RSVP</button>
         </div>
-
-        <div id="successMessage" style="display: none; margin-top: 2rem; color: #166534; font-size: 1.3rem; text-align: center;">
-            Thank you! Your RSVP has been received.<br>
-            We can't wait to celebrate with you!
-            <button class="clear-btn" onclick="location.reload()" style="display:block; margin: 1rem auto 0;">Reset test form</button>
-        </div>
-
-        <!-- Debug panel -->
-        <h2 style="font-size: 1.4rem; margin-top: 2.5rem;">Debug Output</h2>
-        <button class="clear-btn" onclick="clearLog()">Clear log</button>
-        <div class="debug-panel" id="debugLog">Waiting for activity...</div>
     </div>
-</div>
 
-<script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKSToX01nun9g7DX3zMY-r02S4Lx6OengoWeDa2vCTKLOuj5Wd4RzE6P_9uZwC8fE-Ig/exec";
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-    // ---------- Debug helpers ----------
-    function log(label, data) {
-        const panel = document.getElementById('debugLog');
-        if (panel.textContent === "Waiting for activity...") panel.textContent = "";
-        const time = new Date().toLocaleTimeString();
-        let body = (typeof data === "string") ? data : JSON.stringify(data, null, 2);
-        panel.textContent += "[" + time + "] " + label + "\n" + body + "\n\n";
-        panel.scrollTop = panel.scrollHeight;
-    }
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwC9OxKHDM-CIf2ucxWtKT1t9f67UGjLx-g-JRUxHCYI--BmPPamkDCb3h7yaSWX-_4-Q/exec";
 
-    function clearLog() {
-        document.getElementById('debugLog').textContent = "Waiting for activity...";
-    }
-
-    // ---------- Form behavior ----------
-    function toggleGuestFields() {
-        const attendance = document.getElementById('attendance').value;
-        const attending = attendance === "Just myself" || attendance === "Myself plus one";
-
-        document.getElementById('guestNameField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
-        document.getElementById('guestMealField').style.display = (attendance === "Myself plus one") ? 'block' : 'none';
-
-        document.getElementById('mealSection').style.display = attending ? 'block' : 'none';
-        document.getElementById('kidsSection').style.display = attending ? 'block' : 'none';
-        document.getElementById('allergiesField').style.display = attending ? 'block' : 'none';
-
-        if (!attending) {
-            document.getElementById('kidsAttending').value = "";
-            document.getElementById('kidsCount').value = "";
-            document.getElementById('kidsCountField').style.display = 'none';
-        }
-    }
-
-    function toggleKidsFields() {
-        const answer = document.getElementById('kidsAttending').value;
-        document.getElementById('kidsCountField').style.display = (answer === "Yes") ? 'block' : 'none';
-        if (answer !== "Yes") document.getElementById('kidsCount').value = "";
-    }
-
-    function updateMealLabels() {
-        const fullName = document.getElementById('name').value.trim();
-        const mainLabel = document.getElementById('mainMealLabel');
-        mainLabel.textContent = fullName ? fullName.split(' ')[0] + "'s Meal Preference" : "Your Meal Preference";
-
-        const guestName = document.getElementById('guestName').value.trim();
-        const guestLabel = document.getElementById('guestMealLabel');
-        guestLabel.textContent = guestName ? guestName.split(' ')[0] + "'s Meal Preference" : "Guest's Meal Preference";
-    }
-
-    function submitRSVP() {
-        const attendance = document.getElementById('attendance').value;
-        const isAttending = attendance === "Just myself" || attendance === "Myself plus one";
-
-        if (!attendance) {
-            alert("Please select your attendance.");
-            return;
+        // ---------- Debug helpers ----------
+        function log(label, data) {
+            const panel = document.getElementById('debugLog');
+            if (panel.textContent === "Waiting for activity...") panel.textContent = "";
+            const time = new Date().toLocaleTimeString();
+            const body = (typeof data === "string") ? data : JSON.stringify(data, null, 2);
+            panel.textContent += "[" + time + "] " + label + "\n" + body + "\n\n";
+            panel.scrollTop = panel.scrollHeight;
         }
 
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            attendance: attendance,
-            guestName: document.getElementById('guestName').value || "",
-            notes: document.getElementById('notes').value || "",
-            kidsCount: "0"
-        };
+        function clearLog() {
+            document.getElementById('debugLog').textContent = "Waiting for activity...";
+        }
 
-        if (isAttending) {
-            const kidsAnswer = document.getElementById('kidsAttending').value;
-            if (!kidsAnswer) {
-                alert("Please let us know if any children will be joining you at the Welcome Party.");
+        function esc(value) {
+            return String(value == null ? "" : value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+        }
+
+        // ---------- Form behavior ----------
+        function toggleGuestFields() {
+            const attendance = document.getElementById('attendance').value;
+            const attending = attendance === "Just myself" || attendance === "Myself plus one";
+            const plusOne = attendance === "Myself plus one";
+
+            document.getElementById('guestNameField').style.display = plusOne ? 'block' : 'none';
+            document.getElementById('guestMealField').style.display = plusOne ? 'block' : 'none';
+            document.getElementById('mealSection').style.display = attending ? 'block' : 'none';
+            document.getElementById('allergiesField').style.display = attending ? 'block' : 'none';
+            document.getElementById('kidsSection').style.display = attending ? 'block' : 'none';
+            document.getElementById('hotelField').style.display = attending ? 'block' : 'none';
+
+            if (!attending) {
+                document.getElementById('kidsAttending').value = "";
+                document.getElementById('kidsCount').value = "";
+                document.getElementById('kidsCountField').style.display = 'none';
+            }
+            updateMealLabels();
+        }
+
+        function toggleKidsFields() {
+            const answer = document.getElementById('kidsAttending').value;
+            document.getElementById('kidsCountField').style.display = (answer === "Yes") ? 'block' : 'none';
+            if (answer !== "Yes") document.getElementById('kidsCount').value = "";
+        }
+
+        function updateMealLabels() {
+            const primaryFirst = document.getElementById('firstName').value.trim();
+            const guestFirst = document.getElementById('guestFirstName').value.trim();
+            document.getElementById('mainMealLabel').textContent = primaryFirst ? primaryFirst + "'s Meal Preference" : "Your Meal Preference";
+            document.getElementById('guestMealLabel').textContent = guestFirst ? guestFirst + "'s Meal Preference" : "Guest's Meal Preference";
+        }
+
+        function submitRSVP() {
+            const attendance = document.getElementById('attendance').value;
+            if (!attendance) {
+                alert("Please select your attendance.");
+                return;
+            }
+            const attending = attendance !== "I won't be able to attend";
+
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                attendance: attendance,
+                guestFirstName: document.getElementById('guestFirstName').value || "",
+                guestLastName: document.getElementById('guestLastName').value || "",
+                notes: document.getElementById('notes').value || "",
+                hotel: attending ? (document.getElementById('hotel').value || "") : "",
+                kidsCount: "0"
+            };
+
+            if (attending) {
+                const kidsAnswer = document.getElementById('kidsAttending').value;
+                if (!kidsAnswer) {
+                    alert("Please let us know if any children will be joining you at the Welcome Party.");
+                    return;
+                }
+                if (kidsAnswer === "Yes") {
+                    const count = parseInt(document.getElementById('kidsCount').value, 10);
+                    if (!count || count < 1) {
+                        alert("Please enter how many children will be joining you.");
+                        return;
+                    }
+                    formData.kidsCount = String(count);
+                }
+
+                formData.meal1 = document.getElementById('meal1').value || "";
+                if (attendance === "Myself plus one") {
+                    formData.meal2 = document.getElementById('meal2').value || "";
+                }
+            }
+
+            log("Payload", formData);
+
+            if (document.getElementById('dryRun').checked) {
+                log("DRY RUN", "Nothing was sent. Uncheck 'Dry run' to submit for real.");
                 return;
             }
 
-            if (kidsAnswer === "Yes") {
-                const count = parseInt(document.getElementById('kidsCount').value, 10);
-                if (!count || count < 1) {
-                    alert("Please enter how many children will be joining you.");
-                    return;
-                }
-                formData.kidsCount = String(count);
-            }
+            log("Sending POST to", SCRIPT_URL);
 
-            formData.meal1 = document.getElementById('meal1').value || "";
-            if (attendance === "Myself plus one") {
-                formData.meal2 = document.getElementById('meal2').value || "";
-            }
+            fetch(SCRIPT_URL, { method: 'POST', body: new URLSearchParams(formData) })
+                .then(r => {
+                    log("HTTP status", r.status + " " + r.statusText);
+                    return r.text();
+                })
+                .then(text => {
+                    log("Raw response", text);
+                    if (text.startsWith("success")) {
+                        document.getElementById('rsvpForm').style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                    } else {
+                        alert("Error saving RSVP. See the debug panel.");
+                    }
+                })
+                .catch(err => {
+                    log("Network error", String(err));
+                    alert("Network error. See the debug panel.");
+                });
         }
 
-        log("Payload", formData);
-
-        if (document.getElementById('dryRun').checked) {
-            log("DRY RUN", "Nothing was sent. Uncheck 'Dry run' to submit for real.");
-            return;
-        }
-
-        log("Sending POST to", SCRIPT_URL);
-
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: new URLSearchParams(formData)
-        })
-        .then(r => {
-            log("HTTP status", r.status + " " + r.statusText);
-            return r.text();
-        })
-        .then(text => {
-            log("Raw response", text);
-            if (text.startsWith("success")) {
-                document.getElementById('rsvpForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            } else {
-                alert("Error saving RSVP. See the debug panel.");
+        function checkPreviousRSVP() {
+            const email = document.getElementById('checkEmail').value.trim();
+            const resultDiv = document.getElementById('checkResult');
+            if (!email) {
+                resultDiv.innerHTML = '<span style="color:#9b2c2c;">Please enter your email</span>';
+                return;
             }
-        })
-        .catch(err => {
-            log("Network error", String(err));
-            alert("Network error. See the debug panel.");
-        });
-    }
+            resultDiv.innerHTML = 'Searching...';
 
-    function checkPreviousRSVP() {
-        const email = document.getElementById('checkEmail').value.trim();
-        const resultDiv = document.getElementById('checkResult');
+            const url = SCRIPT_URL + '?email=' + encodeURIComponent(email);
+            log("GET", url);
 
-        if (!email) {
-            resultDiv.textContent = "Please enter an email";
-            return;
+            fetch(url)
+                .then(r => {
+                    log("HTTP status", r.status + " " + r.statusText);
+                    return r.text();
+                })
+                .then(text => {
+                    log("Raw response", text);
+                    const data = JSON.parse(text);
+
+                    if (data.error) {
+                        resultDiv.innerHTML = '<span style="color:#9b2c2c;">Script error: ' + esc(data.error) + '</span>';
+                        return;
+                    }
+
+                    if (data.found) {
+                        const guest = [data.guestFirstName, data.guestLastName].filter(Boolean).join(' ');
+                        resultDiv.innerHTML =
+                            '<div class="result-panel">' +
+                            '<strong>Found your RSVP!</strong><br>' +
+                            'Name: ' + esc(data.firstName) + ' ' + esc(data.lastName) + '<br>' +
+                            'Attendance: ' + esc(data.attendance) + '<br>' +
+                            (guest ? 'Guest: ' + esc(guest) + '<br>' : '') +
+                            (data.yourMeal ? 'Meal: ' + esc(data.yourMeal) + '<br>' : '') +
+                            (data.guestMeal ? 'Guest Meal: ' + esc(data.guestMeal) + '<br>' : '') +
+                            (data.kidsCount && Number(data.kidsCount) > 0 ? 'Children at Welcome Party: ' + esc(data.kidsCount) + '<br>' : '') +
+                            (data.hotel ? 'Hotel: ' + esc(data.hotel) + '<br>' : '') +
+                            (data.notes ? 'Notes: ' + esc(data.notes) + '<br>' : '') +
+                            '<br><strong>If you need to change something, please contact Katie or Stu.</strong>' +
+                            '</div>';
+                    } else {
+                        resultDiv.innerHTML = '<div class="result-panel"><strong>No RSVP found for this email.</strong></div>';
+                    }
+                })
+                .catch(err => {
+                    log("Error", String(err));
+                    resultDiv.innerHTML = '<span style="color:#9b2c2c;">Error checking. See the debug panel.</span>';
+                });
         }
-
-        resultDiv.textContent = "Searching...";
-        const url = SCRIPT_URL + '?email=' + encodeURIComponent(email);
-        log("GET", url);
-
-        fetch(url)
-            .then(r => {
-                log("HTTP status", r.status + " " + r.statusText);
-                return r.text();
-            })
-            .then(text => {
-                log("Raw response", text);
-                const data = JSON.parse(text);
-
-                if (data.error) {
-                    resultDiv.textContent = "Script error: " + data.error;
-                    return;
-                }
-
-                if (data.found) {
-                    const lines = [
-                        "Found your RSVP!",
-                        "Name: " + data.name,
-                        "Attendance: " + data.attendance
-                    ];
-                    if (data.guestName) lines.push("Guest: " + data.guestName);
-                    if (data.yourMeal) lines.push("Meal: " + data.yourMeal);
-                    if (data.guestMeal) lines.push("Guest Meal: " + data.guestMeal);
-                    if (data.kidsCount && Number(data.kidsCount) > 0) lines.push("Children at Welcome Party: " + data.kidsCount);
-                    if (data.notes) lines.push("Allergies or special requests: " + data.notes);
-                    resultDiv.innerText = lines.join("\n");
-                } else {
-                    resultDiv.textContent = "No RSVP found for this email.";
-                }
-            })
-            .catch(err => {
-                log("Error", String(err));
-                resultDiv.textContent = "Error checking. See the debug panel.";
-            });
-    }
-</script>
-
+    </script>
 </body>
 </html>
