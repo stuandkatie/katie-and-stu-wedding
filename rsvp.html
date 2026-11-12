@@ -274,7 +274,7 @@
 
                 <div id="guestNameField" style="display: none;">
                     <!-- Added oninput trigger to dynamically update the guest meal label -->
-                    <input type="text" placeholder="Spouse/Plus One's Full Name" id="guestName" oninput="updateMealLabels()">
+                    <input type="text" placeholder="Spouse/Guest's Full Name" id="guestName" oninput="updateMealLabels()">
                 </div>
 
                 <div id="mealSection" style="display: none;">
@@ -287,7 +287,7 @@
                     </select>
 
                     <div id="guestMealField" style="display: none;">
-                        <label id="guestMealLabel">Spouse/Plus One's Meal Preference</label>
+                        <label id="guestMealLabel">Spouse/Guest's Meal Preference</label>
                         <select id="meal2">
                             <option>Standard Meal</option>
                             <option>Vegetarian</option>
@@ -371,12 +371,12 @@
             const guestName = document.getElementById('guestName').value.trim();
             const guestLabel = document.getElementById('guestMealLabel');
             
-            // Extract the first name of the spouse/plus-one and update their meal label
+            // Extract the first name of the spouse/guest and update their meal label
             if (guestName) {
                 const guestFirstName = guestName.split(' ')[0];
                 guestLabel.textContent = guestFirstName + "'s Meal Preference";
             } else {
-                guestLabel.textContent = "Spouse/Plus One's Meal Preference";
+                guestLabel.textContent = "Spouse/Guest's Meal Preference";
             }
         }
 
@@ -435,9 +435,9 @@
                             <strong>Found your RSVP!</strong><br>
                             Name: ${data.name}<br>
                             Attendance: ${data.attendance}<br>
-                            ${data.guestName ? `Spouse/Plus One: ${data.guestName}<br>` : ''}
+                            ${data.guestName ? `Spouse/Guest: ${data.guestName}<br>` : ''}
                             ${data.yourMeal ? `Meal: ${data.yourMeal}<br>` : ''}
-                            ${data.guestMeal ? `Spouse/Plus One Meal: ${data.guestMeal}<br>` : ''}
+                            ${data.guestMeal ? `Spouse/Guest Meal: ${data.guestMeal}<br>` : ''}
                             ${data.notes ? `Allergies or special requests: ${data.notes}<br>` : ''}
                             <br><strong>If you need to change something, please contact Katie or Stu.</strong>
                         `;
